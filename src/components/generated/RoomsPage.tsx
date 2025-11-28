@@ -1,4 +1,3 @@
-import { SortableContainer } from "@/dnd-kit/SortableContainer";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { X, Users, Maximize, Check, Star, Building2, Wifi, Wind, Tv, Coffee, Sparkles, ChevronDown } from 'lucide-react';
@@ -10,7 +9,6 @@ interface RoomsPageProps {
   isOpen: boolean;
   onClose: () => void;
   onBook?: (room: Room) => void;
-  mpid?: string;
 }
 export const RoomsPage: React.FC<RoomsPageProps> = ({
   isOpen,
@@ -61,13 +59,13 @@ export const RoomsPage: React.FC<RoomsPageProps> = ({
     }
     return Check;
   };
-  return <SortableContainer dndKitId="6a6eb7f2-efef-47c1-a9e0-195d124b77a4" containerType="regular" prevTag="div" className="fixed inset-0 z-[100] overflow-y-auto" data-magicpath-id="0" data-magicpath-path="RoomsPage.tsx">
+  return <div className="fixed inset-0 z-[100] overflow-y-auto">
       {/* Backdrop */}
-      <div className="fixed inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} data-magicpath-id="1" data-magicpath-path="RoomsPage.tsx" />
+      <div className="fixed inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
 
       {/* Content */}
-      <SortableContainer dndKitId="8b580339-0649-46de-9169-6213326ab5f9" containerType="regular" prevTag="div" className="relative min-h-screen flex items-start justify-center p-4 md:p-8" data-magicpath-id="2" data-magicpath-path="RoomsPage.tsx">
-        <SortableContainer dndKitId="d27fce66-b527-4411-8c32-9bc29cc01705" containerType="regular" prevTag="motion.div" initial={{
+      <div className="relative min-h-screen flex items-start justify-center p-4 md:p-8">
+        <motion.div initial={{
         opacity: 0,
         y: 20
       }} animate={{
@@ -76,79 +74,79 @@ export const RoomsPage: React.FC<RoomsPageProps> = ({
       }} exit={{
         opacity: 0,
         y: 20
-      }} className="relative w-full max-w-7xl bg-zinc-900 rounded-lg shadow-2xl border border-zinc-800 my-8" data-magicpath-id="3" data-magicpath-path="RoomsPage.tsx">
+      }} className="relative w-full max-w-7xl bg-zinc-900 rounded-lg shadow-2xl border border-zinc-800 my-8">
           {/* Header */}
-          <SortableContainer dndKitId="1534ee9f-34f4-4d93-abdc-6374f8a9ddc7" containerType="regular" prevTag="div" className="sticky top-0 z-10 bg-zinc-900 border-b border-zinc-800 p-6 rounded-t-lg" data-magicpath-id="4" data-magicpath-path="RoomsPage.tsx">
-            <SortableContainer dndKitId="3ca42740-a298-461b-9e08-57eac03faf4c" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="5" data-magicpath-path="RoomsPage.tsx">
-              <SortableContainer dndKitId="435bb416-d6ea-45ac-b9bb-3315a66e6593" containerType="regular" prevTag="div" data-magicpath-id="6" data-magicpath-path="RoomsPage.tsx">
-                <h2 className="text-3xl font-serif text-white mb-2" data-magicpath-id="7" data-magicpath-path="RoomsPage.tsx">Our Rooms</h2>
-                <p className="text-zinc-400 text-sm" data-magicpath-id="8" data-magicpath-path="RoomsPage.tsx">Discover luxury and comfort in every stay</p>
-              </SortableContainer>
-              <SortableContainer dndKitId="48bb4637-05bd-4e16-beec-729c1fb79755" containerType="regular" prevTag="button" onClick={onClose} className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center text-zinc-400 hover:text-white transition-colors" data-magicpath-id="9" data-magicpath-path="RoomsPage.tsx">
-                <X size={20} data-magicpath-id="10" data-magicpath-path="RoomsPage.tsx" />
-              </SortableContainer>
-            </SortableContainer>
+          <div className="sticky top-0 z-10 bg-zinc-900 border-b border-zinc-800 p-6 rounded-t-lg">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h2 className="text-3xl font-serif text-white mb-2">Our Rooms</h2>
+                <p className="text-zinc-400 text-sm">Discover luxury and comfort in every stay</p>
+              </div>
+              <button onClick={onClose} className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center text-zinc-400 hover:text-white transition-colors">
+                <X size={20} />
+              </button>
+            </div>
 
             {/* Branch Selector */}
-            <SortableContainer dndKitId="72260efd-e63a-4d99-a61d-031ce6eace03" containerType="regular" prevTag="div" className="mb-4" data-magicpath-id="11" data-magicpath-path="RoomsPage.tsx">
-              {!currentBranch ? <SortableContainer dndKitId="b75f10eb-352b-467b-a8b0-a88d5c30decc" containerType="regular" prevTag="div" className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4" data-magicpath-id="12" data-magicpath-path="RoomsPage.tsx">
-                  <p className="text-amber-400 text-sm mb-3 flex items-center gap-2" data-magicpath-id="13" data-magicpath-path="RoomsPage.tsx">
-                    <Building2 size={16} data-magicpath-id="14" data-magicpath-path="RoomsPage.tsx" />
+            <div className="mb-4">
+              {!currentBranch ? <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4">
+                  <p className="text-amber-400 text-sm mb-3 flex items-center gap-2">
+                    <Building2 size={16} />
                     Please select a branch to view available rooms
                   </p>
-                  <BranchSelector onSelect={selectBranch} showSelected={false} data-magicpath-id="15" data-magicpath-path="RoomsPage.tsx" />
-                </SortableContainer> : <SortableContainer dndKitId="9c2ed864-3dbf-47a3-ab1d-e97037fc4cb7" containerType="regular" prevTag="div" className="flex items-center gap-4" data-magicpath-id="16" data-magicpath-path="RoomsPage.tsx">
-                  <SortableContainer dndKitId="ca723d71-0449-46a7-a680-0144c5d2cd1e" containerType="regular" prevTag="div" className="flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-lg px-4 py-2" data-magicpath-id="17" data-magicpath-path="RoomsPage.tsx">
-                    <Building2 size={16} className="text-amber-400" data-magicpath-id="18" data-magicpath-path="RoomsPage.tsx" />
-                    <span className="text-amber-400 text-sm font-medium uppercase tracking-wider" data-magicpath-id="19" data-magicpath-path="RoomsPage.tsx">
+                  <BranchSelector onSelect={selectBranch} showSelected={false} />
+                </div> : <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-lg px-4 py-2">
+                    <Building2 size={16} className="text-amber-400" />
+                    <span className="text-amber-400 text-sm font-medium uppercase tracking-wider">
                       {branches.find(b => b.id === currentBranch)?.city} Branch
                     </span>
-                  </SortableContainer>
-                  <button onClick={() => selectBranch(currentBranch === 'abuja' ? 'lagos' : 'abuja')} className="text-xs text-zinc-400 hover:text-amber-400 transition-colors underline" data-magicpath-id="20" data-magicpath-path="RoomsPage.tsx">
+                  </div>
+                  <button onClick={() => selectBranch(currentBranch === 'abuja' ? 'lagos' : 'abuja')} className="text-xs text-zinc-400 hover:text-amber-400 transition-colors underline">
                     Switch to {currentBranch === 'abuja' ? 'Lagos' : 'Abuja'}
                   </button>
-                </SortableContainer>}
-            </SortableContainer>
+                </div>}
+            </div>
 
             {/* Filters and Sort */}
-            {currentBranch && <SortableContainer dndKitId="bd8faf0c-a599-40b0-a9fd-24e0541d0f1f" containerType="regular" prevTag="div" className="flex flex-wrap items-center gap-4" data-magicpath-id="21" data-magicpath-path="RoomsPage.tsx">
+            {currentBranch && <div className="flex flex-wrap items-center gap-4">
                 {/* Filter by Type */}
-                <SortableContainer dndKitId="520938f9-15ab-49ec-9ea3-6e5733bd7c27" containerType="regular" prevTag="div" className="relative" data-magicpath-id="22" data-magicpath-path="RoomsPage.tsx">
-                  <select value={filterType} onChange={e => setFilterType(e.target.value)} className="appearance-none bg-zinc-800 text-white px-4 py-2 pr-10 rounded border border-zinc-700 focus:outline-none focus:border-amber-500 text-sm cursor-pointer" data-magicpath-id="23" data-magicpath-path="RoomsPage.tsx">
-                    <option value="all" data-magicpath-id="24" data-magicpath-path="RoomsPage.tsx">All Room Types</option>
-                    {roomTypes.map(type => <option key={type} value={type} data-magicpath-uuid={(type as any)["mpid"] ?? "unsafe"} data-magicpath-id="25" data-magicpath-path="RoomsPage.tsx">
+                <div className="relative">
+                  <select value={filterType} onChange={e => setFilterType(e.target.value)} className="appearance-none bg-zinc-800 text-white px-4 py-2 pr-10 rounded border border-zinc-700 focus:outline-none focus:border-amber-500 text-sm cursor-pointer">
+                    <option value="all">All Room Types</option>
+                    {roomTypes.map(type => <option key={type} value={type}>
                         {type.charAt(0).toUpperCase() + type.slice(1)}
                       </option>)}
                   </select>
-                  <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" data-magicpath-id="26" data-magicpath-path="RoomsPage.tsx" />
-                </SortableContainer>
+                  <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" />
+                </div>
 
                 {/* Sort */}
-                <SortableContainer dndKitId="a00782fe-5687-4b57-aeb1-d2cf09b1c228" containerType="regular" prevTag="div" className="relative" data-magicpath-id="27" data-magicpath-path="RoomsPage.tsx">
-                  <select value={sortBy} onChange={e => setSortBy(e.target.value as any)} className="appearance-none bg-zinc-800 text-white px-4 py-2 pr-10 rounded border border-zinc-700 focus:outline-none focus:border-amber-500 text-sm cursor-pointer" data-magicpath-id="28" data-magicpath-path="RoomsPage.tsx">
-                    <option value="price-asc" data-magicpath-id="29" data-magicpath-path="RoomsPage.tsx">Price: Low to High</option>
-                    <option value="price-desc" data-magicpath-id="30" data-magicpath-path="RoomsPage.tsx">Price: High to Low</option>
-                    <option value="rating" data-magicpath-id="31" data-magicpath-path="RoomsPage.tsx">Highest Rated</option>
+                <div className="relative">
+                  <select value={sortBy} onChange={e => setSortBy(e.target.value as any)} className="appearance-none bg-zinc-800 text-white px-4 py-2 pr-10 rounded border border-zinc-700 focus:outline-none focus:border-amber-500 text-sm cursor-pointer">
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="rating">Highest Rated</option>
                   </select>
-                  <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" data-magicpath-id="32" data-magicpath-path="RoomsPage.tsx" />
-                </SortableContainer>
+                  <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" />
+                </div>
 
                 {/* Results Count */}
-                <div className="ml-auto text-sm text-zinc-400" data-magicpath-id="33" data-magicpath-path="RoomsPage.tsx">
+                <div className="ml-auto text-sm text-zinc-400">
                   {sortedRooms.length} room{sortedRooms.length !== 1 ? 's' : ''} available
                 </div>
-              </SortableContainer>}
-          </SortableContainer>
+              </div>}
+          </div>
 
           {/* Rooms Grid */}
-          <SortableContainer dndKitId="13a9fd15-5fa5-4078-9d0c-1b0d8d607d5b" containerType="regular" prevTag="div" className="p-6" data-magicpath-id="34" data-magicpath-path="RoomsPage.tsx">
-            {!currentBranch ? <SortableContainer dndKitId="fed4732e-3180-4079-8e3d-47715976ca4d" containerType="regular" prevTag="div" className="text-center py-16 text-zinc-500" data-magicpath-id="35" data-magicpath-path="RoomsPage.tsx">
-                <Building2 size={48} className="mx-auto mb-4 opacity-50" data-magicpath-id="36" data-magicpath-path="RoomsPage.tsx" />
-                <p data-magicpath-id="37" data-magicpath-path="RoomsPage.tsx">Select a branch to view available rooms</p>
-              </SortableContainer> : sortedRooms.length === 0 ? <SortableContainer dndKitId="d7dcae55-2a0e-4daf-8f2b-0181d1737b55" containerType="regular" prevTag="div" className="text-center py-16 text-zinc-500" data-magicpath-id="38" data-magicpath-path="RoomsPage.tsx">
-                <p data-magicpath-id="39" data-magicpath-path="RoomsPage.tsx">No rooms found matching your criteria</p>
-              </SortableContainer> : <SortableContainer dndKitId="629e9f4f-d415-4fa5-9ebf-129e0ff38f1b" containerType="collection" prevTag="div" className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-magicpath-id="40" data-magicpath-path="RoomsPage.tsx">
-                {sortedRooms.map((room, idx) => <motion.div data-magicpath-motion-tag="motion.div" key={room.id} initial={{
+          <div className="p-6">
+            {!currentBranch ? <div className="text-center py-16 text-zinc-500">
+                <Building2 size={48} className="mx-auto mb-4 opacity-50" />
+                <p>Select a branch to view available rooms</p>
+              </div> : sortedRooms.length === 0 ? <div className="text-center py-16 text-zinc-500">
+                <p>No rooms found matching your criteria</p>
+              </div> : <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {sortedRooms.map((room, idx) => <motion.div key={room.id} initial={{
               opacity: 0,
               y: 20
             }} animate={{
@@ -156,158 +154,158 @@ export const RoomsPage: React.FC<RoomsPageProps> = ({
               y: 0
             }} transition={{
               delay: idx * 0.1
-            }} className="bg-zinc-800 rounded-lg overflow-hidden border border-zinc-700 hover:border-amber-500/50 transition-all duration-300 group" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="41" data-magicpath-path="RoomsPage.tsx">
+            }} className="bg-zinc-800 rounded-lg overflow-hidden border border-zinc-700 hover:border-amber-500/50 transition-all duration-300 group">
                     {/* Room Image */}
-                    <div className="relative aspect-[4/3] overflow-hidden" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="42" data-magicpath-path="RoomsPage.tsx">
-                      <img src={room.images[0]} alt={room.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="43" data-magicpath-path="RoomsPage.tsx" />
-                      <div className="absolute top-3 right-3 bg-amber-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-field="type:unknown" data-magicpath-id="44" data-magicpath-path="RoomsPage.tsx">
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <img src={room.images[0]} alt={room.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                      <div className="absolute top-3 right-3 bg-amber-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                         {room.type}
                       </div>
-                      {room.rating && <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs flex items-center gap-1" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="45" data-magicpath-path="RoomsPage.tsx">
-                          <Star size={12} fill="currentColor" className="text-amber-400" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="46" data-magicpath-path="RoomsPage.tsx" />
-                          <span data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-field="rating:unknown" data-magicpath-id="47" data-magicpath-path="RoomsPage.tsx">{room.rating}</span>
+                      {room.rating && <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs flex items-center gap-1">
+                          <Star size={12} fill="currentColor" className="text-amber-400" />
+                          <span>{room.rating}</span>
                         </div>}
                     </div>
 
                     {/* Room Details */}
-                    <div className="p-5" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="48" data-magicpath-path="RoomsPage.tsx">
-                      <h3 className="text-xl font-serif text-white mb-2 group-hover:text-amber-400 transition-colors" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-field="name:unknown" data-magicpath-id="49" data-magicpath-path="RoomsPage.tsx">
+                    <div className="p-5">
+                      <h3 className="text-xl font-serif text-white mb-2 group-hover:text-amber-400 transition-colors">
                         {room.name}
                       </h3>
-                      <p className="text-zinc-400 text-sm mb-4 line-clamp-2" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-field="description:unknown" data-magicpath-id="50" data-magicpath-path="RoomsPage.tsx">
+                      <p className="text-zinc-400 text-sm mb-4 line-clamp-2">
                         {room.description}
                       </p>
 
                       {/* Room Info */}
-                      <div className="flex items-center gap-4 text-xs text-zinc-500 mb-4 pb-4 border-b border-zinc-700" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="51" data-magicpath-path="RoomsPage.tsx">
-                        <div className="flex items-center gap-1" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="52" data-magicpath-path="RoomsPage.tsx">
-                          <Users size={14} data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="53" data-magicpath-path="RoomsPage.tsx" />
-                          <span data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-field="maxGuests:unknown" data-magicpath-id="54" data-magicpath-path="RoomsPage.tsx">{room.maxGuests} guests</span>
+                      <div className="flex items-center gap-4 text-xs text-zinc-500 mb-4 pb-4 border-b border-zinc-700">
+                        <div className="flex items-center gap-1">
+                          <Users size={14} />
+                          <span>{room.maxGuests} guests</span>
                         </div>
-                        <div className="flex items-center gap-1" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="55" data-magicpath-path="RoomsPage.tsx">
-                          <Maximize size={14} data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="56" data-magicpath-path="RoomsPage.tsx" />
-                          <span data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-field="size:unknown" data-magicpath-id="57" data-magicpath-path="RoomsPage.tsx">{room.size}</span>
+                        <div className="flex items-center gap-1">
+                          <Maximize size={14} />
+                          <span>{room.size}</span>
                         </div>
                       </div>
 
                       {/* Amenities Preview */}
-                      <SortableContainer dndKitId="d2bbe703-a2f7-4b7d-a6fa-3ccbd2360a5e" containerType="collection" prevTag="div" className="flex flex-wrap gap-2 mb-4" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="58" data-magicpath-path="RoomsPage.tsx">
+                      <div className="flex flex-wrap gap-2 mb-4">
                         {room.amenities.slice(0, 4).map((amenity, i) => {
                     const Icon = getAmenityIcon(amenity);
-                    return <div key={i} className="flex items-center gap-1 bg-zinc-900 px-2 py-1 rounded text-xs text-zinc-400" title={amenity} data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="59" data-magicpath-path="RoomsPage.tsx">
-                              <Icon size={12} data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="60" data-magicpath-path="RoomsPage.tsx" />
-                              <span className="hidden sm:inline" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="61" data-magicpath-path="RoomsPage.tsx">{amenity}</span>
+                    return <div key={i} className="flex items-center gap-1 bg-zinc-900 px-2 py-1 rounded text-xs text-zinc-400" title={amenity}>
+                              <Icon size={12} />
+                              <span className="hidden sm:inline">{amenity}</span>
                             </div>;
                   })}
-                        {room.amenities.length > 4 && <div className="flex items-center bg-zinc-900 px-2 py-1 rounded text-xs text-zinc-400" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="62" data-magicpath-path="RoomsPage.tsx">
+                        {room.amenities.length > 4 && <div className="flex items-center bg-zinc-900 px-2 py-1 rounded text-xs text-zinc-400">
                             +{room.amenities.length - 4} more
                           </div>}
-                      </SortableContainer>
+                      </div>
 
                       {/* Price and CTA */}
-                      <div className="flex items-center justify-between" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="63" data-magicpath-path="RoomsPage.tsx">
-                        <div data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="64" data-magicpath-path="RoomsPage.tsx">
-                          <p className="text-2xl font-bold text-amber-400" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="65" data-magicpath-path="RoomsPage.tsx">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-2xl font-bold text-amber-400">
                             ₦{room.price.toLocaleString()}
                           </p>
-                          <p className="text-xs text-zinc-500" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="66" data-magicpath-path="RoomsPage.tsx">per night</p>
+                          <p className="text-xs text-zinc-500">per night</p>
                         </div>
-                        <div className="flex gap-2" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="67" data-magicpath-path="RoomsPage.tsx">
-                          <button onClick={() => setSelectedRoom(room)} className="bg-zinc-700 hover:bg-zinc-600 text-white px-4 py-2 rounded text-sm transition-colors" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="68" data-magicpath-path="RoomsPage.tsx">
+                        <div className="flex gap-2">
+                          <button onClick={() => setSelectedRoom(room)} className="bg-zinc-700 hover:bg-zinc-600 text-white px-4 py-2 rounded text-sm transition-colors">
                             Details
                           </button>
-                          <button onClick={() => onBook?.(room)} className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded text-sm font-medium transition-colors" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="69" data-magicpath-path="RoomsPage.tsx">
+                          <button onClick={() => onBook?.(room)} className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded text-sm font-medium transition-colors">
                             Book Now
                           </button>
                         </div>
                       </div>
                     </div>
                   </motion.div>)}
-              </SortableContainer>}
-          </SortableContainer>
-        </SortableContainer>
-      </SortableContainer>
+              </div>}
+          </div>
+        </motion.div>
+      </div>
 
       {/* Room Details Modal */}
-      {selectedRoom && <SortableContainer dndKitId="75934d62-0459-4be5-a27b-285b3dedaba0" containerType="regular" prevTag="div" className="fixed inset-0 z-[110] overflow-y-auto" data-magicpath-id="70" data-magicpath-path="RoomsPage.tsx">
-          <div className="fixed inset-0 bg-black/90 backdrop-blur-sm" onClick={() => setSelectedRoom(null)} data-magicpath-id="71" data-magicpath-path="RoomsPage.tsx" />
-          <SortableContainer dndKitId="a7cfa3aa-878a-49e7-bb81-59f8895c4d33" containerType="regular" prevTag="div" className="relative min-h-screen flex items-center justify-center p-4" data-magicpath-id="72" data-magicpath-path="RoomsPage.tsx">
-            <SortableContainer dndKitId="d7253497-420d-48d7-aa77-e75f2655f8bb" containerType="regular" prevTag="motion.div" initial={{
+      {selectedRoom && <div className="fixed inset-0 z-[110] overflow-y-auto">
+          <div className="fixed inset-0 bg-black/90 backdrop-blur-sm" onClick={() => setSelectedRoom(null)} />
+          <div className="relative min-h-screen flex items-center justify-center p-4">
+            <motion.div initial={{
           opacity: 0,
           scale: 0.95
         }} animate={{
           opacity: 1,
           scale: 1
-        }} className="relative w-full max-w-4xl bg-zinc-900 rounded-lg border border-zinc-800 overflow-hidden" data-magicpath-id="73" data-magicpath-path="RoomsPage.tsx">
+        }} className="relative w-full max-w-4xl bg-zinc-900 rounded-lg border border-zinc-800 overflow-hidden">
               {/* Close Button */}
-              <SortableContainer dndKitId="52be2080-8e5d-4bbe-b14e-31ddb0f9656a" containerType="regular" prevTag="button" onClick={() => setSelectedRoom(null)} className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-colors" data-magicpath-id="74" data-magicpath-path="RoomsPage.tsx">
-                <X size={20} data-magicpath-id="75" data-magicpath-path="RoomsPage.tsx" />
-              </SortableContainer>
+              <button onClick={() => setSelectedRoom(null)} className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-colors">
+                <X size={20} />
+              </button>
 
               {/* Image */}
-              <SortableContainer dndKitId="427faf47-3212-4df1-ad32-3955c2284024" containerType="regular" prevTag="div" className="relative aspect-[16/9] overflow-hidden" data-magicpath-id="76" data-magicpath-path="RoomsPage.tsx">
-                <img src={selectedRoom.images[0]} alt={selectedRoom.name} className="w-full h-full object-cover" data-magicpath-id="77" data-magicpath-path="RoomsPage.tsx" />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent" data-magicpath-id="78" data-magicpath-path="RoomsPage.tsx" />
-              </SortableContainer>
+              <div className="relative aspect-[16/9] overflow-hidden">
+                <img src={selectedRoom.images[0]} alt={selectedRoom.name} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent" />
+              </div>
 
               {/* Content */}
-              <SortableContainer dndKitId="bc7562f8-958e-45dc-96a0-f6bd2736f969" containerType="regular" prevTag="div" className="p-8" data-magicpath-id="79" data-magicpath-path="RoomsPage.tsx">
-                <SortableContainer dndKitId="f1ff6c4e-58cf-4b73-adcd-097ce7b4985a" containerType="regular" prevTag="div" className="flex items-start justify-between mb-6" data-magicpath-id="80" data-magicpath-path="RoomsPage.tsx">
-                  <SortableContainer dndKitId="f399d29e-91cf-4400-892c-60c096369b1a" containerType="regular" prevTag="div" data-magicpath-id="81" data-magicpath-path="RoomsPage.tsx">
-                    <h2 className="text-3xl font-serif text-white mb-2" data-magicpath-id="82" data-magicpath-path="RoomsPage.tsx">{selectedRoom.name}</h2>
-                    <p className="text-zinc-400" data-magicpath-id="83" data-magicpath-path="RoomsPage.tsx">{selectedRoom.description}</p>
-                  </SortableContainer>
-                  <SortableContainer dndKitId="c3f7869d-4ceb-4b82-a800-45c48408ffb3" containerType="regular" prevTag="div" className="text-right" data-magicpath-id="84" data-magicpath-path="RoomsPage.tsx">
-                    <p className="text-3xl font-bold text-amber-400" data-magicpath-id="85" data-magicpath-path="RoomsPage.tsx">
+              <div className="p-8">
+                <div className="flex items-start justify-between mb-6">
+                  <div>
+                    <h2 className="text-3xl font-serif text-white mb-2">{selectedRoom.name}</h2>
+                    <p className="text-zinc-400">{selectedRoom.description}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-3xl font-bold text-amber-400">
                       ₦{selectedRoom.price.toLocaleString()}
                     </p>
-                    <p className="text-sm text-zinc-500" data-magicpath-id="86" data-magicpath-path="RoomsPage.tsx">per night</p>
-                  </SortableContainer>
-                </SortableContainer>
+                    <p className="text-sm text-zinc-500">per night</p>
+                  </div>
+                </div>
 
                 {/* Room Info */}
-                <SortableContainer dndKitId="81bd265f-b85f-4ea4-b385-6bc599e656e6" containerType="regular" prevTag="div" className="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-zinc-800" data-magicpath-id="87" data-magicpath-path="RoomsPage.tsx">
-                  <SortableContainer dndKitId="8a0be197-9903-4d32-a5d5-ff77215977cd" containerType="regular" prevTag="div" className="text-center p-4 bg-zinc-800 rounded" data-magicpath-id="88" data-magicpath-path="RoomsPage.tsx">
-                    <Users size={24} className="mx-auto mb-2 text-amber-400" data-magicpath-id="89" data-magicpath-path="RoomsPage.tsx" />
-                    <p className="text-sm text-zinc-400" data-magicpath-id="90" data-magicpath-path="RoomsPage.tsx">Max Guests</p>
-                    <p className="text-white font-medium" data-magicpath-id="91" data-magicpath-path="RoomsPage.tsx">{selectedRoom.maxGuests}</p>
-                  </SortableContainer>
-                  <SortableContainer dndKitId="d75256aa-9bb3-4750-9635-cde8a5a29986" containerType="regular" prevTag="div" className="text-center p-4 bg-zinc-800 rounded" data-magicpath-id="92" data-magicpath-path="RoomsPage.tsx">
-                    <Maximize size={24} className="mx-auto mb-2 text-amber-400" data-magicpath-id="93" data-magicpath-path="RoomsPage.tsx" />
-                    <p className="text-sm text-zinc-400" data-magicpath-id="94" data-magicpath-path="RoomsPage.tsx">Room Size</p>
-                    <p className="text-white font-medium" data-magicpath-id="95" data-magicpath-path="RoomsPage.tsx">{selectedRoom.size}</p>
-                  </SortableContainer>
-                  {selectedRoom.rating && <SortableContainer dndKitId="71770609-1ce9-46ed-baf7-efbeee432417" containerType="regular" prevTag="div" className="text-center p-4 bg-zinc-800 rounded" data-magicpath-id="96" data-magicpath-path="RoomsPage.tsx">
-                      <Star size={24} className="mx-auto mb-2 text-amber-400" fill="currentColor" data-magicpath-id="97" data-magicpath-path="RoomsPage.tsx" />
-                      <p className="text-sm text-zinc-400" data-magicpath-id="98" data-magicpath-path="RoomsPage.tsx">Rating</p>
-                      <p className="text-white font-medium" data-magicpath-id="99" data-magicpath-path="RoomsPage.tsx">{selectedRoom.rating} / 5</p>
-                    </SortableContainer>}
-                </SortableContainer>
+                <div className="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-zinc-800">
+                  <div className="text-center p-4 bg-zinc-800 rounded">
+                    <Users size={24} className="mx-auto mb-2 text-amber-400" />
+                    <p className="text-sm text-zinc-400">Max Guests</p>
+                    <p className="text-white font-medium">{selectedRoom.maxGuests}</p>
+                  </div>
+                  <div className="text-center p-4 bg-zinc-800 rounded">
+                    <Maximize size={24} className="mx-auto mb-2 text-amber-400" />
+                    <p className="text-sm text-zinc-400">Room Size</p>
+                    <p className="text-white font-medium">{selectedRoom.size}</p>
+                  </div>
+                  {selectedRoom.rating && <div className="text-center p-4 bg-zinc-800 rounded">
+                      <Star size={24} className="mx-auto mb-2 text-amber-400" fill="currentColor" />
+                      <p className="text-sm text-zinc-400">Rating</p>
+                      <p className="text-white font-medium">{selectedRoom.rating} / 5</p>
+                    </div>}
+                </div>
 
                 {/* Amenities */}
-                <SortableContainer dndKitId="464c5725-8c3c-4cff-9811-4a153db68d1a" containerType="regular" prevTag="div" className="mb-6" data-magicpath-id="100" data-magicpath-path="RoomsPage.tsx">
-                  <h3 className="text-xl font-serif text-white mb-4" data-magicpath-id="101" data-magicpath-path="RoomsPage.tsx">Amenities</h3>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3" data-magicpath-id="102" data-magicpath-path="RoomsPage.tsx">
+                <div className="mb-6">
+                  <h3 className="text-xl font-serif text-white mb-4">Amenities</h3>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     {selectedRoom.amenities.map((amenity, i) => {
                   const Icon = getAmenityIcon(amenity);
-                  return <SortableContainer dndKitId="40c328e3-9667-4c0f-93b6-739a32357494" containerType="regular" prevTag="div" key={i} className="flex items-center gap-2 text-zinc-300" data-magicpath-id="103" data-magicpath-path="RoomsPage.tsx">
-                          <Icon size={16} className="text-amber-400" data-magicpath-id="104" data-magicpath-path="RoomsPage.tsx" />
-                          <span className="text-sm" data-magicpath-id="105" data-magicpath-path="RoomsPage.tsx">{amenity}</span>
-                        </SortableContainer>;
+                  return <div key={i} className="flex items-center gap-2 text-zinc-300">
+                          <Icon size={16} className="text-amber-400" />
+                          <span className="text-sm">{amenity}</span>
+                        </div>;
                 })}
                   </div>
-                </SortableContainer>
+                </div>
 
                 {/* Book Button */}
                 <button onClick={() => {
               setSelectedRoom(null);
               onBook?.(selectedRoom);
-            }} className="w-full bg-amber-600 hover:bg-amber-700 text-white py-4 rounded font-medium text-lg transition-colors" data-magicpath-id="106" data-magicpath-path="RoomsPage.tsx">
+            }} className="w-full bg-amber-600 hover:bg-amber-700 text-white py-4 rounded font-medium text-lg transition-colors">
                   Book This Room
                 </button>
-              </SortableContainer>
-            </SortableContainer>
-          </SortableContainer>
-        </SortableContainer>}
-    </SortableContainer>;
+              </div>
+            </motion.div>
+          </div>
+        </div>}
+    </div>;
 };

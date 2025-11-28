@@ -1,4 +1,3 @@
-import { SortableContainer } from "@/dnd-kit/SortableContainer";
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User, AuthContextType } from './types';
 import { MOCK_USERS } from './mockData';
@@ -107,7 +106,7 @@ export const AuthProvider: React.FC<{
     logout,
     register,
     loginWithGoogle
-  }} data-magicpath-id="0" data-magicpath-path="AuthContext.tsx">
+  }}>
       {children}
     </AuthContext.Provider>;
 };

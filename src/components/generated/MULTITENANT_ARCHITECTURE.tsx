@@ -1,4 +1,3 @@
-import { SortableContainer } from "@/dnd-kit/SortableContainer";
 /**
  * ALMARIS MULTITENANT HOTEL BOOKING SYSTEM
  * =========================================

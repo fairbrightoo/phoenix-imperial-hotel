@@ -1,4 +1,3 @@
-import { SortableContainer } from "@/dnd-kit/SortableContainer";
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { BranchId, Branch, TenantContextType } from './types';
 import { BRANCHES } from './mockData';
@@ -51,7 +50,7 @@ export const TenantProvider: React.FC<{
     getBranchData,
     clearBranchSelection,
     branchSessionTimestamp
-  }} data-magicpath-id="0" data-magicpath-path="TenantContext.tsx">
+  }}>
       {children}
     </TenantContext.Provider>;
 };
