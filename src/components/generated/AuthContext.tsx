@@ -22,19 +22,21 @@ export const AuthProvider: React.FC<{
   }, []);
   const login = async (email: string, password: string) => {
     // Mock authentication - in production, this would call your API
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 500));
     const foundUser = MOCK_USERS.find(u => u.email === email);
-    if (foundUser && password === 'password') {
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 500));
-      setUser(foundUser);
-      setIsAuthenticated(true);
-      localStorage.setItem('phoenix_imperial_user', JSON.stringify(foundUser));
-
-      // Store login timestamp for session management
-      localStorage.setItem('phoenix_imperial_login_time', Date.now().toString());
-    } else {
-      throw new Error('Invalid credentials');
+    if (!foundUser) {
+      throw new Error('User not found. Please check your email.');
     }
+    if (password !== 'password') {
+      throw new Error('Incorrect password. Please try again.');
+    }
+    setUser(foundUser);
+    setIsAuthenticated(true);
+    localStorage.setItem('phoenix_imperial_user', JSON.stringify(foundUser));
+
+    // Store login timestamp for session management
+    localStorage.setItem('phoenix_imperial_login_time', Date.now().toString());
   };
   const register = async (email: string, password: string, name: string) => {
     // Mock registration - in production, this would call your API
