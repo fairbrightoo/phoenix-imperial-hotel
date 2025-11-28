@@ -26,6 +26,10 @@ export const AuthProvider: React.FC<{
       throw new Error('Please enter both email and password.');
     }
 
+    // Trim whitespace
+    email = email.trim();
+    password = password.trim();
+
     // Mock authentication - in production, this would call your API
     // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 500));
@@ -33,6 +37,8 @@ export const AuthProvider: React.FC<{
     if (!foundUser) {
       throw new Error('User not found. Please check your email.');
     }
+
+    // Check password - for demo purposes, all test accounts use 'password'
     if (password !== 'password') {
       throw new Error('Incorrect password. Please try again.');
     }

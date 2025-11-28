@@ -22,13 +22,13 @@ export const BranchSelector: React.FC<BranchSelectorProps> = ({
     selectBranch(branchId);
     onSelect?.(branchId);
   };
-  return <SortableContainer dndKitId="91924bee-3ce3-44f6-a831-46037d47f93c" containerType="regular" prevTag="div" className="space-y-4" data-magicpath-id="0" data-magicpath-path="BranchSelector.tsx">
-      <SortableContainer dndKitId="c8048021-d429-4336-8527-33f7ba2bb997" containerType="regular" prevTag="div" className="text-center mb-6" data-magicpath-id="1" data-magicpath-path="BranchSelector.tsx">
+  return <SortableContainer dndKitId="ec2307c1-6828-4f04-a040-36a1b6b6ea8f" containerType="regular" prevTag="div" className="space-y-4" data-magicpath-id="0" data-magicpath-path="BranchSelector.tsx">
+      <SortableContainer dndKitId="0ad794e3-e3c9-474e-bef1-68326980d4fb" containerType="regular" prevTag="div" className="text-center mb-6" data-magicpath-id="1" data-magicpath-path="BranchSelector.tsx">
         <h3 className="text-2xl font-serif text-white mb-2" data-magicpath-id="2" data-magicpath-path="BranchSelector.tsx">Select Your Branch</h3>
         <p className="text-zinc-400 text-sm" data-magicpath-id="3" data-magicpath-path="BranchSelector.tsx">Choose which location you'd like to book</p>
       </SortableContainer>
 
-      <SortableContainer dndKitId="36391481-99d9-4662-b481-bc77260245db" containerType="collection" prevTag="div" className="grid md:grid-cols-2 gap-6" data-magicpath-id="4" data-magicpath-path="BranchSelector.tsx">
+      <SortableContainer dndKitId="6db24d1b-8ade-4de1-ac6e-6f3744995e90" containerType="collection" prevTag="div" className="grid md:grid-cols-2 gap-6" data-magicpath-id="4" data-magicpath-path="BranchSelector.tsx">
         {branches.map(branch => <motion.button data-magicpath-motion-tag="motion.button" key={branch.id} onClick={() => handleSelect(branch.id)} whileHover={{
         scale: 1.02
       }} whileTap={{
