@@ -37,18 +37,18 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
   };
   return <>
       {/* Header */}
-      <SortableContainer dndKitId="74a9350a-f1a0-4c92-8650-1d0904bb634c" containerType="regular" prevTag="div" className="flex items-center justify-between p-6 border-b border-zinc-800 bg-zinc-950" data-magicpath-id="0" data-magicpath-path="CustomerDashboard.tsx">
-        <SortableContainer dndKitId="763d5d4b-9dce-4a5d-b0be-7fea00e6ae49" containerType="regular" prevTag="div" data-magicpath-id="1" data-magicpath-path="CustomerDashboard.tsx">
+      <SortableContainer dndKitId="674f10c3-9105-4cbe-8070-1442bb22f9d0" containerType="regular" prevTag="div" className="flex items-center justify-between p-6 border-b border-zinc-800 bg-zinc-950" data-magicpath-id="0" data-magicpath-path="CustomerDashboard.tsx">
+        <SortableContainer dndKitId="305a8224-2d07-4bd1-8559-4db1de22a0e3" containerType="regular" prevTag="div" data-magicpath-id="1" data-magicpath-path="CustomerDashboard.tsx">
           <h2 className="text-2xl font-serif text-white" data-magicpath-id="2" data-magicpath-path="CustomerDashboard.tsx">My Account</h2>
           <p className="text-zinc-400 text-sm mt-1" data-magicpath-id="3" data-magicpath-path="CustomerDashboard.tsx">{user?.email}</p>
         </SortableContainer>
-        <SortableContainer dndKitId="473b1e7a-9a76-4abc-af2c-cb53a7b60450" containerType="regular" prevTag="button" onClick={onClose} className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors flex items-center justify-center text-zinc-400 hover:text-white" data-magicpath-id="4" data-magicpath-path="CustomerDashboard.tsx">
+        <SortableContainer dndKitId="c4d75f63-40ac-494a-a988-8dfd19d52116" containerType="regular" prevTag="button" onClick={onClose} className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors flex items-center justify-center text-zinc-400 hover:text-white" data-magicpath-id="4" data-magicpath-path="CustomerDashboard.tsx">
           <X size={20} data-magicpath-id="5" data-magicpath-path="CustomerDashboard.tsx" />
         </SortableContainer>
       </SortableContainer>
 
       {/* Tabs */}
-      <SortableContainer dndKitId="321ad14e-dc3f-4904-a011-121daf3b6a7a" containerType="regular" prevTag="div" className="flex border-b border-zinc-800 bg-zinc-950" data-magicpath-id="6" data-magicpath-path="CustomerDashboard.tsx">
+      <SortableContainer dndKitId="30c33648-28cb-4b28-87d7-c37e14a14851" containerType="regular" prevTag="div" className="flex border-b border-zinc-800 bg-zinc-950" data-magicpath-id="6" data-magicpath-path="CustomerDashboard.tsx">
         <button onClick={() => setActiveTab('bookings')} className={`flex-1 py-4 text-sm font-medium uppercase tracking-wider transition-colors ${activeTab === 'bookings' ? 'text-amber-500 border-b-2 border-amber-500' : 'text-zinc-400 hover:text-white'}`} data-magicpath-id="7" data-magicpath-path="CustomerDashboard.tsx">
           My Bookings
         </button>
@@ -58,10 +58,10 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
       </SortableContainer>
 
       {/* Content */}
-      <SortableContainer dndKitId="db1f56e6-1383-42e9-869d-894a1cff6c40" containerType="regular" prevTag="div" className="p-6 overflow-y-auto max-h-[calc(90vh-200px)]" data-magicpath-id="9" data-magicpath-path="CustomerDashboard.tsx">
+      <SortableContainer dndKitId="34cd35f0-49a9-45df-880e-2332edd55447" containerType="regular" prevTag="div" className="p-6 overflow-y-auto max-h-[calc(90vh-200px)]" data-magicpath-id="9" data-magicpath-path="CustomerDashboard.tsx">
         <AnimatePresence mode="wait" data-magicpath-id="10" data-magicpath-path="CustomerDashboard.tsx">
           {/* Bookings Tab */}
-          {activeTab === 'bookings' && <SortableContainer dndKitId="ce3370e5-d1be-494e-928d-1b7efca4d02e" containerType="regular" prevTag="motion.div" key="bookings" initial={{
+          {activeTab === 'bookings' && <SortableContainer dndKitId="ebff87b2-3aa9-4716-b1c4-f2d939e0e057" containerType="regular" prevTag="motion.div" key="bookings" initial={{
           opacity: 0,
           x: -20
         }} animate={{
@@ -72,9 +72,9 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
           x: 20
         }} className="space-y-4" data-magicpath-id="11" data-magicpath-path="CustomerDashboard.tsx">
               {/* Current Branch Notice */}
-              {currentBranch && <SortableContainer dndKitId="a1400eab-cb57-4c48-9b6f-96f18586fdae" containerType="regular" prevTag="div" className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4 flex items-center gap-3" data-magicpath-id="12" data-magicpath-path="CustomerDashboard.tsx">
+              {currentBranch && <SortableContainer dndKitId="945620f6-287a-4165-8953-7cc7a413f87a" containerType="regular" prevTag="div" className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4 flex items-center gap-3" data-magicpath-id="12" data-magicpath-path="CustomerDashboard.tsx">
                   <Building2 className="text-amber-400" size={20} data-magicpath-id="13" data-magicpath-path="CustomerDashboard.tsx" />
-                  <SortableContainer dndKitId="731b456d-0b8f-428a-ac0e-02b7a52322bd" containerType="regular" prevTag="div" data-magicpath-id="14" data-magicpath-path="CustomerDashboard.tsx">
+                  <SortableContainer dndKitId="f1f3dd9f-2cb0-43a2-993d-da64726efc2b" containerType="regular" prevTag="div" data-magicpath-id="14" data-magicpath-path="CustomerDashboard.tsx">
                     <p className="text-amber-400 text-sm font-medium" data-magicpath-id="15" data-magicpath-path="CustomerDashboard.tsx">
                       Currently viewing {BRANCHES.find(b => b.id === currentBranch)?.city} branch
                     </p>
@@ -84,7 +84,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
                   </SortableContainer>
                 </SortableContainer>}
 
-              {userBookings.length === 0 ? <SortableContainer dndKitId="bbb5f4b2-e7c1-4e4b-bf8d-28d99facce91" containerType="regular" prevTag="div" className="text-center py-12" data-magicpath-id="17" data-magicpath-path="CustomerDashboard.tsx">
+              {userBookings.length === 0 ? <SortableContainer dndKitId="0f5a35c2-966f-44cc-97d7-77a6be62c33d" containerType="regular" prevTag="div" className="text-center py-12" data-magicpath-id="17" data-magicpath-path="CustomerDashboard.tsx">
                   <Calendar className="w-16 h-16 text-zinc-700 mx-auto mb-4" data-magicpath-id="18" data-magicpath-path="CustomerDashboard.tsx" />
                   <p className="text-zinc-400" data-magicpath-id="19" data-magicpath-path="CustomerDashboard.tsx">No bookings yet</p>
                   <p className="text-zinc-600 text-sm mt-2" data-magicpath-id="20" data-magicpath-path="CustomerDashboard.tsx">
@@ -95,14 +95,14 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
               branch,
               room
             } = getBookingDetails(booking);
-            return <SortableContainer dndKitId="9bad1728-32a6-4b82-a9f8-54771b0ba0cf" containerType="regular" prevTag="div" key={booking.id} className="bg-zinc-800 rounded-lg border border-zinc-700 overflow-hidden" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="21" data-magicpath-path="CustomerDashboard.tsx">
-                      <SortableContainer dndKitId="9503e134-5ab5-4e51-ae25-0b0a968c0953" containerType="regular" prevTag="div" className="flex flex-col md:flex-row gap-4" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="22" data-magicpath-path="CustomerDashboard.tsx">
+            return <SortableContainer dndKitId="0a8e5ddb-e7cf-429f-8dd5-5370820711b9" containerType="regular" prevTag="div" key={booking.id} className="bg-zinc-800 rounded-lg border border-zinc-700 overflow-hidden" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="21" data-magicpath-path="CustomerDashboard.tsx">
+                      <SortableContainer dndKitId="86c3cef1-8f10-4932-8945-58bea1944bb9" containerType="regular" prevTag="div" className="flex flex-col md:flex-row gap-4" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="22" data-magicpath-path="CustomerDashboard.tsx">
                         {room && <img src={room.images[0]} alt={room.name} className="w-full md:w-48 h-48 object-cover" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="23" data-magicpath-path="CustomerDashboard.tsx" />}
-                        <SortableContainer dndKitId="e0785752-4b43-4f46-8ff0-3ff78b4a79a4" containerType="regular" prevTag="div" className="flex-1 p-4" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="24" data-magicpath-path="CustomerDashboard.tsx">
-                          <SortableContainer dndKitId="b643a332-05dd-4e66-994f-57de5b808897" containerType="regular" prevTag="div" className="flex items-start justify-between mb-3" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="25" data-magicpath-path="CustomerDashboard.tsx">
-                            <SortableContainer dndKitId="56fdf6ad-ac95-4372-84dd-68ae0d03659f" containerType="regular" prevTag="div" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="26" data-magicpath-path="CustomerDashboard.tsx">
+                        <SortableContainer dndKitId="c6e004eb-b4fd-4c2b-ac2f-06a39866f0df" containerType="regular" prevTag="div" className="flex-1 p-4" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="24" data-magicpath-path="CustomerDashboard.tsx">
+                          <SortableContainer dndKitId="876e1951-26af-4ba0-8ba1-59eb8da90206" containerType="regular" prevTag="div" className="flex items-start justify-between mb-3" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="25" data-magicpath-path="CustomerDashboard.tsx">
+                            <SortableContainer dndKitId="1d640ca6-e540-42fc-bd8b-18c201f52555" containerType="regular" prevTag="div" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="26" data-magicpath-path="CustomerDashboard.tsx">
                               <h4 className="text-lg font-serif text-white mb-1" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="27" data-magicpath-path="CustomerDashboard.tsx">{room?.name}</h4>
-                              <SortableContainer dndKitId="fcb3a04f-ab27-4356-aa0e-97ce81e609aa" containerType="regular" prevTag="div" className="flex items-center gap-2 text-sm text-amber-400" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="28" data-magicpath-path="CustomerDashboard.tsx">
+                              <SortableContainer dndKitId="ba2fc369-63ab-439c-8f8d-2a1d10bb282f" containerType="regular" prevTag="div" className="flex items-center gap-2 text-sm text-amber-400" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="28" data-magicpath-path="CustomerDashboard.tsx">
                                 <MapPin size={14} data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="29" data-magicpath-path="CustomerDashboard.tsx" />
                                 <span data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="30" data-magicpath-path="CustomerDashboard.tsx">{branch?.name}</span>
                               </SortableContainer>
@@ -112,22 +112,22 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
                             </span>
                           </SortableContainer>
 
-                          <SortableContainer dndKitId="c4b04496-448e-44c6-b567-d45b79485fab" containerType="regular" prevTag="div" className="grid grid-cols-2 gap-4 text-sm text-zinc-400 mb-4" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="32" data-magicpath-path="CustomerDashboard.tsx">
-                            <SortableContainer dndKitId="a8b856e1-178f-4bd2-8f7c-366589da3ff5" containerType="regular" prevTag="div" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="33" data-magicpath-path="CustomerDashboard.tsx">
+                          <SortableContainer dndKitId="48f3b1fa-01b6-4a78-b8f9-353ba21800a6" containerType="regular" prevTag="div" className="grid grid-cols-2 gap-4 text-sm text-zinc-400 mb-4" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="32" data-magicpath-path="CustomerDashboard.tsx">
+                            <SortableContainer dndKitId="930c7be9-c836-420d-9a28-d0d487661e0a" containerType="regular" prevTag="div" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="33" data-magicpath-path="CustomerDashboard.tsx">
                               <p className="text-zinc-500 mb-1" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="34" data-magicpath-path="CustomerDashboard.tsx">Check In</p>
                               <p className="text-white" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-field="checkIn:unknown" data-magicpath-id="35" data-magicpath-path="CustomerDashboard.tsx">{booking.checkIn}</p>
                             </SortableContainer>
-                            <SortableContainer dndKitId="af59d1ee-24f3-4c94-953b-69af06aa4772" containerType="regular" prevTag="div" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="36" data-magicpath-path="CustomerDashboard.tsx">
+                            <SortableContainer dndKitId="02ca7cef-c3d4-4624-8df6-601cae1ef5a2" containerType="regular" prevTag="div" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="36" data-magicpath-path="CustomerDashboard.tsx">
                               <p className="text-zinc-500 mb-1" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="37" data-magicpath-path="CustomerDashboard.tsx">Check Out</p>
                               <p className="text-white" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-field="checkOut:unknown" data-magicpath-id="38" data-magicpath-path="CustomerDashboard.tsx">{booking.checkOut}</p>
                             </SortableContainer>
-                            <SortableContainer dndKitId="53854bc2-d45b-4fe0-8b08-f503d9e6a976" containerType="regular" prevTag="div" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="39" data-magicpath-path="CustomerDashboard.tsx">
+                            <SortableContainer dndKitId="a412428b-cb21-48db-a195-5ce20edcf691" containerType="regular" prevTag="div" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="39" data-magicpath-path="CustomerDashboard.tsx">
                               <p className="text-zinc-500 mb-1" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="40" data-magicpath-path="CustomerDashboard.tsx">Guests</p>
                               <p className="text-white" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="41" data-magicpath-path="CustomerDashboard.tsx">
                                 {booking.guests.adults} Adults, {booking.guests.children} Children
                               </p>
                             </SortableContainer>
-                            <SortableContainer dndKitId="6df211b2-6512-4233-bfe0-09dad6e887b8" containerType="regular" prevTag="div" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="42" data-magicpath-path="CustomerDashboard.tsx">
+                            <SortableContainer dndKitId="94805eae-dc03-417e-af50-f73aed8163dd" containerType="regular" prevTag="div" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="42" data-magicpath-path="CustomerDashboard.tsx">
                               <p className="text-zinc-500 mb-1" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="43" data-magicpath-path="CustomerDashboard.tsx">Total</p>
                               <p className="text-amber-500 font-serif text-lg" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="44" data-magicpath-path="CustomerDashboard.tsx">
                                 ₦{booking.totalPrice.toLocaleString()}
@@ -135,7 +135,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
                             </SortableContainer>
                           </SortableContainer>
 
-                          <SortableContainer dndKitId="f770218f-8c5e-4f6b-a600-7283b698df52" containerType="regular" prevTag="div" className="flex gap-2" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="45" data-magicpath-path="CustomerDashboard.tsx">
+                          <SortableContainer dndKitId="55fedbe7-4170-451d-a4bb-cb8b63eb9cac" containerType="regular" prevTag="div" className="flex gap-2" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="45" data-magicpath-path="CustomerDashboard.tsx">
                             <button className="px-4 py-2 bg-zinc-700 hover:bg-zinc-600 text-white text-sm rounded transition-colors" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="46" data-magicpath-path="CustomerDashboard.tsx">
                               View Details
                             </button>
@@ -150,7 +150,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
             </SortableContainer>}
 
           {/* Profile Tab */}
-          {activeTab === 'profile' && <SortableContainer dndKitId="be64bc9d-ad46-4e3e-867f-51e2cf422931" containerType="regular" prevTag="motion.div" key="profile" initial={{
+          {activeTab === 'profile' && <SortableContainer dndKitId="c050ee1b-0428-4807-a306-d5807538618f" containerType="regular" prevTag="motion.div" key="profile" initial={{
           opacity: 0,
           x: -20
         }} animate={{
@@ -161,12 +161,12 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
           x: 20
         }} className="space-y-6" data-magicpath-id="48" data-magicpath-path="CustomerDashboard.tsx">
               {/* User Info */}
-              <SortableContainer dndKitId="22193291-e103-4f35-9d0b-2f84f0b033fe" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="49" data-magicpath-path="CustomerDashboard.tsx">
-                <SortableContainer dndKitId="dd7e7b5d-4065-4469-9578-1a09291367e4" containerType="regular" prevTag="div" className="flex items-center gap-4 mb-6" data-magicpath-id="50" data-magicpath-path="CustomerDashboard.tsx">
-                  <SortableContainer dndKitId="ed1c83a9-eaf8-4395-83c3-3ba3e9823fc6" containerType="regular" prevTag="div" className="w-20 h-20 rounded-full bg-amber-500/20 flex items-center justify-center" data-magicpath-id="51" data-magicpath-path="CustomerDashboard.tsx">
+              <SortableContainer dndKitId="68a218f7-581b-4dc0-814c-c7756df73f72" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="49" data-magicpath-path="CustomerDashboard.tsx">
+                <SortableContainer dndKitId="dac25783-b467-4d19-aaa2-747679636a4f" containerType="regular" prevTag="div" className="flex items-center gap-4 mb-6" data-magicpath-id="50" data-magicpath-path="CustomerDashboard.tsx">
+                  <SortableContainer dndKitId="7beb9aa8-9219-4be9-a7d9-a24f0e39fd2d" containerType="regular" prevTag="div" className="w-20 h-20 rounded-full bg-amber-500/20 flex items-center justify-center" data-magicpath-id="51" data-magicpath-path="CustomerDashboard.tsx">
                     <UserIcon className="w-10 h-10 text-amber-500" data-magicpath-id="52" data-magicpath-path="CustomerDashboard.tsx" />
                   </SortableContainer>
-                  <SortableContainer dndKitId="a6c21694-bca4-43b5-83b0-df59e083f60f" containerType="regular" prevTag="div" data-magicpath-id="53" data-magicpath-path="CustomerDashboard.tsx">
+                  <SortableContainer dndKitId="bbe0140d-56a4-4c48-81bd-80d3c30aec58" containerType="regular" prevTag="div" data-magicpath-id="53" data-magicpath-path="CustomerDashboard.tsx">
                     <h3 className="text-xl font-serif text-white" data-magicpath-id="54" data-magicpath-path="CustomerDashboard.tsx">{user?.name}</h3>
                     <p className="text-zinc-400" data-magicpath-id="55" data-magicpath-path="CustomerDashboard.tsx">{user?.email}</p>
                     <p className="text-xs text-zinc-500 mt-1 uppercase tracking-wider" data-magicpath-id="56" data-magicpath-path="CustomerDashboard.tsx">
@@ -175,12 +175,12 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
                   </SortableContainer>
                 </SortableContainer>
 
-                <SortableContainer dndKitId="6c6d47d1-9385-4362-9480-4afaf2773e91" containerType="regular" prevTag="div" className="grid md:grid-cols-2 gap-4" data-magicpath-id="57" data-magicpath-path="CustomerDashboard.tsx">
-                  <SortableContainer dndKitId="986e3d5d-4abd-4c12-b656-7ce47ce7300b" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="58" data-magicpath-path="CustomerDashboard.tsx">
+                <SortableContainer dndKitId="fc6c6b0d-df66-469c-b3ca-c2317609b9e3" containerType="regular" prevTag="div" className="grid md:grid-cols-2 gap-4" data-magicpath-id="57" data-magicpath-path="CustomerDashboard.tsx">
+                  <SortableContainer dndKitId="5536ca0f-538a-42bb-9618-8018e54ce017" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="58" data-magicpath-path="CustomerDashboard.tsx">
                     <label className="text-xs uppercase tracking-wider text-zinc-400" data-magicpath-id="59" data-magicpath-path="CustomerDashboard.tsx">Phone</label>
                     <input type="tel" defaultValue={user?.phone} className="w-full bg-zinc-900 border border-zinc-700 text-zinc-200 px-4 py-2.5 text-sm focus:outline-none focus:border-amber-500 transition-colors rounded" data-magicpath-id="60" data-magicpath-path="CustomerDashboard.tsx" />
                   </SortableContainer>
-                  <SortableContainer dndKitId="676a2fb9-9268-4406-8a7a-812a9d0fd545" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="61" data-magicpath-path="CustomerDashboard.tsx">
+                  <SortableContainer dndKitId="00fd8e6a-251d-4bb0-9d0c-abc364fdb222" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="61" data-magicpath-path="CustomerDashboard.tsx">
                     <label className="text-xs uppercase tracking-wider text-zinc-400" data-magicpath-id="62" data-magicpath-path="CustomerDashboard.tsx">
                       Member Since
                     </label>
@@ -194,18 +194,18 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
               </SortableContainer>
 
               {/* Stats */}
-              <SortableContainer dndKitId="001f9bcf-3b0c-455f-a4ac-45cb9554eea2" containerType="regular" prevTag="div" className="grid md:grid-cols-3 gap-4" data-magicpath-id="65" data-magicpath-path="CustomerDashboard.tsx">
-                <SortableContainer dndKitId="5fa6e7fa-d42a-4d3a-84e8-8b6b6c0fb655" containerType="regular" prevTag="div" className="bg-zinc-800 p-6 rounded-lg text-center border border-zinc-700" data-magicpath-id="66" data-magicpath-path="CustomerDashboard.tsx">
+              <SortableContainer dndKitId="eebbda80-7379-4a29-af38-4ff87ed60b9a" containerType="regular" prevTag="div" className="grid md:grid-cols-3 gap-4" data-magicpath-id="65" data-magicpath-path="CustomerDashboard.tsx">
+                <SortableContainer dndKitId="d3fbe09b-3c68-44a5-bdba-40a5ca213955" containerType="regular" prevTag="div" className="bg-zinc-800 p-6 rounded-lg text-center border border-zinc-700" data-magicpath-id="66" data-magicpath-path="CustomerDashboard.tsx">
                   <div className="text-3xl font-serif text-amber-500 mb-2" data-magicpath-id="67" data-magicpath-path="CustomerDashboard.tsx">{userBookings.length}</div>
                   <div className="text-sm text-zinc-400 uppercase tracking-wider" data-magicpath-id="68" data-magicpath-path="CustomerDashboard.tsx">Total Bookings</div>
                 </SortableContainer>
-                <SortableContainer dndKitId="2ca7808c-3936-4107-86c9-cd9b7dd1d657" containerType="regular" prevTag="div" className="bg-zinc-800 p-6 rounded-lg text-center border border-zinc-700" data-magicpath-id="69" data-magicpath-path="CustomerDashboard.tsx">
+                <SortableContainer dndKitId="62b7ab88-6830-4dd0-89cc-1815e663451c" containerType="regular" prevTag="div" className="bg-zinc-800 p-6 rounded-lg text-center border border-zinc-700" data-magicpath-id="69" data-magicpath-path="CustomerDashboard.tsx">
                   <div className="text-3xl font-serif text-amber-500 mb-2" data-magicpath-id="70" data-magicpath-path="CustomerDashboard.tsx">
                     {userBookings.filter(b => b.status === 'confirmed').length}
                   </div>
                   <div className="text-sm text-zinc-400 uppercase tracking-wider" data-magicpath-id="71" data-magicpath-path="CustomerDashboard.tsx">Confirmed</div>
                 </SortableContainer>
-                <SortableContainer dndKitId="72d5a66f-1acb-448b-922b-346f6d792407" containerType="regular" prevTag="div" className="bg-zinc-800 p-6 rounded-lg text-center border border-zinc-700" data-magicpath-id="72" data-magicpath-path="CustomerDashboard.tsx">
+                <SortableContainer dndKitId="442890d1-c65c-48c0-806a-e91b3e53bcd3" containerType="regular" prevTag="div" className="bg-zinc-800 p-6 rounded-lg text-center border border-zinc-700" data-magicpath-id="72" data-magicpath-path="CustomerDashboard.tsx">
                   <div className="text-3xl font-serif text-amber-500 mb-2" data-magicpath-id="73" data-magicpath-path="CustomerDashboard.tsx">
                     ₦{(userBookings.reduce((sum, b) => sum + b.totalPrice, 0) / 1000).toFixed(0)}K
                   </div>
@@ -214,12 +214,12 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
               </SortableContainer>
 
               {/* Multi-Branch Info */}
-              <SortableContainer dndKitId="dd227c9d-a2e8-4045-9c19-9bb523b9fb11" containerType="regular" prevTag="div" className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6" data-magicpath-id="75" data-magicpath-path="CustomerDashboard.tsx">
-                <SortableContainer dndKitId="3f5f2a35-33c4-4c0c-86f2-901333a8de14" containerType="regular" prevTag="div" className="flex items-start gap-3" data-magicpath-id="76" data-magicpath-path="CustomerDashboard.tsx">
+              <SortableContainer dndKitId="ccbace52-ce3d-46b7-9935-1c5b60747b07" containerType="regular" prevTag="div" className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6" data-magicpath-id="75" data-magicpath-path="CustomerDashboard.tsx">
+                <SortableContainer dndKitId="3cb6fb5e-2cf2-4d52-a4a5-c2804806f14a" containerType="regular" prevTag="div" className="flex items-start gap-3" data-magicpath-id="76" data-magicpath-path="CustomerDashboard.tsx">
                   <Building2 className="text-blue-400 shrink-0 mt-0.5" size={20} data-magicpath-id="77" data-magicpath-path="CustomerDashboard.tsx" />
-                  <SortableContainer dndKitId="d785057c-ea74-488c-9b08-3010f91f03fc" containerType="regular" prevTag="div" data-magicpath-id="78" data-magicpath-path="CustomerDashboard.tsx">
+                  <SortableContainer dndKitId="6aae48d8-da68-41c3-94c4-6f199e5d20d6" containerType="regular" prevTag="div" data-magicpath-id="78" data-magicpath-path="CustomerDashboard.tsx">
                     <h4 className="text-blue-400 font-medium mb-2" data-magicpath-id="79" data-magicpath-path="CustomerDashboard.tsx">Multi-Branch Account Benefits</h4>
-                    <SortableContainer dndKitId="fd350822-54a0-4292-a699-26dbfef2446e" containerType="regular" prevTag="ul" className="text-sm text-zinc-400 space-y-2" data-magicpath-id="80" data-magicpath-path="CustomerDashboard.tsx">
+                    <SortableContainer dndKitId="22a76f6e-ff40-4a43-91c4-81fce99044b6" containerType="regular" prevTag="ul" className="text-sm text-zinc-400 space-y-2" data-magicpath-id="80" data-magicpath-path="CustomerDashboard.tsx">
                       <li className="flex items-start gap-2" data-magicpath-id="81" data-magicpath-path="CustomerDashboard.tsx">
                         <Check className="text-green-400 shrink-0 mt-0.5" size={16} data-magicpath-id="82" data-magicpath-path="CustomerDashboard.tsx" />
                         <span data-magicpath-id="83" data-magicpath-path="CustomerDashboard.tsx">Book rooms in any branch with the same account</span>
@@ -242,7 +242,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
               </SortableContainer>
 
               {/* Logout */}
-              <SortableContainer dndKitId="e03e38f5-16bd-46ab-9c76-e7f616d79b6f" containerType="regular" prevTag="button" onClick={handleLogout} className="w-full bg-red-500/20 hover:bg-red-500/30 text-red-400 py-3 rounded transition-colors font-medium flex items-center justify-center gap-2" data-magicpath-id="93" data-magicpath-path="CustomerDashboard.tsx">
+              <SortableContainer dndKitId="f8b636b7-2054-44d6-927e-a1e73064fdf4" containerType="regular" prevTag="button" onClick={handleLogout} className="w-full bg-red-500/20 hover:bg-red-500/30 text-red-400 py-3 rounded transition-colors font-medium flex items-center justify-center gap-2" data-magicpath-id="93" data-magicpath-path="CustomerDashboard.tsx">
                 <LogOut size={18} data-magicpath-id="94" data-magicpath-path="CustomerDashboard.tsx" />
                 Logout
               </SortableContainer>

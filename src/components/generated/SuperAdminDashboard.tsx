@@ -27,52 +27,52 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
     id: 'overview',
     label: 'Overview',
     icon: LayoutDashboard,
-    mpid: "530a7bb6-7515-4e9f-b828-976e6a317af5"
+    mpid: "827ddc6b-1812-443a-a519-6d494f13422c"
   }, {
     id: 'branches',
     label: 'Branch Management',
     icon: Building2,
-    mpid: "4c11d223-94f1-4c7f-b9ce-4f4a6524b8d3"
+    mpid: "6735ef2c-27ff-493f-b055-bf1e203cdb42"
   }, {
     id: 'admins',
     label: 'Admin Users',
     icon: Users,
-    mpid: "c9e1ddaf-a043-4c3c-8c7e-c1152b0ab5ee"
+    mpid: "33c7b0af-1c4c-442a-bf3d-22fcc95e4d5f"
   }, {
     id: 'permissions',
     label: 'Roles & Permissions',
     icon: Shield,
-    mpid: "354431ab-b9d1-4a1b-9880-426576d1882a"
+    mpid: "794d3e5e-be48-473d-b192-57dcc9f6478d"
   }, {
     id: 'global-content',
     label: 'Global Content',
     icon: Globe,
-    mpid: "ba7326e3-c643-4633-995e-6e2a45ad7e86"
+    mpid: "6741114a-d1d7-425b-94a4-484b0448bb93"
   }, {
     id: 'settings',
     label: 'System Settings',
     icon: Settings,
-    mpid: "435bcc05-29f1-4bc9-9571-3bbabac8da76"
+    mpid: "99037676-f12b-45f0-9d9d-6ff967b93e15"
   }] as any[];
-  return <SortableContainer dndKitId="8c770f01-2a86-4693-bf24-b41d5358e979" containerType="regular" prevTag="div" className="flex h-full bg-zinc-900 text-white" data-magicpath-id="0" data-magicpath-path="SuperAdminDashboard.tsx">
+  return <SortableContainer dndKitId="00c58ced-c09b-40d2-a0f3-af76e827a643" containerType="regular" prevTag="div" className="flex h-full bg-zinc-900 text-white" data-magicpath-id="0" data-magicpath-path="SuperAdminDashboard.tsx">
       {/* Sidebar */}
-      <SortableContainer dndKitId="779c2cff-deb3-441b-9f5b-ea290b35fe8c" containerType="regular" prevTag="aside" className="w-64 bg-zinc-950 border-r border-zinc-800 flex flex-col" data-magicpath-id="1" data-magicpath-path="SuperAdminDashboard.tsx">
-        <SortableContainer dndKitId="4c373c03-1b9d-4bd4-b8bc-8b39e503bb15" containerType="regular" prevTag="div" className="p-6 border-b border-zinc-800" data-magicpath-id="2" data-magicpath-path="SuperAdminDashboard.tsx">
-          <SortableContainer dndKitId="0d620063-e266-46ca-b9c7-079e234d5f15" containerType="regular" prevTag="div" className="flex items-center gap-2 mb-2" data-magicpath-id="3" data-magicpath-path="SuperAdminDashboard.tsx">
+      <SortableContainer dndKitId="65b6e35a-1dc7-497e-985e-496d7454ccb3" containerType="regular" prevTag="aside" className="w-64 bg-zinc-950 border-r border-zinc-800 flex flex-col" data-magicpath-id="1" data-magicpath-path="SuperAdminDashboard.tsx">
+        <SortableContainer dndKitId="d84cc337-0f77-4829-8f15-108e196e0aac" containerType="regular" prevTag="div" className="p-6 border-b border-zinc-800" data-magicpath-id="2" data-magicpath-path="SuperAdminDashboard.tsx">
+          <SortableContainer dndKitId="e9f21958-e026-4757-9198-deb792a2820e" containerType="regular" prevTag="div" className="flex items-center gap-2 mb-2" data-magicpath-id="3" data-magicpath-path="SuperAdminDashboard.tsx">
             <Crown className="text-amber-500" size={24} data-magicpath-id="4" data-magicpath-path="SuperAdminDashboard.tsx" />
             <h2 className="text-xl font-serif text-amber-500" data-magicpath-id="5" data-magicpath-path="SuperAdminDashboard.tsx">Phoenix Imperial</h2>
           </SortableContainer>
           <p className="text-xs text-zinc-500 uppercase tracking-wider" data-magicpath-id="6" data-magicpath-path="SuperAdminDashboard.tsx">Super Administrator</p>
         </SortableContainer>
 
-        <SortableContainer dndKitId="60bba103-f381-427c-bd0b-7b60e69a94af" containerType="collection" prevTag="nav" className="flex-1 p-4 space-y-1" data-magicpath-id="7" data-magicpath-path="SuperAdminDashboard.tsx">
+        <SortableContainer dndKitId="198a8826-c3c1-4b20-85e0-0b6df659fad2" containerType="collection" prevTag="nav" className="flex-1 p-4 space-y-1" data-magicpath-id="7" data-magicpath-path="SuperAdminDashboard.tsx">
           {menuItems.map(item => <button key={item.id} onClick={() => setActiveSection(item.id as any)} className={`w-full flex items-center gap-3 px-4 py-3 rounded transition-colors ${activeSection === item.id ? 'bg-amber-600 text-white' : 'text-zinc-400 hover:bg-zinc-800 hover:text-white'}`} data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-id="8" data-magicpath-path="SuperAdminDashboard.tsx">
               <item.icon size={18} data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-id="9" data-magicpath-path="SuperAdminDashboard.tsx" />
               <span className="text-sm font-medium" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="label:unknown" data-magicpath-id="10" data-magicpath-path="SuperAdminDashboard.tsx">{item.label}</span>
             </button>)}
         </SortableContainer>
 
-        <SortableContainer dndKitId="2ba3aff1-5cb1-4f59-8417-57de466181b8" containerType="regular" prevTag="div" className="p-4 border-t border-zinc-800" data-magicpath-id="11" data-magicpath-path="SuperAdminDashboard.tsx">
+        <SortableContainer dndKitId="09368fdc-a5f0-4c48-933f-c4b791ac2069" containerType="regular" prevTag="div" className="p-4 border-t border-zinc-800" data-magicpath-id="11" data-magicpath-path="SuperAdminDashboard.tsx">
           <button onClick={() => {
           logout();
           onClose();
@@ -83,26 +83,26 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
       </SortableContainer>
 
       {/* Main Content */}
-      <SortableContainer dndKitId="48cd18ef-98ba-4aab-9d8e-92e74a0b97a9" containerType="regular" prevTag="main" className="flex-1 overflow-y-auto" data-magicpath-id="13" data-magicpath-path="SuperAdminDashboard.tsx">
-        <SortableContainer dndKitId="58501506-094f-4e7f-9ed2-e459a83977ea" containerType="regular" prevTag="div" className="p-8" data-magicpath-id="14" data-magicpath-path="SuperAdminDashboard.tsx">
+      <SortableContainer dndKitId="fcde256c-29d1-4bc0-ba08-c20cb53c603a" containerType="regular" prevTag="main" className="flex-1 overflow-y-auto" data-magicpath-id="13" data-magicpath-path="SuperAdminDashboard.tsx">
+        <SortableContainer dndKitId="c1a294ec-99ea-4b31-94e4-aa7f89c45b7f" containerType="regular" prevTag="div" className="p-8" data-magicpath-id="14" data-magicpath-path="SuperAdminDashboard.tsx">
           {/* Overview */}
-          {activeSection === 'overview' && <SortableContainer dndKitId="7c8775c2-61dd-46ce-a2e6-e630f0515798" containerType="regular" prevTag="motion.div" initial={{
+          {activeSection === 'overview' && <SortableContainer dndKitId="aedae615-dc53-491e-93b4-5620709ea4ea" containerType="regular" prevTag="motion.div" initial={{
           opacity: 0,
           y: 20
         }} animate={{
           opacity: 1,
           y: 0
         }} className="space-y-6" data-magicpath-id="15" data-magicpath-path="SuperAdminDashboard.tsx">
-              <SortableContainer dndKitId="fd76610a-32cc-4135-a6e3-ab6e713de1e0" containerType="regular" prevTag="div" data-magicpath-id="16" data-magicpath-path="SuperAdminDashboard.tsx">
+              <SortableContainer dndKitId="cc5f8673-1e90-49aa-a11d-bbe95f698bae" containerType="regular" prevTag="div" data-magicpath-id="16" data-magicpath-path="SuperAdminDashboard.tsx">
                 <h1 className="text-3xl font-serif text-white mb-2" data-magicpath-id="17" data-magicpath-path="SuperAdminDashboard.tsx">Super Admin Dashboard</h1>
                 <p className="text-zinc-400" data-magicpath-id="18" data-magicpath-path="SuperAdminDashboard.tsx">Complete control over all branches and settings</p>
               </SortableContainer>
 
               {/* Global Stats */}
-              <SortableContainer dndKitId="bce7c2dd-a003-4f82-ae98-49e4dd0af8a9" containerType="regular" prevTag="div" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" data-magicpath-id="19" data-magicpath-path="SuperAdminDashboard.tsx">
-                <SortableContainer dndKitId="f446c0e4-2500-46b4-9d27-b7bc7af707aa" containerType="regular" prevTag="div" className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 border border-blue-500/30 p-6 rounded-lg" data-magicpath-id="20" data-magicpath-path="SuperAdminDashboard.tsx">
-                  <SortableContainer dndKitId="0c637ca2-83da-462c-afe4-0b2778e1eacc" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="21" data-magicpath-path="SuperAdminDashboard.tsx">
-                    <SortableContainer dndKitId="4663ab58-7073-491f-bb42-b3a2c85d2bfd" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-blue-500/30 flex items-center justify-center" data-magicpath-id="22" data-magicpath-path="SuperAdminDashboard.tsx">
+              <SortableContainer dndKitId="9a43a83d-915c-4eda-a8fa-c13a5752b1ef" containerType="regular" prevTag="div" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" data-magicpath-id="19" data-magicpath-path="SuperAdminDashboard.tsx">
+                <SortableContainer dndKitId="e5e43728-a203-47ce-84ec-6cc6dbb4668d" containerType="regular" prevTag="div" className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 border border-blue-500/30 p-6 rounded-lg" data-magicpath-id="20" data-magicpath-path="SuperAdminDashboard.tsx">
+                  <SortableContainer dndKitId="4b2c82a7-1cbb-4fc4-8c34-0775bcaa7fbe" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="21" data-magicpath-path="SuperAdminDashboard.tsx">
+                    <SortableContainer dndKitId="dd4c244a-abf1-4bf7-a649-b1336cd37621" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-blue-500/30 flex items-center justify-center" data-magicpath-id="22" data-magicpath-path="SuperAdminDashboard.tsx">
                       <Hotel className="text-blue-400" size={24} data-magicpath-id="23" data-magicpath-path="SuperAdminDashboard.tsx" />
                     </SortableContainer>
                   </SortableContainer>
@@ -110,9 +110,9 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
                   <div className="text-sm text-zinc-400" data-magicpath-id="25" data-magicpath-path="SuperAdminDashboard.tsx">Active Branches</div>
                 </SortableContainer>
 
-                <SortableContainer dndKitId="0f926843-ba4e-482a-9af1-0ac43dd11de8" containerType="regular" prevTag="div" className="bg-gradient-to-br from-green-500/20 to-green-600/20 border border-green-500/30 p-6 rounded-lg" data-magicpath-id="26" data-magicpath-path="SuperAdminDashboard.tsx">
-                  <SortableContainer dndKitId="8371278c-44cc-4645-a188-679e64296a9d" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="27" data-magicpath-path="SuperAdminDashboard.tsx">
-                    <SortableContainer dndKitId="744f542d-7c6c-4e19-8a8b-fcbd3c321c2d" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-green-500/30 flex items-center justify-center" data-magicpath-id="28" data-magicpath-path="SuperAdminDashboard.tsx">
+                <SortableContainer dndKitId="da180de6-1a71-4d95-af4b-fe5c40140cec" containerType="regular" prevTag="div" className="bg-gradient-to-br from-green-500/20 to-green-600/20 border border-green-500/30 p-6 rounded-lg" data-magicpath-id="26" data-magicpath-path="SuperAdminDashboard.tsx">
+                  <SortableContainer dndKitId="d9814dbe-bfd3-4e87-b15b-b1887099d31b" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="27" data-magicpath-path="SuperAdminDashboard.tsx">
+                    <SortableContainer dndKitId="c75037dd-f0b0-4ea3-acbc-2e4a1d3c9120" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-green-500/30 flex items-center justify-center" data-magicpath-id="28" data-magicpath-path="SuperAdminDashboard.tsx">
                       <FileText className="text-green-400" size={24} data-magicpath-id="29" data-magicpath-path="SuperAdminDashboard.tsx" />
                     </SortableContainer>
                   </SortableContainer>
@@ -120,9 +120,9 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
                   <div className="text-sm text-zinc-400" data-magicpath-id="31" data-magicpath-path="SuperAdminDashboard.tsx">Total Bookings</div>
                 </SortableContainer>
 
-                <SortableContainer dndKitId="164f61c6-1cba-4131-9baa-e2e64adac8f6" containerType="regular" prevTag="div" className="bg-gradient-to-br from-amber-500/20 to-amber-600/20 border border-amber-500/30 p-6 rounded-lg" data-magicpath-id="32" data-magicpath-path="SuperAdminDashboard.tsx">
-                  <SortableContainer dndKitId="ba2b743d-1681-4bbe-83c6-48dd9be8f42f" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="33" data-magicpath-path="SuperAdminDashboard.tsx">
-                    <SortableContainer dndKitId="8e3c2b40-119a-408b-8a81-1e4bed23c0a2" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-amber-500/30 flex items-center justify-center" data-magicpath-id="34" data-magicpath-path="SuperAdminDashboard.tsx">
+                <SortableContainer dndKitId="9085e110-6921-4190-9762-497a486637f1" containerType="regular" prevTag="div" className="bg-gradient-to-br from-amber-500/20 to-amber-600/20 border border-amber-500/30 p-6 rounded-lg" data-magicpath-id="32" data-magicpath-path="SuperAdminDashboard.tsx">
+                  <SortableContainer dndKitId="63100209-8d4d-41b8-921a-810a3ff5e66c" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="33" data-magicpath-path="SuperAdminDashboard.tsx">
+                    <SortableContainer dndKitId="232eab73-401d-423b-b25c-52e78971e5d0" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-amber-500/30 flex items-center justify-center" data-magicpath-id="34" data-magicpath-path="SuperAdminDashboard.tsx">
                       <BarChart3 className="text-amber-400" size={24} data-magicpath-id="35" data-magicpath-path="SuperAdminDashboard.tsx" />
                     </SortableContainer>
                   </SortableContainer>
@@ -132,9 +132,9 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
                   <div className="text-sm text-zinc-400" data-magicpath-id="37" data-magicpath-path="SuperAdminDashboard.tsx">Total Revenue</div>
                 </SortableContainer>
 
-                <SortableContainer dndKitId="0d544567-9b41-48b3-82d8-bdd60632b937" containerType="regular" prevTag="div" className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 border border-purple-500/30 p-6 rounded-lg" data-magicpath-id="38" data-magicpath-path="SuperAdminDashboard.tsx">
-                  <SortableContainer dndKitId="30948c46-8ae7-48a7-b4ff-28b51fb572fc" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="39" data-magicpath-path="SuperAdminDashboard.tsx">
-                    <SortableContainer dndKitId="595977b2-e815-4d71-8128-fc8dd174072d" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-purple-500/30 flex items-center justify-center" data-magicpath-id="40" data-magicpath-path="SuperAdminDashboard.tsx">
+                <SortableContainer dndKitId="d28e0997-9b42-4168-9a5d-977f591b0d00" containerType="regular" prevTag="div" className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 border border-purple-500/30 p-6 rounded-lg" data-magicpath-id="38" data-magicpath-path="SuperAdminDashboard.tsx">
+                  <SortableContainer dndKitId="2bdcc585-3782-4acc-9d29-b016335f2b7d" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="39" data-magicpath-path="SuperAdminDashboard.tsx">
+                    <SortableContainer dndKitId="4d7e61a2-589f-4503-83af-ea92d8f3282d" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-purple-500/30 flex items-center justify-center" data-magicpath-id="40" data-magicpath-path="SuperAdminDashboard.tsx">
                       <Users className="text-purple-400" size={24} data-magicpath-id="41" data-magicpath-path="SuperAdminDashboard.tsx" />
                     </SortableContainer>
                   </SortableContainer>
@@ -144,22 +144,22 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
               </SortableContainer>
 
               {/* Branch Performance */}
-              <SortableContainer dndKitId="522ee506-6855-4d17-8260-f4042cb3bd3d" containerType="regular" prevTag="div" className="grid md:grid-cols-2 gap-6" data-magicpath-id="44" data-magicpath-path="SuperAdminDashboard.tsx">
-                <SortableContainer dndKitId="5b31c764-545b-47e8-8341-aa0318f7687d" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="45" data-magicpath-path="SuperAdminDashboard.tsx">
+              <SortableContainer dndKitId="eda84957-300f-46d5-96e2-6f8ca69ef42e" containerType="regular" prevTag="div" className="grid md:grid-cols-2 gap-6" data-magicpath-id="44" data-magicpath-path="SuperAdminDashboard.tsx">
+                <SortableContainer dndKitId="9cbc2bbf-7fe2-4ccd-b5ee-848d85e29ad5" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="45" data-magicpath-path="SuperAdminDashboard.tsx">
                   <h3 className="text-xl font-serif text-white mb-4 flex items-center gap-2" data-magicpath-id="46" data-magicpath-path="SuperAdminDashboard.tsx">
                     <Building2 size={20} className="text-amber-500" data-magicpath-id="47" data-magicpath-path="SuperAdminDashboard.tsx" />
                     Abuja Branch
                   </h3>
-                  <SortableContainer dndKitId="79b1310a-4660-438e-a82a-9b7d45f5b39f" containerType="regular" prevTag="div" className="space-y-3" data-magicpath-id="48" data-magicpath-path="SuperAdminDashboard.tsx">
-                    <SortableContainer dndKitId="4aee473f-eba1-41fe-a2cb-b5d2c342649c" containerType="regular" prevTag="div" className="flex justify-between items-center" data-magicpath-id="49" data-magicpath-path="SuperAdminDashboard.tsx">
+                  <SortableContainer dndKitId="6a075089-4909-4d67-9c1a-6f0133e8fabb" containerType="regular" prevTag="div" className="space-y-3" data-magicpath-id="48" data-magicpath-path="SuperAdminDashboard.tsx">
+                    <SortableContainer dndKitId="7c56fea2-9629-419e-b7ee-c7edbd30f9a4" containerType="regular" prevTag="div" className="flex justify-between items-center" data-magicpath-id="49" data-magicpath-path="SuperAdminDashboard.tsx">
                       <span className="text-zinc-400" data-magicpath-id="50" data-magicpath-path="SuperAdminDashboard.tsx">Total Rooms:</span>
                       <span className="text-white font-medium" data-magicpath-id="51" data-magicpath-path="SuperAdminDashboard.tsx">{ROOMS_BY_BRANCH.abuja.length}</span>
                     </SortableContainer>
-                    <SortableContainer dndKitId="5ac63d22-f5eb-49bf-a900-9c27924bc260" containerType="regular" prevTag="div" className="flex justify-between items-center" data-magicpath-id="52" data-magicpath-path="SuperAdminDashboard.tsx">
+                    <SortableContainer dndKitId="ebc545d1-d010-426e-977c-f8ccaad9038f" containerType="regular" prevTag="div" className="flex justify-between items-center" data-magicpath-id="52" data-magicpath-path="SuperAdminDashboard.tsx">
                       <span className="text-zinc-400" data-magicpath-id="53" data-magicpath-path="SuperAdminDashboard.tsx">Bookings:</span>
                       <span className="text-white font-medium" data-magicpath-id="54" data-magicpath-path="SuperAdminDashboard.tsx">{abujaBookings}</span>
                     </SortableContainer>
-                    <SortableContainer dndKitId="657760f5-6cbd-4d32-9d77-fa372409ec5e" containerType="regular" prevTag="div" className="flex justify-between items-center" data-magicpath-id="55" data-magicpath-path="SuperAdminDashboard.tsx">
+                    <SortableContainer dndKitId="f74034ff-40bc-47e7-8b7a-1718cee71ddb" containerType="regular" prevTag="div" className="flex justify-between items-center" data-magicpath-id="55" data-magicpath-path="SuperAdminDashboard.tsx">
                       <span className="text-zinc-400" data-magicpath-id="56" data-magicpath-path="SuperAdminDashboard.tsx">Revenue:</span>
                       <span className="text-amber-400 font-serif" data-magicpath-id="57" data-magicpath-path="SuperAdminDashboard.tsx">
                         ₦
@@ -169,21 +169,21 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
                   </SortableContainer>
                 </SortableContainer>
 
-                <SortableContainer dndKitId="d0471bf5-4a8f-4566-af3e-97897b4d674e" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="58" data-magicpath-path="SuperAdminDashboard.tsx">
+                <SortableContainer dndKitId="407043fa-96e8-4e12-b339-ae60c368fb57" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="58" data-magicpath-path="SuperAdminDashboard.tsx">
                   <h3 className="text-xl font-serif text-white mb-4 flex items-center gap-2" data-magicpath-id="59" data-magicpath-path="SuperAdminDashboard.tsx">
                     <Building2 size={20} className="text-amber-500" data-magicpath-id="60" data-magicpath-path="SuperAdminDashboard.tsx" />
                     Lagos Branch
                   </h3>
-                  <SortableContainer dndKitId="39b1e83a-69fc-401d-9732-3e449d573584" containerType="regular" prevTag="div" className="space-y-3" data-magicpath-id="61" data-magicpath-path="SuperAdminDashboard.tsx">
-                    <SortableContainer dndKitId="e32bafd8-1127-4f17-8613-1233f6a3830f" containerType="regular" prevTag="div" className="flex justify-between items-center" data-magicpath-id="62" data-magicpath-path="SuperAdminDashboard.tsx">
+                  <SortableContainer dndKitId="db18bf4c-63e9-4aa6-ae08-2c5f1531c07e" containerType="regular" prevTag="div" className="space-y-3" data-magicpath-id="61" data-magicpath-path="SuperAdminDashboard.tsx">
+                    <SortableContainer dndKitId="a7556885-3e0f-4ced-a464-c071df80295c" containerType="regular" prevTag="div" className="flex justify-between items-center" data-magicpath-id="62" data-magicpath-path="SuperAdminDashboard.tsx">
                       <span className="text-zinc-400" data-magicpath-id="63" data-magicpath-path="SuperAdminDashboard.tsx">Total Rooms:</span>
                       <span className="text-white font-medium" data-magicpath-id="64" data-magicpath-path="SuperAdminDashboard.tsx">{ROOMS_BY_BRANCH.lagos.length}</span>
                     </SortableContainer>
-                    <SortableContainer dndKitId="6ad32cf8-ad09-4b68-ac0f-0f8245487e2e" containerType="regular" prevTag="div" className="flex justify-between items-center" data-magicpath-id="65" data-magicpath-path="SuperAdminDashboard.tsx">
+                    <SortableContainer dndKitId="072fa19f-1e37-491c-b567-aadc2c2ae0f8" containerType="regular" prevTag="div" className="flex justify-between items-center" data-magicpath-id="65" data-magicpath-path="SuperAdminDashboard.tsx">
                       <span className="text-zinc-400" data-magicpath-id="66" data-magicpath-path="SuperAdminDashboard.tsx">Bookings:</span>
                       <span className="text-white font-medium" data-magicpath-id="67" data-magicpath-path="SuperAdminDashboard.tsx">{lagosBookings}</span>
                     </SortableContainer>
-                    <SortableContainer dndKitId="57963fdb-413f-46be-91f2-c3819342deb6" containerType="regular" prevTag="div" className="flex justify-between items-center" data-magicpath-id="68" data-magicpath-path="SuperAdminDashboard.tsx">
+                    <SortableContainer dndKitId="34d8d5d1-a9e7-4f7b-ab4c-b56b4f70a575" containerType="regular" prevTag="div" className="flex justify-between items-center" data-magicpath-id="68" data-magicpath-path="SuperAdminDashboard.tsx">
                       <span className="text-zinc-400" data-magicpath-id="69" data-magicpath-path="SuperAdminDashboard.tsx">Revenue:</span>
                       <span className="text-amber-400 font-serif" data-magicpath-id="70" data-magicpath-path="SuperAdminDashboard.tsx">
                         ₦
@@ -196,22 +196,22 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
             </SortableContainer>}
 
           {/* Branch Management */}
-          {activeSection === 'branches' && <SortableContainer dndKitId="bcc4449f-3870-4112-ad47-a6751b57a9c8" containerType="regular" prevTag="motion.div" initial={{
+          {activeSection === 'branches' && <SortableContainer dndKitId="9d1fa92d-2bb4-4d5b-9ad6-d6bbc8efc494" containerType="regular" prevTag="motion.div" initial={{
           opacity: 0,
           y: 20
         }} animate={{
           opacity: 1,
           y: 0
         }} className="space-y-6" data-magicpath-id="71" data-magicpath-path="SuperAdminDashboard.tsx">
-              <SortableContainer dndKitId="2b29b179-be9b-4f7b-9e4f-a433a0170f36" containerType="regular" prevTag="div" className="flex items-center justify-between" data-magicpath-id="72" data-magicpath-path="SuperAdminDashboard.tsx">
+              <SortableContainer dndKitId="acfb5524-f0fb-4d9f-a7cb-59b4f1d397b8" containerType="regular" prevTag="div" className="flex items-center justify-between" data-magicpath-id="72" data-magicpath-path="SuperAdminDashboard.tsx">
                 <h1 className="text-3xl font-serif text-white" data-magicpath-id="73" data-magicpath-path="SuperAdminDashboard.tsx">Branch Management</h1>
-                <SortableContainer dndKitId="695e337f-4fc6-447e-aa6f-52fa40d81b7b" containerType="regular" prevTag="button" className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded flex items-center gap-2 transition-colors" data-magicpath-id="74" data-magicpath-path="SuperAdminDashboard.tsx">
+                <SortableContainer dndKitId="62b810f4-4341-4128-89bf-6e656777083f" containerType="regular" prevTag="button" className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded flex items-center gap-2 transition-colors" data-magicpath-id="74" data-magicpath-path="SuperAdminDashboard.tsx">
                   <Plus size={18} data-magicpath-id="75" data-magicpath-path="SuperAdminDashboard.tsx" />
                   Add New Branch
                 </SortableContainer>
               </SortableContainer>
 
-              <SortableContainer dndKitId="0f2df8f4-0be0-480b-8e12-aa19f645aae1" containerType="collection" prevTag="div" className="grid md:grid-cols-2 gap-6" data-magicpath-id="76" data-magicpath-path="SuperAdminDashboard.tsx">
+              <SortableContainer dndKitId="a84b7f86-821b-4601-b246-f97a4bd9083f" containerType="collection" prevTag="div" className="grid md:grid-cols-2 gap-6" data-magicpath-id="76" data-magicpath-path="SuperAdminDashboard.tsx">
                 {BRANCHES.map(branch => <div key={branch.id} className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-uuid={(branch as any)["mpid"] ?? "unsafe"} data-magicpath-id="77" data-magicpath-path="SuperAdminDashboard.tsx">
                     <div className="flex items-start justify-between mb-4" data-magicpath-uuid={(branch as any)["mpid"] ?? "unsafe"} data-magicpath-id="78" data-magicpath-path="SuperAdminDashboard.tsx">
                       <div className="flex items-center gap-3" data-magicpath-uuid={(branch as any)["mpid"] ?? "unsafe"} data-magicpath-id="79" data-magicpath-path="SuperAdminDashboard.tsx">
@@ -249,22 +249,22 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
             </SortableContainer>}
 
           {/* Admin Users */}
-          {activeSection === 'admins' && <SortableContainer dndKitId="eb48f19c-fc6a-452c-bcd6-9e768e78d5d0" containerType="regular" prevTag="motion.div" initial={{
+          {activeSection === 'admins' && <SortableContainer dndKitId="e5dd3d70-b842-483e-b40e-1a6aad2da723" containerType="regular" prevTag="motion.div" initial={{
           opacity: 0,
           y: 20
         }} animate={{
           opacity: 1,
           y: 0
         }} className="space-y-6" data-magicpath-id="95" data-magicpath-path="SuperAdminDashboard.tsx">
-              <SortableContainer dndKitId="aa848f27-772f-413a-8070-1d7bf9ad7d93" containerType="regular" prevTag="div" className="flex items-center justify-between" data-magicpath-id="96" data-magicpath-path="SuperAdminDashboard.tsx">
+              <SortableContainer dndKitId="7f475621-fc9c-4710-8b36-25f8ff41e18f" containerType="regular" prevTag="div" className="flex items-center justify-between" data-magicpath-id="96" data-magicpath-path="SuperAdminDashboard.tsx">
                 <h1 className="text-3xl font-serif text-white" data-magicpath-id="97" data-magicpath-path="SuperAdminDashboard.tsx">Admin Users</h1>
-                <SortableContainer dndKitId="2d95ae1a-caa4-450b-a17d-126f29f9a414" containerType="regular" prevTag="button" className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded flex items-center gap-2 transition-colors" data-magicpath-id="98" data-magicpath-path="SuperAdminDashboard.tsx">
+                <SortableContainer dndKitId="f110b3a8-ad2a-40df-86a2-531bb6b9b531" containerType="regular" prevTag="button" className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded flex items-center gap-2 transition-colors" data-magicpath-id="98" data-magicpath-path="SuperAdminDashboard.tsx">
                   <Plus size={18} data-magicpath-id="99" data-magicpath-path="SuperAdminDashboard.tsx" />
                   Add Admin
                 </SortableContainer>
               </SortableContainer>
 
-              <SortableContainer dndKitId="ccf5bef2-20c6-4f98-a466-e1d86ba33738" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 overflow-hidden" data-magicpath-id="100" data-magicpath-path="SuperAdminDashboard.tsx">
+              <SortableContainer dndKitId="1c4ddb74-a1c3-4221-94c2-a881e51e1f9b" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 overflow-hidden" data-magicpath-id="100" data-magicpath-path="SuperAdminDashboard.tsx">
                 <table className="w-full" data-magicpath-id="101" data-magicpath-path="SuperAdminDashboard.tsx">
                   <thead className="bg-zinc-900" data-magicpath-id="102" data-magicpath-path="SuperAdminDashboard.tsx">
                     <tr data-magicpath-id="103" data-magicpath-path="SuperAdminDashboard.tsx">
@@ -322,7 +322,7 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
             </SortableContainer>}
 
           {/* Roles & Permissions */}
-          {activeSection === 'permissions' && <SortableContainer dndKitId="51ab5a2c-cc8d-4ace-a544-cf5e2443cbb2" containerType="regular" prevTag="motion.div" initial={{
+          {activeSection === 'permissions' && <SortableContainer dndKitId="e7c61f9a-4d77-4824-aeb0-86900e1ca2ce" containerType="regular" prevTag="motion.div" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -331,52 +331,52 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
         }} className="space-y-6" data-magicpath-id="127" data-magicpath-path="SuperAdminDashboard.tsx">
               <h1 className="text-3xl font-serif text-white" data-magicpath-id="128" data-magicpath-path="SuperAdminDashboard.tsx">Roles & Permissions</h1>
 
-              <SortableContainer dndKitId="f5209b18-4bec-4e2d-9129-f26069079068" containerType="regular" prevTag="div" className="grid md:grid-cols-2 gap-6" data-magicpath-id="129" data-magicpath-path="SuperAdminDashboard.tsx">
+              <SortableContainer dndKitId="44cae65e-6ec2-4ac9-ae28-232c0154e032" containerType="regular" prevTag="div" className="grid md:grid-cols-2 gap-6" data-magicpath-id="129" data-magicpath-path="SuperAdminDashboard.tsx">
                 {/* Branch Admin Permissions */}
-                <SortableContainer dndKitId="52b6a69b-795f-4df5-8ee1-debc209915a8" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="130" data-magicpath-path="SuperAdminDashboard.tsx">
-                  <SortableContainer dndKitId="58d4b4d6-f110-468c-80a3-079ef1c6039a" containerType="regular" prevTag="div" className="flex items-center gap-3 mb-6" data-magicpath-id="131" data-magicpath-path="SuperAdminDashboard.tsx">
-                    <SortableContainer dndKitId="ce6217a0-56e5-49b0-a31f-c113cc2f854c" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center" data-magicpath-id="132" data-magicpath-path="SuperAdminDashboard.tsx">
+                <SortableContainer dndKitId="03f9dd91-7672-4c72-92a3-b09396f18392" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="130" data-magicpath-path="SuperAdminDashboard.tsx">
+                  <SortableContainer dndKitId="6a178339-1911-462a-b425-3c40431d1ba4" containerType="regular" prevTag="div" className="flex items-center gap-3 mb-6" data-magicpath-id="131" data-magicpath-path="SuperAdminDashboard.tsx">
+                    <SortableContainer dndKitId="ae13d639-c279-4bec-b432-7b32c32d1d76" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center" data-magicpath-id="132" data-magicpath-path="SuperAdminDashboard.tsx">
                       <Shield className="text-blue-400" size={24} data-magicpath-id="133" data-magicpath-path="SuperAdminDashboard.tsx" />
                     </SortableContainer>
-                    <SortableContainer dndKitId="41c68315-3708-4004-b39f-8a1f3f9dc6e5" containerType="regular" prevTag="div" data-magicpath-id="134" data-magicpath-path="SuperAdminDashboard.tsx">
+                    <SortableContainer dndKitId="7689c648-03a4-4013-b5d8-180340299e0b" containerType="regular" prevTag="div" data-magicpath-id="134" data-magicpath-path="SuperAdminDashboard.tsx">
                       <h3 className="text-xl font-serif text-white" data-magicpath-id="135" data-magicpath-path="SuperAdminDashboard.tsx">Branch Admin</h3>
                       <p className="text-sm text-zinc-400" data-magicpath-id="136" data-magicpath-path="SuperAdminDashboard.tsx">Branch-specific management</p>
                     </SortableContainer>
                   </SortableContainer>
 
-                  <SortableContainer dndKitId="fb763ed3-3d76-4b33-96b2-fc954e2f4d17" containerType="collection" prevTag="div" className="space-y-3" data-magicpath-id="137" data-magicpath-path="SuperAdminDashboard.tsx">
+                  <SortableContainer dndKitId="51bca735-8066-42eb-a91d-f06a7ddb7d20" containerType="collection" prevTag="div" className="space-y-3" data-magicpath-id="137" data-magicpath-path="SuperAdminDashboard.tsx">
                     {[{
                   name: 'Manage Rooms',
                   enabled: true,
-                  mpid: "e9c50040-c95f-4085-bb10-ca091c7598c3"
+                  mpid: "0f1c3f40-4cbe-46d6-887b-b7957a56431b"
                 }, {
                   name: 'View Bookings',
                   enabled: true,
-                  mpid: "e6a5e077-bc07-4819-aa28-9f4065b11415"
+                  mpid: "2425466a-58a7-48d0-ba44-6adf32a119f8"
                 }, {
                   name: 'Manage Bookings',
                   enabled: true,
-                  mpid: "66b3847b-0a63-47f4-9241-058a0b3b2fb6"
+                  mpid: "e021ff08-0fa9-437f-ab86-ec198fe6f197"
                 }, {
                   name: 'Manage Testimonials',
                   enabled: true,
-                  mpid: "dcb3d635-54a1-4868-8109-4b0b91c9284a"
+                  mpid: "8db186dd-ff58-40d8-84e0-f0077c39b870"
                 }, {
                   name: 'Manage Gallery',
                   enabled: true,
-                  mpid: "f41b79e3-3cf4-471c-8e14-fd653c8ba4d6"
+                  mpid: "f013ab41-ab43-443c-ba66-01aab17162d9"
                 }, {
                   name: 'Branch Settings',
                   enabled: true,
-                  mpid: "41bc5688-b793-4d7d-9a47-b0b23ba90df8"
+                  mpid: "a0935b3d-8daf-48b1-aa96-e539ffc8560b"
                 }, {
                   name: 'Global Settings',
                   enabled: false,
-                  mpid: "a617fdd2-9927-4c5e-941c-2c7899d3cd2e"
+                  mpid: "18c827b6-333a-425e-a73b-dc4bbe60bd8e"
                 }, {
                   name: 'User Management',
                   enabled: false,
-                  mpid: "4499b1ea-2d23-4e79-aa41-54d58abfcc8b"
+                  mpid: "b86f34c4-9819-4ac1-b36b-25bfba8412d0"
                 }].map(permission => <div key={permission.name} className="flex items-center justify-between p-3 bg-zinc-900 rounded" data-magicpath-uuid={(permission as any)["mpid"] ?? "unsafe"} data-magicpath-id="138" data-magicpath-path="SuperAdminDashboard.tsx">
                         <span className="text-zinc-300 text-sm" data-magicpath-uuid={(permission as any)["mpid"] ?? "unsafe"} data-magicpath-field="name:unknown" data-magicpath-id="139" data-magicpath-path="SuperAdminDashboard.tsx">{permission.name}</span>
                         {permission.enabled ? <Unlock className="text-green-400" size={18} data-magicpath-uuid={(permission as any)["mpid"] ?? "unsafe"} data-magicpath-id="140" data-magicpath-path="SuperAdminDashboard.tsx" /> : <Lock className="text-red-400" size={18} data-magicpath-uuid={(permission as any)["mpid"] ?? "unsafe"} data-magicpath-id="141" data-magicpath-path="SuperAdminDashboard.tsx" />}
@@ -385,19 +385,19 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
                 </SortableContainer>
 
                 {/* Super Admin Permissions */}
-                <SortableContainer dndKitId="f7e3d90e-b898-404c-acf3-b177333045bc" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-amber-700 p-6" data-magicpath-id="142" data-magicpath-path="SuperAdminDashboard.tsx">
-                  <SortableContainer dndKitId="58380b1c-44fe-4972-9d62-5d8efefdf17f" containerType="regular" prevTag="div" className="flex items-center gap-3 mb-6" data-magicpath-id="143" data-magicpath-path="SuperAdminDashboard.tsx">
-                    <SortableContainer dndKitId="c1e11735-1109-45eb-a863-94edc6b94704" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center" data-magicpath-id="144" data-magicpath-path="SuperAdminDashboard.tsx">
+                <SortableContainer dndKitId="d86dfd82-f445-4a85-9c18-442851587574" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-amber-700 p-6" data-magicpath-id="142" data-magicpath-path="SuperAdminDashboard.tsx">
+                  <SortableContainer dndKitId="0b62cdc5-8d52-481a-9ef1-ab51e6c72013" containerType="regular" prevTag="div" className="flex items-center gap-3 mb-6" data-magicpath-id="143" data-magicpath-path="SuperAdminDashboard.tsx">
+                    <SortableContainer dndKitId="b039410d-e720-45c4-876e-bf09b1ab8abc" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center" data-magicpath-id="144" data-magicpath-path="SuperAdminDashboard.tsx">
                       <Crown className="text-amber-500" size={24} data-magicpath-id="145" data-magicpath-path="SuperAdminDashboard.tsx" />
                     </SortableContainer>
-                    <SortableContainer dndKitId="e831a317-4d80-4d3e-939e-2a385c6216f3" containerType="regular" prevTag="div" data-magicpath-id="146" data-magicpath-path="SuperAdminDashboard.tsx">
+                    <SortableContainer dndKitId="5930465f-b283-4844-a90b-0d21da20fe86" containerType="regular" prevTag="div" data-magicpath-id="146" data-magicpath-path="SuperAdminDashboard.tsx">
                       <h3 className="text-xl font-serif text-white" data-magicpath-id="147" data-magicpath-path="SuperAdminDashboard.tsx">Super Admin</h3>
                       <p className="text-sm text-zinc-400" data-magicpath-id="148" data-magicpath-path="SuperAdminDashboard.tsx">Full system control</p>
                     </SortableContainer>
                   </SortableContainer>
 
                   <div className="space-y-3" data-magicpath-id="149" data-magicpath-path="SuperAdminDashboard.tsx">
-                    {['All Branch Admin Permissions', 'Manage All Branches', 'Create/Remove Branches', 'User & Admin Management', 'Roles & Permissions', 'Global Content Management', 'System Settings', 'Analytics & Reports'].map(permission => <SortableContainer dndKitId="01778281-b233-43ec-81e1-2254e69ea38c" containerType="regular" prevTag="div" key={permission} className="flex items-center justify-between p-3 bg-zinc-900 rounded" data-magicpath-id="150" data-magicpath-path="SuperAdminDashboard.tsx">
+                    {['All Branch Admin Permissions', 'Manage All Branches', 'Create/Remove Branches', 'User & Admin Management', 'Roles & Permissions', 'Global Content Management', 'System Settings', 'Analytics & Reports'].map(permission => <SortableContainer dndKitId="da7c933c-2923-4368-8100-9068933641b1" containerType="regular" prevTag="div" key={permission} className="flex items-center justify-between p-3 bg-zinc-900 rounded" data-magicpath-id="150" data-magicpath-path="SuperAdminDashboard.tsx">
                         <span className="text-zinc-300 text-sm" data-magicpath-id="151" data-magicpath-path="SuperAdminDashboard.tsx">{permission}</span>
                         <Check className="text-green-400" size={18} data-magicpath-id="152" data-magicpath-path="SuperAdminDashboard.tsx" />
                       </SortableContainer>)}
@@ -407,7 +407,7 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
             </SortableContainer>}
 
           {/* Global Content */}
-          {activeSection === 'global-content' && <SortableContainer dndKitId="e1a1bcce-7d5d-4cc9-a621-c75942b0986c" containerType="regular" prevTag="motion.div" initial={{
+          {activeSection === 'global-content' && <SortableContainer dndKitId="218117d6-8dc8-4842-b9b1-ba3afd2861bc" containerType="regular" prevTag="motion.div" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -419,12 +419,12 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
                 Manage content that appears across all branches (Hero, Navigation, Footer)
               </p>
 
-              <SortableContainer dndKitId="8376fadd-966c-46cf-9654-f23f70c9f175" containerType="regular" prevTag="div" className="grid gap-6" data-magicpath-id="156" data-magicpath-path="SuperAdminDashboard.tsx">
+              <SortableContainer dndKitId="805816f3-b052-486e-ab37-7ef6fb5f342e" containerType="regular" prevTag="div" className="grid gap-6" data-magicpath-id="156" data-magicpath-path="SuperAdminDashboard.tsx">
                 {/* Hero Section */}
-                <SortableContainer dndKitId="0e0c1ff1-5349-4923-a974-6e714e088d46" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="157" data-magicpath-path="SuperAdminDashboard.tsx">
-                  <SortableContainer dndKitId="272ef2f0-a352-422c-b145-ae76150266ba" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="158" data-magicpath-path="SuperAdminDashboard.tsx">
+                <SortableContainer dndKitId="5ea25f06-a071-4326-9c38-592b5531725f" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="157" data-magicpath-path="SuperAdminDashboard.tsx">
+                  <SortableContainer dndKitId="18b13e3e-474f-4110-8652-df6ecf4bffda" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="158" data-magicpath-path="SuperAdminDashboard.tsx">
                     <h3 className="text-xl font-serif text-white" data-magicpath-id="159" data-magicpath-path="SuperAdminDashboard.tsx">Hero Section</h3>
-                    <SortableContainer dndKitId="125c6224-b798-453c-b4b0-f95e7a0d20ae" containerType="regular" prevTag="button" className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded text-sm flex items-center gap-2" data-magicpath-id="160" data-magicpath-path="SuperAdminDashboard.tsx">
+                    <SortableContainer dndKitId="30c540e7-2828-410f-941e-71d93fbe9935" containerType="regular" prevTag="button" className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded text-sm flex items-center gap-2" data-magicpath-id="160" data-magicpath-path="SuperAdminDashboard.tsx">
                       <Edit size={16} data-magicpath-id="161" data-magicpath-path="SuperAdminDashboard.tsx" />
                       Edit Slides
                     </SortableContainer>
@@ -433,10 +433,10 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
                 </SortableContainer>
 
                 {/* Navigation */}
-                <SortableContainer dndKitId="fef6d2e9-9670-4d90-a114-371b7cabe034" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="163" data-magicpath-path="SuperAdminDashboard.tsx">
-                  <SortableContainer dndKitId="f264a35c-d190-4614-b1c9-a9ab9d3c8bec" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="164" data-magicpath-path="SuperAdminDashboard.tsx">
+                <SortableContainer dndKitId="df63c620-f7b6-4e0b-8e23-f6d6a56c3241" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="163" data-magicpath-path="SuperAdminDashboard.tsx">
+                  <SortableContainer dndKitId="ce51d1ec-a8b5-43bb-b762-6a0c5936cd48" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="164" data-magicpath-path="SuperAdminDashboard.tsx">
                     <h3 className="text-xl font-serif text-white" data-magicpath-id="165" data-magicpath-path="SuperAdminDashboard.tsx">Navigation Menu</h3>
-                    <SortableContainer dndKitId="f00ee027-8b0c-4a5e-a24f-53acf826dce5" containerType="regular" prevTag="button" className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded text-sm flex items-center gap-2" data-magicpath-id="166" data-magicpath-path="SuperAdminDashboard.tsx">
+                    <SortableContainer dndKitId="563b76f2-c901-4786-b38c-f9b0e0c0523a" containerType="regular" prevTag="button" className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded text-sm flex items-center gap-2" data-magicpath-id="166" data-magicpath-path="SuperAdminDashboard.tsx">
                       <MenuIcon size={16} data-magicpath-id="167" data-magicpath-path="SuperAdminDashboard.tsx" />
                       Edit Menu
                     </SortableContainer>
@@ -445,10 +445,10 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
                 </SortableContainer>
 
                 {/* Footer */}
-                <SortableContainer dndKitId="4239246d-1707-46e2-bde6-e1066cd39a02" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="169" data-magicpath-path="SuperAdminDashboard.tsx">
-                  <SortableContainer dndKitId="43060cad-15ce-453e-aa9f-78fcaa4e3c64" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="170" data-magicpath-path="SuperAdminDashboard.tsx">
+                <SortableContainer dndKitId="b39976be-f389-46b6-87e3-b3d6cbc464e8" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="169" data-magicpath-path="SuperAdminDashboard.tsx">
+                  <SortableContainer dndKitId="fc0c4674-61d5-4640-bbe4-01567de702c0" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="170" data-magicpath-path="SuperAdminDashboard.tsx">
                     <h3 className="text-xl font-serif text-white" data-magicpath-id="171" data-magicpath-path="SuperAdminDashboard.tsx">Footer Content</h3>
-                    <SortableContainer dndKitId="ea0391e0-7554-4e31-9b33-640fe07c74ab" containerType="regular" prevTag="button" className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded text-sm flex items-center gap-2" data-magicpath-id="172" data-magicpath-path="SuperAdminDashboard.tsx">
+                    <SortableContainer dndKitId="26289227-c671-4c3f-a67b-853e6a97f460" containerType="regular" prevTag="button" className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded text-sm flex items-center gap-2" data-magicpath-id="172" data-magicpath-path="SuperAdminDashboard.tsx">
                       <Edit size={16} data-magicpath-id="173" data-magicpath-path="SuperAdminDashboard.tsx" />
                       Edit Footer
                     </SortableContainer>
@@ -459,7 +459,7 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
             </SortableContainer>}
 
           {/* Settings */}
-          {activeSection === 'settings' && <SortableContainer dndKitId="ff47c9d5-5f80-4018-a32c-43a254cea053" containerType="regular" prevTag="motion.div" initial={{
+          {activeSection === 'settings' && <SortableContainer dndKitId="1d798dd3-034a-4ffd-9044-bb29e9024ccd" containerType="regular" prevTag="motion.div" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -468,16 +468,16 @@ export const SuperAdminDashboard: React.FC<SuperAdminDashboardProps> = ({
         }} className="space-y-6" data-magicpath-id="175" data-magicpath-path="SuperAdminDashboard.tsx">
               <h1 className="text-3xl font-serif text-white" data-magicpath-id="176" data-magicpath-path="SuperAdminDashboard.tsx">System Settings</h1>
 
-              <SortableContainer dndKitId="a0966136-d7d8-4f25-b8f7-20bbcd5a4ff1" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="177" data-magicpath-path="SuperAdminDashboard.tsx">
+              <SortableContainer dndKitId="84c1f67c-555c-417d-b56c-f38865e3b580" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="177" data-magicpath-path="SuperAdminDashboard.tsx">
                 <h3 className="text-xl font-serif text-white mb-6" data-magicpath-id="178" data-magicpath-path="SuperAdminDashboard.tsx">General Settings</h3>
-                <SortableContainer dndKitId="f8da6dca-3dac-4a77-9773-40e9a3f0cdec" containerType="regular" prevTag="div" className="space-y-4" data-magicpath-id="179" data-magicpath-path="SuperAdminDashboard.tsx">
-                  <SortableContainer dndKitId="f0a7c0c3-2b86-4ef3-a27b-cb5e969d3753" containerType="regular" prevTag="div" data-magicpath-id="180" data-magicpath-path="SuperAdminDashboard.tsx">
+                <SortableContainer dndKitId="05f1471c-00b6-4ad7-a2c3-43f5776e97cd" containerType="regular" prevTag="div" className="space-y-4" data-magicpath-id="179" data-magicpath-path="SuperAdminDashboard.tsx">
+                  <SortableContainer dndKitId="076eb208-0645-4b8b-b055-2c17da9aa75c" containerType="regular" prevTag="div" data-magicpath-id="180" data-magicpath-path="SuperAdminDashboard.tsx">
                     <label className="text-xs uppercase tracking-wider text-zinc-400 block mb-2" data-magicpath-id="181" data-magicpath-path="SuperAdminDashboard.tsx">
                       Hotel Chain Name
                     </label>
                     <input type="text" defaultValue="Phoenix Imperial Hotels" className="w-full bg-zinc-900 border border-zinc-700 text-zinc-200 px-4 py-2.5 rounded focus:outline-none focus:border-amber-500" data-magicpath-id="182" data-magicpath-path="SuperAdminDashboard.tsx" />
                   </SortableContainer>
-                  <SortableContainer dndKitId="f8d1ca50-841a-4f6e-a4c1-0620fb2f42b8" containerType="regular" prevTag="div" data-magicpath-id="183" data-magicpath-path="SuperAdminDashboard.tsx">
+                  <SortableContainer dndKitId="0717e67c-1639-4562-ab0c-6e978d91c53d" containerType="regular" prevTag="div" data-magicpath-id="183" data-magicpath-path="SuperAdminDashboard.tsx">
                     <label className="text-xs uppercase tracking-wider text-zinc-400 block mb-2" data-magicpath-id="184" data-magicpath-path="SuperAdminDashboard.tsx">
                       Default Currency
                     </label>
