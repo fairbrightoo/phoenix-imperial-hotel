@@ -30,7 +30,7 @@ export const UserDashboard: React.FC<UserDashboardProps> = ({
       }} exit={{
         opacity: 0
       }} onClick={onClose} className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50" data-magicpath-id="1" data-magicpath-path="UserDashboard.tsx" />
-        <SortableContainer dndKitId="c26c0367-3779-404f-8c67-6885bb0b1cbb" containerType="regular" prevTag="motion.div" initial={{
+        <SortableContainer dndKitId="e61d1a40-9399-46e7-8d35-3282ec05f495" containerType="regular" prevTag="motion.div" initial={{
         opacity: 0,
         scale: 0.95
       }} animate={{
@@ -53,7 +53,7 @@ export const UserDashboard: React.FC<UserDashboardProps> = ({
       }} exit={{
         opacity: 0
       }} onClick={onClose} className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50" data-magicpath-id="5" data-magicpath-path="UserDashboard.tsx" />
-        <SortableContainer dndKitId="fe8b239b-45bc-4788-95fa-7b6a1e751243" containerType="regular" prevTag="motion.div" initial={{
+        <SortableContainer dndKitId="4520b2bb-8100-42e4-96c0-c9573a1e6918" containerType="regular" prevTag="motion.div" initial={{
         opacity: 0,
         scale: 0.95
       }} animate={{
@@ -77,7 +77,7 @@ export const UserDashboard: React.FC<UserDashboardProps> = ({
     }} exit={{
       opacity: 0
     }} onClick={onClose} className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50" data-magicpath-id="9" data-magicpath-path="UserDashboard.tsx" />
-      <SortableContainer dndKitId="b8693d20-7571-46b3-beaf-12be17413cc7" containerType="regular" prevTag="motion.div" initial={{
+      <SortableContainer dndKitId="fcf75022-d2d7-4120-a564-0c548ad69f4e" containerType="regular" prevTag="motion.div" initial={{
       opacity: 0,
       scale: 0.9,
       y: 20

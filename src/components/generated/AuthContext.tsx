@@ -21,6 +21,11 @@ export const AuthProvider: React.FC<{
     }
   }, []);
   const login = async (email: string, password: string) => {
+    // Validate empty fields
+    if (!email || !password) {
+      throw new Error('Please enter both email and password.');
+    }
+
     // Mock authentication - in production, this would call your API
     // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 500));
@@ -39,6 +44,17 @@ export const AuthProvider: React.FC<{
     localStorage.setItem('phoenix_imperial_login_time', Date.now().toString());
   };
   const register = async (email: string, password: string, name: string) => {
+    // Validate empty fields
+    if (!email || !password || !name) {
+      throw new Error('Please fill in all fields.');
+    }
+
+    // Check if user already exists
+    const existingUser = MOCK_USERS.find(u => u.email === email);
+    if (existingUser) {
+      throw new Error('An account with this email already exists.');
+    }
+
     // Mock registration - in production, this would call your API
     await new Promise(resolve => setTimeout(resolve, 500));
     const newUser: User = {

@@ -40,49 +40,49 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
     id: 'overview',
     label: 'Overview',
     icon: Home,
-    mpid: "48e04642-1aa8-47cf-9340-ddffeda1b270"
+    mpid: "a5d0d48c-636f-4f4f-8c62-164fbfd83baf"
   }, {
     id: 'rooms',
     label: 'Rooms',
     icon: Hotel,
-    mpid: "f1cf10f3-1f0f-480a-a703-8b13820e9e4d"
+    mpid: "6b1e9083-2292-475b-9ce8-409e754dd1fb"
   }, {
     id: 'bookings',
     label: 'Bookings',
     icon: Calendar,
-    mpid: "09cb64df-9a19-4e97-b9c4-655dbd091e9a"
+    mpid: "75405aef-98f6-42a7-aa4b-f6b7d7c0f837"
   }, {
     id: 'testimonials',
     label: 'Testimonials',
     icon: MessageSquare,
-    mpid: "5e9c44d2-8ca2-4647-b49f-237a88950645"
+    mpid: "50f48780-8a76-42bd-835b-7f4d9f3ae4ad"
   }, {
     id: 'gallery',
     label: 'Gallery',
     icon: Image,
-    mpid: "3810199a-5ca7-4107-84c2-7cf693909702"
+    mpid: "fe1783c9-d620-4d49-9c7d-6532b378756f"
   }, {
     id: 'settings',
     label: 'Settings',
     icon: Settings,
-    mpid: "3d544985-70be-4730-8467-3ff29365c663"
+    mpid: "47ae64f5-38bb-4075-927e-73d226a50f50"
   }] as any[];
-  return <SortableContainer dndKitId="c71a4dca-521a-4379-b756-1671d0c03da8" containerType="regular" prevTag="div" className="flex h-full bg-zinc-900 text-white" data-magicpath-id="0" data-magicpath-path="BranchAdminDashboard.tsx">
+  return <SortableContainer dndKitId="0bf73448-2112-4766-8283-e097bb0a3467" containerType="regular" prevTag="div" className="flex h-full bg-zinc-900 text-white" data-magicpath-id="0" data-magicpath-path="BranchAdminDashboard.tsx">
       {/* Sidebar */}
-      <SortableContainer dndKitId="d192ddbf-07ff-45c4-85af-5fc79d66ade5" containerType="regular" prevTag="aside" className="w-64 bg-zinc-950 border-r border-zinc-800 flex flex-col" data-magicpath-id="1" data-magicpath-path="BranchAdminDashboard.tsx">
-        <SortableContainer dndKitId="120140e1-717e-4266-ad84-de6bc2c8b623" containerType="regular" prevTag="div" className="p-6 border-b border-zinc-800" data-magicpath-id="2" data-magicpath-path="BranchAdminDashboard.tsx">
+      <SortableContainer dndKitId="b305e3f5-1b95-44d8-a14b-cbc8a3b014fd" containerType="regular" prevTag="aside" className="w-64 bg-zinc-950 border-r border-zinc-800 flex flex-col" data-magicpath-id="1" data-magicpath-path="BranchAdminDashboard.tsx">
+        <SortableContainer dndKitId="5bd65e28-453f-42d9-bb3b-f367e046b8e4" containerType="regular" prevTag="div" className="p-6 border-b border-zinc-800" data-magicpath-id="2" data-magicpath-path="BranchAdminDashboard.tsx">
           <h2 className="text-xl font-serif text-amber-500" data-magicpath-id="3" data-magicpath-path="BranchAdminDashboard.tsx">Phoenix Imperial</h2>
           <p className="text-xs text-zinc-500 uppercase tracking-wider mt-1" data-magicpath-id="4" data-magicpath-path="BranchAdminDashboard.tsx">{branchName} Branch Admin</p>
         </SortableContainer>
 
-        <SortableContainer dndKitId="8df5fa2b-78bc-4737-af67-64290397210d" containerType="collection" prevTag="nav" className="flex-1 p-4 space-y-1" data-magicpath-id="5" data-magicpath-path="BranchAdminDashboard.tsx">
+        <SortableContainer dndKitId="e9b809f8-70c4-4e46-a2f8-db5e607a40de" containerType="collection" prevTag="nav" className="flex-1 p-4 space-y-1" data-magicpath-id="5" data-magicpath-path="BranchAdminDashboard.tsx">
           {menuItems.map(item => <button key={item.id} onClick={() => setActiveSection(item.id as any)} className={`w-full flex items-center gap-3 px-4 py-3 rounded transition-colors ${activeSection === item.id ? 'bg-amber-600 text-white' : 'text-zinc-400 hover:bg-zinc-800 hover:text-white'}`} data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-id="6" data-magicpath-path="BranchAdminDashboard.tsx">
               <item.icon size={18} data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-id="7" data-magicpath-path="BranchAdminDashboard.tsx" />
               <span className="text-sm font-medium" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="label:unknown" data-magicpath-id="8" data-magicpath-path="BranchAdminDashboard.tsx">{item.label}</span>
             </button>)}
         </SortableContainer>
 
-        <SortableContainer dndKitId="e54d3770-3be4-496d-abbd-dee230e7eb29" containerType="regular" prevTag="div" className="p-4 border-t border-zinc-800" data-magicpath-id="9" data-magicpath-path="BranchAdminDashboard.tsx">
+        <SortableContainer dndKitId="a568aa6b-f76b-4475-9f9f-d600276f799d" containerType="regular" prevTag="div" className="p-4 border-t border-zinc-800" data-magicpath-id="9" data-magicpath-path="BranchAdminDashboard.tsx">
           <button onClick={() => {
           logout();
           onClose();
@@ -93,26 +93,26 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
       </SortableContainer>
 
       {/* Main Content */}
-      <SortableContainer dndKitId="d11d655e-9f7c-4f48-bf9b-2931c0b06103" containerType="regular" prevTag="main" className="flex-1 overflow-y-auto" data-magicpath-id="11" data-magicpath-path="BranchAdminDashboard.tsx">
-        <SortableContainer dndKitId="b4b104c4-2924-4fce-932f-6fb8e1e83657" containerType="regular" prevTag="div" className="p-8" data-magicpath-id="12" data-magicpath-path="BranchAdminDashboard.tsx">
+      <SortableContainer dndKitId="5e18908e-473d-4b37-8fbe-fca7e9a061c3" containerType="regular" prevTag="main" className="flex-1 overflow-y-auto" data-magicpath-id="11" data-magicpath-path="BranchAdminDashboard.tsx">
+        <SortableContainer dndKitId="6f53a999-ca4d-4b59-9719-2917663b1e40" containerType="regular" prevTag="div" className="p-8" data-magicpath-id="12" data-magicpath-path="BranchAdminDashboard.tsx">
           {/* Overview */}
-          {activeSection === 'overview' && <SortableContainer dndKitId="703a38f5-3407-4e73-a7c3-f41aead897a8" containerType="regular" prevTag="motion.div" initial={{
+          {activeSection === 'overview' && <SortableContainer dndKitId="01d9e121-9a3f-4a32-85bf-9e0043c7abf6" containerType="regular" prevTag="motion.div" initial={{
           opacity: 0,
           y: 20
         }} animate={{
           opacity: 1,
           y: 0
         }} className="space-y-6" data-magicpath-id="13" data-magicpath-path="BranchAdminDashboard.tsx">
-              <SortableContainer dndKitId="254e3464-157c-4c24-a4eb-54453d34a73b" containerType="regular" prevTag="div" data-magicpath-id="14" data-magicpath-path="BranchAdminDashboard.tsx">
+              <SortableContainer dndKitId="1a5babc6-d86b-47c6-96e6-33c9479b40d5" containerType="regular" prevTag="div" data-magicpath-id="14" data-magicpath-path="BranchAdminDashboard.tsx">
                 <h1 className="text-3xl font-serif text-white mb-2" data-magicpath-id="15" data-magicpath-path="BranchAdminDashboard.tsx">Dashboard Overview</h1>
                 <p className="text-zinc-400" data-magicpath-id="16" data-magicpath-path="BranchAdminDashboard.tsx">Welcome back, {user?.name}</p>
               </SortableContainer>
 
               {/* Stats Grid */}
-              <SortableContainer dndKitId="6712b1d4-6b30-471e-a1a4-c858d884d939" containerType="regular" prevTag="div" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" data-magicpath-id="17" data-magicpath-path="BranchAdminDashboard.tsx">
-                <SortableContainer dndKitId="410581f5-61f7-49e0-83b0-aa3665cf5bb9" containerType="regular" prevTag="div" className="bg-zinc-800 p-6 rounded-lg border border-zinc-700" data-magicpath-id="18" data-magicpath-path="BranchAdminDashboard.tsx">
-                  <SortableContainer dndKitId="2f91887c-a636-4b23-a0e4-b621594459eb" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="19" data-magicpath-path="BranchAdminDashboard.tsx">
-                    <SortableContainer dndKitId="f9719157-13ad-4c52-904d-85a1e6409748" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center" data-magicpath-id="20" data-magicpath-path="BranchAdminDashboard.tsx">
+              <SortableContainer dndKitId="eee7728d-32fc-4be3-9351-13bcec21fa72" containerType="regular" prevTag="div" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" data-magicpath-id="17" data-magicpath-path="BranchAdminDashboard.tsx">
+                <SortableContainer dndKitId="3c80dff3-a258-4537-a781-35597d36b844" containerType="regular" prevTag="div" className="bg-zinc-800 p-6 rounded-lg border border-zinc-700" data-magicpath-id="18" data-magicpath-path="BranchAdminDashboard.tsx">
+                  <SortableContainer dndKitId="ed0fe3c3-dc3c-4fa5-b6bd-08513954a294" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="19" data-magicpath-path="BranchAdminDashboard.tsx">
+                    <SortableContainer dndKitId="bd331c28-e683-4359-bab4-13954ada6fac" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center" data-magicpath-id="20" data-magicpath-path="BranchAdminDashboard.tsx">
                       <Calendar className="text-blue-400" size={24} data-magicpath-id="21" data-magicpath-path="BranchAdminDashboard.tsx" />
                     </SortableContainer>
                     <TrendingUp className="text-green-400" size={20} data-magicpath-id="22" data-magicpath-path="BranchAdminDashboard.tsx" />
@@ -121,9 +121,9 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
                   <div className="text-sm text-zinc-400" data-magicpath-id="24" data-magicpath-path="BranchAdminDashboard.tsx">Total Bookings</div>
                 </SortableContainer>
 
-                <SortableContainer dndKitId="2cdcf010-a768-49ca-bad0-2b8a23a120aa" containerType="regular" prevTag="div" className="bg-zinc-800 p-6 rounded-lg border border-zinc-700" data-magicpath-id="25" data-magicpath-path="BranchAdminDashboard.tsx">
-                  <SortableContainer dndKitId="1f7353f0-6d5d-43c4-a045-1501f937c4f5" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="26" data-magicpath-path="BranchAdminDashboard.tsx">
-                    <SortableContainer dndKitId="c789c71d-6042-48b1-a864-f646b038c3ed" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center" data-magicpath-id="27" data-magicpath-path="BranchAdminDashboard.tsx">
+                <SortableContainer dndKitId="4b59900b-d158-4b4d-a67e-b3260b56052a" containerType="regular" prevTag="div" className="bg-zinc-800 p-6 rounded-lg border border-zinc-700" data-magicpath-id="25" data-magicpath-path="BranchAdminDashboard.tsx">
+                  <SortableContainer dndKitId="da35477c-faed-4d7a-aa4e-55ec1de4e4a3" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="26" data-magicpath-path="BranchAdminDashboard.tsx">
+                    <SortableContainer dndKitId="b6aac066-bf42-4ace-93a5-f80d680e92aa" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center" data-magicpath-id="27" data-magicpath-path="BranchAdminDashboard.tsx">
                       <CheckCircle className="text-green-400" size={24} data-magicpath-id="28" data-magicpath-path="BranchAdminDashboard.tsx" />
                     </SortableContainer>
                   </SortableContainer>
@@ -131,9 +131,9 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
                   <div className="text-sm text-zinc-400" data-magicpath-id="30" data-magicpath-path="BranchAdminDashboard.tsx">Confirmed</div>
                 </SortableContainer>
 
-                <SortableContainer dndKitId="62f5e5ff-4184-4294-a5b8-5a38e6359315" containerType="regular" prevTag="div" className="bg-zinc-800 p-6 rounded-lg border border-zinc-700" data-magicpath-id="31" data-magicpath-path="BranchAdminDashboard.tsx">
-                  <SortableContainer dndKitId="a68bf785-1658-472e-83e5-b96f1ae040d4" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="32" data-magicpath-path="BranchAdminDashboard.tsx">
-                    <SortableContainer dndKitId="17ecfc70-3d65-4129-bcaa-b325b035b931" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center" data-magicpath-id="33" data-magicpath-path="BranchAdminDashboard.tsx">
+                <SortableContainer dndKitId="4be16ade-3e4f-4189-b144-afebcc3258b8" containerType="regular" prevTag="div" className="bg-zinc-800 p-6 rounded-lg border border-zinc-700" data-magicpath-id="31" data-magicpath-path="BranchAdminDashboard.tsx">
+                  <SortableContainer dndKitId="3566e28e-be34-4310-a3c0-a704e1a499d8" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="32" data-magicpath-path="BranchAdminDashboard.tsx">
+                    <SortableContainer dndKitId="81303f50-7087-428c-bd04-a402b9681c0b" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center" data-magicpath-id="33" data-magicpath-path="BranchAdminDashboard.tsx">
                       <DollarSign className="text-amber-400" size={24} data-magicpath-id="34" data-magicpath-path="BranchAdminDashboard.tsx" />
                     </SortableContainer>
                   </SortableContainer>
@@ -141,9 +141,9 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
                   <div className="text-sm text-zinc-400" data-magicpath-id="36" data-magicpath-path="BranchAdminDashboard.tsx">Total Revenue</div>
                 </SortableContainer>
 
-                <SortableContainer dndKitId="616400c0-ac03-4a2a-bf6f-87054a7bf12f" containerType="regular" prevTag="div" className="bg-zinc-800 p-6 rounded-lg border border-zinc-700" data-magicpath-id="37" data-magicpath-path="BranchAdminDashboard.tsx">
-                  <SortableContainer dndKitId="3e785079-4144-4f1a-b308-d54f9685fc5a" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="38" data-magicpath-path="BranchAdminDashboard.tsx">
-                    <SortableContainer dndKitId="4a7453ae-86de-44b3-b9dd-e5a80b61383f" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center" data-magicpath-id="39" data-magicpath-path="BranchAdminDashboard.tsx">
+                <SortableContainer dndKitId="d788ead2-1b6e-45f3-875d-74173c21df58" containerType="regular" prevTag="div" className="bg-zinc-800 p-6 rounded-lg border border-zinc-700" data-magicpath-id="37" data-magicpath-path="BranchAdminDashboard.tsx">
+                  <SortableContainer dndKitId="61c8b057-bf07-4985-a7bc-8973f0775c15" containerType="regular" prevTag="div" className="flex items-center justify-between mb-4" data-magicpath-id="38" data-magicpath-path="BranchAdminDashboard.tsx">
+                    <SortableContainer dndKitId="d11b19bb-b417-4f06-aa20-70f8f84f0c57" containerType="regular" prevTag="div" className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center" data-magicpath-id="39" data-magicpath-path="BranchAdminDashboard.tsx">
                       <BarChart3 className="text-purple-400" size={24} data-magicpath-id="40" data-magicpath-path="BranchAdminDashboard.tsx" />
                     </SortableContainer>
                   </SortableContainer>
@@ -153,9 +153,9 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
               </SortableContainer>
 
               {/* Recent Bookings */}
-              <SortableContainer dndKitId="33b50284-3810-4fc8-9604-0261568f2381" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="43" data-magicpath-path="BranchAdminDashboard.tsx">
+              <SortableContainer dndKitId="50d3bff0-c507-4c7d-a6f3-908259d7369a" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="43" data-magicpath-path="BranchAdminDashboard.tsx">
                 <h3 className="text-xl font-serif text-white mb-4" data-magicpath-id="44" data-magicpath-path="BranchAdminDashboard.tsx">Recent Bookings</h3>
-                <SortableContainer dndKitId="fcb0bbb8-3d67-44e7-bfb0-0f1a50ba2dee" containerType="collection" prevTag="div" className="space-y-3" data-magicpath-id="45" data-magicpath-path="BranchAdminDashboard.tsx">
+                <SortableContainer dndKitId="ebbc8aef-3d94-4e42-bebe-8fa8fc3f0abc" containerType="collection" prevTag="div" className="space-y-3" data-magicpath-id="45" data-magicpath-path="BranchAdminDashboard.tsx">
                   {bookings.slice(0, 5).map(booking => {
                 const room = rooms.find(r => r.id === booking.roomId);
                 return <div key={booking.id} className="flex items-center justify-between p-4 bg-zinc-900 rounded" data-magicpath-uuid={(booking as any)["mpid"] ?? "unsafe"} data-magicpath-id="46" data-magicpath-path="BranchAdminDashboard.tsx">
@@ -179,22 +179,22 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
             </SortableContainer>}
 
           {/* Rooms Management */}
-          {activeSection === 'rooms' && <SortableContainer dndKitId="330bbd11-db4b-4098-8372-a9ade37da1dc" containerType="regular" prevTag="motion.div" initial={{
+          {activeSection === 'rooms' && <SortableContainer dndKitId="e9d3d428-4061-45a3-a7b7-a07724a284a5" containerType="regular" prevTag="motion.div" initial={{
           opacity: 0,
           y: 20
         }} animate={{
           opacity: 1,
           y: 0
         }} className="space-y-6" data-magicpath-id="55" data-magicpath-path="BranchAdminDashboard.tsx">
-              <SortableContainer dndKitId="c03a79ec-a24f-44c5-84ab-d12e07e91adf" containerType="regular" prevTag="div" className="flex items-center justify-between" data-magicpath-id="56" data-magicpath-path="BranchAdminDashboard.tsx">
+              <SortableContainer dndKitId="2e4e5b73-8e50-482d-a095-52cb799ba2f1" containerType="regular" prevTag="div" className="flex items-center justify-between" data-magicpath-id="56" data-magicpath-path="BranchAdminDashboard.tsx">
                 <h1 className="text-3xl font-serif text-white" data-magicpath-id="57" data-magicpath-path="BranchAdminDashboard.tsx">Rooms Management</h1>
-                <SortableContainer dndKitId="b6b58395-0b55-439b-99aa-6e0b4b157b5c" containerType="regular" prevTag="button" className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded flex items-center gap-2 transition-colors" data-magicpath-id="58" data-magicpath-path="BranchAdminDashboard.tsx">
+                <SortableContainer dndKitId="7c7956e3-70d2-470f-b7d4-a442adf61f35" containerType="regular" prevTag="button" className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded flex items-center gap-2 transition-colors" data-magicpath-id="58" data-magicpath-path="BranchAdminDashboard.tsx">
                   <Plus size={18} data-magicpath-id="59" data-magicpath-path="BranchAdminDashboard.tsx" />
                   Add Room
                 </SortableContainer>
               </SortableContainer>
 
-              <SortableContainer dndKitId="0b8c1efd-c62f-4826-b142-098237ffb1f0" containerType="collection" prevTag="div" className="grid md:grid-cols-2 gap-6" data-magicpath-id="60" data-magicpath-path="BranchAdminDashboard.tsx">
+              <SortableContainer dndKitId="18b4d862-1853-4456-9ad0-ad0ce256eab2" containerType="collection" prevTag="div" className="grid md:grid-cols-2 gap-6" data-magicpath-id="60" data-magicpath-path="BranchAdminDashboard.tsx">
                 {rooms.map(room => <div key={room.id} className="bg-zinc-800 rounded-lg border border-zinc-700 overflow-hidden" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="61" data-magicpath-path="BranchAdminDashboard.tsx">
                     <img src={room.images[0]} alt={room.name} className="w-full h-48 object-cover" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="62" data-magicpath-path="BranchAdminDashboard.tsx" />
                     <div className="p-6" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="63" data-magicpath-path="BranchAdminDashboard.tsx">
@@ -225,7 +225,7 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
             </SortableContainer>}
 
           {/* Bookings Management */}
-          {activeSection === 'bookings' && <SortableContainer dndKitId="081db586-6625-4e71-bc5c-f43b9603508d" containerType="regular" prevTag="motion.div" initial={{
+          {activeSection === 'bookings' && <SortableContainer dndKitId="d825287f-cc39-4ee9-9a35-fc98e5bff442" containerType="regular" prevTag="motion.div" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -234,7 +234,7 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
         }} className="space-y-6" data-magicpath-id="77" data-magicpath-path="BranchAdminDashboard.tsx">
               <h1 className="text-3xl font-serif text-white" data-magicpath-id="78" data-magicpath-path="BranchAdminDashboard.tsx">Bookings Management</h1>
 
-              <SortableContainer dndKitId="2be856bc-37ba-4e37-a125-c4676497e864" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 overflow-hidden" data-magicpath-id="79" data-magicpath-path="BranchAdminDashboard.tsx">
+              <SortableContainer dndKitId="32dc6454-d65e-431b-a7e6-c0f35cba64ff" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 overflow-hidden" data-magicpath-id="79" data-magicpath-path="BranchAdminDashboard.tsx">
                 <table className="w-full" data-magicpath-id="80" data-magicpath-path="BranchAdminDashboard.tsx">
                   <thead className="bg-zinc-900" data-magicpath-id="81" data-magicpath-path="BranchAdminDashboard.tsx">
                     <tr data-magicpath-id="82" data-magicpath-path="BranchAdminDashboard.tsx">
@@ -290,22 +290,22 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
             </SortableContainer>}
 
           {/* Testimonials */}
-          {activeSection === 'testimonials' && <SortableContainer dndKitId="e239db0a-e5ff-43f2-9e6d-d24cb3859b88" containerType="regular" prevTag="motion.div" initial={{
+          {activeSection === 'testimonials' && <SortableContainer dndKitId="d76a70ac-ec34-445f-aefd-ac4541ff7732" containerType="regular" prevTag="motion.div" initial={{
           opacity: 0,
           y: 20
         }} animate={{
           opacity: 1,
           y: 0
         }} className="space-y-6" data-magicpath-id="99" data-magicpath-path="BranchAdminDashboard.tsx">
-              <SortableContainer dndKitId="7a42efee-ed24-468b-9a00-3eaefc3b7181" containerType="regular" prevTag="div" className="flex items-center justify-between" data-magicpath-id="100" data-magicpath-path="BranchAdminDashboard.tsx">
+              <SortableContainer dndKitId="3cd80336-83a4-42b3-b755-add7ed4c7f27" containerType="regular" prevTag="div" className="flex items-center justify-between" data-magicpath-id="100" data-magicpath-path="BranchAdminDashboard.tsx">
                 <h1 className="text-3xl font-serif text-white" data-magicpath-id="101" data-magicpath-path="BranchAdminDashboard.tsx">Testimonials</h1>
-                <SortableContainer dndKitId="4ee47c10-be97-4693-ab40-6ab8057d09d7" containerType="regular" prevTag="button" className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded flex items-center gap-2 transition-colors" data-magicpath-id="102" data-magicpath-path="BranchAdminDashboard.tsx">
+                <SortableContainer dndKitId="3182bb63-c624-43fd-85ce-7a76b361b799" containerType="regular" prevTag="button" className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded flex items-center gap-2 transition-colors" data-magicpath-id="102" data-magicpath-path="BranchAdminDashboard.tsx">
                   <Plus size={18} data-magicpath-id="103" data-magicpath-path="BranchAdminDashboard.tsx" />
                   Add Testimonial
                 </SortableContainer>
               </SortableContainer>
 
-              <SortableContainer dndKitId="9b7922fa-00b3-4e1a-8020-7e40a967c796" containerType="collection" prevTag="div" className="grid md:grid-cols-2 gap-6" data-magicpath-id="104" data-magicpath-path="BranchAdminDashboard.tsx">
+              <SortableContainer dndKitId="cc4163dd-f692-4cae-9cbb-cc6dc89e95f2" containerType="collection" prevTag="div" className="grid md:grid-cols-2 gap-6" data-magicpath-id="104" data-magicpath-path="BranchAdminDashboard.tsx">
                 {testimonials.map(testimonial => <div key={testimonial.id} className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-uuid={(testimonial as any)["mpid"] ?? "unsafe"} data-magicpath-id="105" data-magicpath-path="BranchAdminDashboard.tsx">
                     <div className="flex items-center justify-between mb-4" data-magicpath-uuid={(testimonial as any)["mpid"] ?? "unsafe"} data-magicpath-id="106" data-magicpath-path="BranchAdminDashboard.tsx">
                       <div className="flex items-center gap-1 text-amber-400" data-magicpath-uuid={(testimonial as any)["mpid"] ?? "unsafe"} data-magicpath-id="107" data-magicpath-path="BranchAdminDashboard.tsx">
@@ -332,22 +332,22 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
             </SortableContainer>}
 
           {/* Gallery */}
-          {activeSection === 'gallery' && <SortableContainer dndKitId="503a4b23-6123-4d68-8a83-952bf7ff33f2" containerType="regular" prevTag="motion.div" initial={{
+          {activeSection === 'gallery' && <SortableContainer dndKitId="4bdc1a65-0de5-4e43-afb3-7566abdbe942" containerType="regular" prevTag="motion.div" initial={{
           opacity: 0,
           y: 20
         }} animate={{
           opacity: 1,
           y: 0
         }} className="space-y-6" data-magicpath-id="119" data-magicpath-path="BranchAdminDashboard.tsx">
-              <SortableContainer dndKitId="906f6d5d-8df5-4b4d-80a4-d05cb82d0e03" containerType="regular" prevTag="div" className="flex items-center justify-between" data-magicpath-id="120" data-magicpath-path="BranchAdminDashboard.tsx">
+              <SortableContainer dndKitId="1f43e7fc-eacb-41f3-97d2-424911912e2b" containerType="regular" prevTag="div" className="flex items-center justify-between" data-magicpath-id="120" data-magicpath-path="BranchAdminDashboard.tsx">
                 <h1 className="text-3xl font-serif text-white" data-magicpath-id="121" data-magicpath-path="BranchAdminDashboard.tsx">Gallery</h1>
-                <SortableContainer dndKitId="cae8e319-3f4f-48b9-af63-dedbb82d745b" containerType="regular" prevTag="button" className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded flex items-center gap-2 transition-colors" data-magicpath-id="122" data-magicpath-path="BranchAdminDashboard.tsx">
+                <SortableContainer dndKitId="451e8e2e-baa5-4c48-bca2-68a491f2002a" containerType="regular" prevTag="button" className="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded flex items-center gap-2 transition-colors" data-magicpath-id="122" data-magicpath-path="BranchAdminDashboard.tsx">
                   <Plus size={18} data-magicpath-id="123" data-magicpath-path="BranchAdminDashboard.tsx" />
                   Upload Image
                 </SortableContainer>
               </SortableContainer>
 
-              <SortableContainer dndKitId="03972ca1-f7c6-4e27-89c1-92e13bbe9b1f" containerType="collection" prevTag="div" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" data-magicpath-id="124" data-magicpath-path="BranchAdminDashboard.tsx">
+              <SortableContainer dndKitId="6187f525-92c3-4686-9e20-e6483caf8dfa" containerType="collection" prevTag="div" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" data-magicpath-id="124" data-magicpath-path="BranchAdminDashboard.tsx">
                 {gallery.map(item => <div key={item.id} className="relative group aspect-square rounded-lg overflow-hidden" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-id="125" data-magicpath-path="BranchAdminDashboard.tsx">
                     <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="imageUrl:unknown" data-magicpath-id="126" data-magicpath-path="BranchAdminDashboard.tsx" />
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-id="127" data-magicpath-path="BranchAdminDashboard.tsx">
@@ -363,7 +363,7 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
             </SortableContainer>}
 
           {/* Settings */}
-          {activeSection === 'settings' && <SortableContainer dndKitId="55a40685-8f72-4523-87d9-7b21eb23e9e1" containerType="regular" prevTag="motion.div" initial={{
+          {activeSection === 'settings' && <SortableContainer dndKitId="84ff6ada-89d0-4ba1-8856-a70f097d263f" containerType="regular" prevTag="motion.div" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -372,16 +372,16 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
         }} className="space-y-6" data-magicpath-id="132" data-magicpath-path="BranchAdminDashboard.tsx">
               <h1 className="text-3xl font-serif text-white" data-magicpath-id="133" data-magicpath-path="BranchAdminDashboard.tsx">Branch Settings</h1>
 
-              <SortableContainer dndKitId="536fab19-1697-4a2d-9219-9b0419e78afd" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="134" data-magicpath-path="BranchAdminDashboard.tsx">
+              <SortableContainer dndKitId="b1b72115-0849-400f-8cc0-37afa3e5de5d" containerType="regular" prevTag="div" className="bg-zinc-800 rounded-lg border border-zinc-700 p-6" data-magicpath-id="134" data-magicpath-path="BranchAdminDashboard.tsx">
                 <h3 className="text-xl font-serif text-white mb-4" data-magicpath-id="135" data-magicpath-path="BranchAdminDashboard.tsx">Branch Information</h3>
-                <SortableContainer dndKitId="d8fc5fcb-decc-443c-a40f-3b7363782cd0" containerType="regular" prevTag="div" className="space-y-4" data-magicpath-id="136" data-magicpath-path="BranchAdminDashboard.tsx">
-                  <SortableContainer dndKitId="e4d6aa1d-3277-4ba8-b76d-bf36468096fa" containerType="regular" prevTag="div" data-magicpath-id="137" data-magicpath-path="BranchAdminDashboard.tsx">
+                <SortableContainer dndKitId="ba0feaf3-c654-4836-ae56-8bf78cf05dee" containerType="regular" prevTag="div" className="space-y-4" data-magicpath-id="136" data-magicpath-path="BranchAdminDashboard.tsx">
+                  <SortableContainer dndKitId="2e821110-b3c8-4f87-8f67-d9e49c81b8f1" containerType="regular" prevTag="div" data-magicpath-id="137" data-magicpath-path="BranchAdminDashboard.tsx">
                     <label className="text-xs uppercase tracking-wider text-zinc-400 block mb-2" data-magicpath-id="138" data-magicpath-path="BranchAdminDashboard.tsx">
                       Branch Name
                     </label>
                     <input type="text" defaultValue={`Phoenix Imperial ${branchName}`} className="w-full bg-zinc-900 border border-zinc-700 text-zinc-200 px-4 py-2.5 rounded focus:outline-none focus:border-amber-500" data-magicpath-id="139" data-magicpath-path="BranchAdminDashboard.tsx" />
                   </SortableContainer>
-                  <SortableContainer dndKitId="757d5c6d-38a7-4016-9da4-72e35db3986c" containerType="regular" prevTag="div" data-magicpath-id="140" data-magicpath-path="BranchAdminDashboard.tsx">
+                  <SortableContainer dndKitId="68ae7294-59ee-427a-b07b-652bc59316b1" containerType="regular" prevTag="div" data-magicpath-id="140" data-magicpath-path="BranchAdminDashboard.tsx">
                     <label className="text-xs uppercase tracking-wider text-zinc-400 block mb-2" data-magicpath-id="141" data-magicpath-path="BranchAdminDashboard.tsx">
                       Contact Email
                     </label>
@@ -393,10 +393,10 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
                 </SortableContainer>
               </SortableContainer>
 
-              <SortableContainer dndKitId="5b335271-051c-4581-827c-6bd6397f4095" containerType="regular" prevTag="div" className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-6" data-magicpath-id="144" data-magicpath-path="BranchAdminDashboard.tsx">
-                <SortableContainer dndKitId="95aaee41-c52c-4b0a-a7f0-388923295ecf" containerType="regular" prevTag="div" className="flex items-start gap-3" data-magicpath-id="145" data-magicpath-path="BranchAdminDashboard.tsx">
+              <SortableContainer dndKitId="efe2c738-7b66-43b8-8a08-b4d64a8fed7e" containerType="regular" prevTag="div" className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-6" data-magicpath-id="144" data-magicpath-path="BranchAdminDashboard.tsx">
+                <SortableContainer dndKitId="187406b3-7cf8-4dc7-8043-0d21f080b3f2" containerType="regular" prevTag="div" className="flex items-start gap-3" data-magicpath-id="145" data-magicpath-path="BranchAdminDashboard.tsx">
                   <AlertCircle className="text-amber-400 shrink-0 mt-0.5" size={20} data-magicpath-id="146" data-magicpath-path="BranchAdminDashboard.tsx" />
-                  <SortableContainer dndKitId="c25b7c28-846e-44a0-af7a-f9bc6cbb91af" containerType="regular" prevTag="div" data-magicpath-id="147" data-magicpath-path="BranchAdminDashboard.tsx">
+                  <SortableContainer dndKitId="d22dad0d-a513-439f-8be1-c99586a003c4" containerType="regular" prevTag="div" data-magicpath-id="147" data-magicpath-path="BranchAdminDashboard.tsx">
                     <h4 className="text-amber-400 font-medium mb-1" data-magicpath-id="148" data-magicpath-path="BranchAdminDashboard.tsx">Limited Access</h4>
                     <p className="text-sm text-zinc-400" data-magicpath-id="149" data-magicpath-path="BranchAdminDashboard.tsx">
                       As a branch admin, you can only manage content and bookings for the {branchName} branch.

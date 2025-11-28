@@ -53,7 +53,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       }} onClick={onClose} className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50" data-magicpath-id="1" data-magicpath-path="BookingModal.tsx" />
 
           {/* Modal */}
-          <SortableContainer dndKitId="28b2628d-f8df-47b3-8293-b3ac26e9a544" containerType="regular" prevTag="motion.div" initial={{
+          <SortableContainer dndKitId="ed3238c9-9f4f-4f7c-9a69-76348d72d122" containerType="regular" prevTag="motion.div" initial={{
         opacity: 0,
         scale: 0.9,
         y: 20
@@ -67,8 +67,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         y: 20
       }} className="fixed inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-4xl md:max-h-[90vh] bg-zinc-900 rounded-lg shadow-2xl z-50 overflow-hidden border border-zinc-800" data-magicpath-id="2" data-magicpath-path="BookingModal.tsx">
             {/* Header */}
-            <SortableContainer dndKitId="b8a38294-e238-4c0e-81d2-0431eb1c03ff" containerType="regular" prevTag="div" className="flex items-center justify-between p-6 border-b border-zinc-800 bg-zinc-950" data-magicpath-id="3" data-magicpath-path="BookingModal.tsx">
-              <SortableContainer dndKitId="37e15aeb-22b7-4fe6-ab21-81636a0f82a3" containerType="regular" prevTag="div" data-magicpath-id="4" data-magicpath-path="BookingModal.tsx">
+            <SortableContainer dndKitId="87434d00-b022-48ca-9ea5-b62bbe3d7566" containerType="regular" prevTag="div" className="flex items-center justify-between p-6 border-b border-zinc-800 bg-zinc-950" data-magicpath-id="3" data-magicpath-path="BookingModal.tsx">
+              <SortableContainer dndKitId="7327d3ba-3a83-4293-b07b-2905ad357b3c" containerType="regular" prevTag="div" data-magicpath-id="4" data-magicpath-path="BookingModal.tsx">
                 <h2 className="text-2xl font-serif text-white" data-magicpath-id="5" data-magicpath-path="BookingModal.tsx">
                   {step === 'branch' && 'Check Availability'}
                   {step === 'rooms' && `Available Rooms - ${branchData?.city}`}
@@ -78,16 +78,16 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     ← Back
                   </button>}
               </SortableContainer>
-              <SortableContainer dndKitId="329ccf35-109c-43ce-b783-0c2094dbcfc1" containerType="regular" prevTag="button" onClick={onClose} className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors flex items-center justify-center text-zinc-400 hover:text-white" data-magicpath-id="7" data-magicpath-path="BookingModal.tsx">
+              <SortableContainer dndKitId="9ce6bf9e-0b9e-43f4-920e-8638cc53b950" containerType="regular" prevTag="button" onClick={onClose} className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors flex items-center justify-center text-zinc-400 hover:text-white" data-magicpath-id="7" data-magicpath-path="BookingModal.tsx">
                 <X size={20} data-magicpath-id="8" data-magicpath-path="BookingModal.tsx" />
               </SortableContainer>
             </SortableContainer>
 
             {/* Content */}
-            <SortableContainer dndKitId="0ae19b09-b78d-40f2-a61c-37d54bf51a78" containerType="regular" prevTag="div" className="p-6 overflow-y-auto max-h-[calc(90vh-100px)]" data-magicpath-id="9" data-magicpath-path="BookingModal.tsx">
+            <SortableContainer dndKitId="17b5e718-67b0-4334-beb3-fbdd73dabda5" containerType="regular" prevTag="div" className="p-6 overflow-y-auto max-h-[calc(90vh-100px)]" data-magicpath-id="9" data-magicpath-path="BookingModal.tsx">
               <AnimatePresence mode="wait" data-magicpath-id="10" data-magicpath-path="BookingModal.tsx">
                 {/* Step 1: Branch Selection */}
-                {step === 'branch' && <SortableContainer dndKitId="b8b2108c-4493-4d55-a112-d59eac2d8e4c" containerType="regular" prevTag="motion.div" key="branch" initial={{
+                {step === 'branch' && <SortableContainer dndKitId="191d07ae-597c-4284-8735-8d92d8ef3cb0" containerType="regular" prevTag="motion.div" key="branch" initial={{
               opacity: 0,
               x: -20
             }} animate={{
@@ -98,7 +98,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               x: 20
             }} data-magicpath-id="11" data-magicpath-path="BookingModal.tsx">
                     {/* Multi-tenant session info */}
-                    <SortableContainer dndKitId="0936d709-525f-43ef-a1eb-319e7a83524e" containerType="regular" prevTag="div" className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4 mb-6" data-magicpath-id="12" data-magicpath-path="BookingModal.tsx">
+                    <SortableContainer dndKitId="2e19920a-a1de-475f-b96c-ef3802c4bdc9" containerType="regular" prevTag="div" className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4 mb-6" data-magicpath-id="12" data-magicpath-path="BookingModal.tsx">
                       <p className="text-blue-400 text-sm font-medium mb-2" data-magicpath-id="13" data-magicpath-path="BookingModal.tsx">Multi-Branch Booking</p>
                       <p className="text-xs text-zinc-400" data-magicpath-id="14" data-magicpath-path="BookingModal.tsx">
                         You can book rooms in different branches during the same session. Each booking
@@ -111,7 +111,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   </SortableContainer>}
 
                 {/* Step 2: Room Selection */}
-                {step === 'rooms' && currentBranch && <SortableContainer dndKitId="0083a7a4-6def-4a0a-8adc-74504e2c9852" containerType="regular" prevTag="motion.div" key="rooms" initial={{
+                {step === 'rooms' && currentBranch && <SortableContainer dndKitId="48bee3d9-9e04-4fba-abcd-ea19df91fc01" containerType="regular" prevTag="motion.div" key="rooms" initial={{
               opacity: 0,
               x: -20
             }} animate={{
@@ -122,11 +122,11 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               x: 20
             }} data-magicpath-id="16" data-magicpath-path="BookingModal.tsx">
                     {/* Date and Guest Inputs */}
-                    <SortableContainer dndKitId="7b0a7b6b-aa7b-4206-8337-759165b1615d" containerType="regular" prevTag="div" className="bg-zinc-800 p-6 rounded-lg mb-6" data-magicpath-id="17" data-magicpath-path="BookingModal.tsx">
-                      <SortableContainer dndKitId="42a593ef-ac8b-46ee-87f5-3e736ad37afb" containerType="regular" prevTag="div" className="grid md:grid-cols-4 gap-4" data-magicpath-id="18" data-magicpath-path="BookingModal.tsx">
-                        <SortableContainer dndKitId="c81fc095-3465-4162-9e86-dbdbacc36f3a" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="19" data-magicpath-path="BookingModal.tsx">
+                    <SortableContainer dndKitId="237eb56f-63ec-4c81-afe3-c6f76f56d05c" containerType="regular" prevTag="div" className="bg-zinc-800 p-6 rounded-lg mb-6" data-magicpath-id="17" data-magicpath-path="BookingModal.tsx">
+                      <SortableContainer dndKitId="0e082431-132d-483e-a65d-3ab37685c049" containerType="regular" prevTag="div" className="grid md:grid-cols-4 gap-4" data-magicpath-id="18" data-magicpath-path="BookingModal.tsx">
+                        <SortableContainer dndKitId="8355ab54-e35e-4355-a07c-9707b4997649" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="19" data-magicpath-path="BookingModal.tsx">
                           <label className="text-xs uppercase tracking-wider text-zinc-400" data-magicpath-id="20" data-magicpath-path="BookingModal.tsx">Check In</label>
-                          <SortableContainer dndKitId="9d21cfbf-e774-4420-8b1d-b59062d995d7" containerType="regular" prevTag="div" className="relative" data-magicpath-id="21" data-magicpath-path="BookingModal.tsx">
+                          <SortableContainer dndKitId="4959719e-232e-473f-a6bf-bb984355c324" containerType="regular" prevTag="div" className="relative" data-magicpath-id="21" data-magicpath-path="BookingModal.tsx">
                             <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-amber-500 w-4 h-4" data-magicpath-id="22" data-magicpath-path="BookingModal.tsx" />
                             <input type="date" value={formData.checkIn} onChange={e => setFormData({
                         ...formData,
@@ -135,9 +135,9 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                           </SortableContainer>
                         </SortableContainer>
                         
-                        <SortableContainer dndKitId="0e51ccb4-0a4d-426d-b50e-7632d8735284" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="24" data-magicpath-path="BookingModal.tsx">
+                        <SortableContainer dndKitId="c6c9a0ae-635d-439b-aa64-7bcb29017ba5" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="24" data-magicpath-path="BookingModal.tsx">
                           <label className="text-xs uppercase tracking-wider text-zinc-400" data-magicpath-id="25" data-magicpath-path="BookingModal.tsx">Check Out</label>
-                          <SortableContainer dndKitId="c6280f2f-74e1-4371-b3fc-325a53da78c3" containerType="regular" prevTag="div" className="relative" data-magicpath-id="26" data-magicpath-path="BookingModal.tsx">
+                          <SortableContainer dndKitId="ff7eec0e-ec26-47ab-9422-a81f6c975b34" containerType="regular" prevTag="div" className="relative" data-magicpath-id="26" data-magicpath-path="BookingModal.tsx">
                             <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-amber-500 w-4 h-4" data-magicpath-id="27" data-magicpath-path="BookingModal.tsx" />
                             <input type="date" value={formData.checkOut} onChange={e => setFormData({
                         ...formData,
@@ -146,7 +146,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                           </SortableContainer>
                         </SortableContainer>
 
-                        <SortableContainer dndKitId="99188d4a-1660-4994-abe6-255a5e4c11b9" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="29" data-magicpath-path="BookingModal.tsx">
+                        <SortableContainer dndKitId="e10b41c0-4151-4a96-bb75-870a7dbba639" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="29" data-magicpath-path="BookingModal.tsx">
                           <label className="text-xs uppercase tracking-wider text-zinc-400" data-magicpath-id="30" data-magicpath-path="BookingModal.tsx">Adults</label>
                           <select value={formData.adults} onChange={e => setFormData({
                       ...formData,
@@ -156,7 +156,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                           </select>
                         </SortableContainer>
 
-                        <SortableContainer dndKitId="2cc20faa-ad36-4cd6-a92b-496ade7614fe" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="33" data-magicpath-path="BookingModal.tsx">
+                        <SortableContainer dndKitId="ccb145d5-7b79-43fd-ab60-7e2e30db305b" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="33" data-magicpath-path="BookingModal.tsx">
                           <label className="text-xs uppercase tracking-wider text-zinc-400" data-magicpath-id="34" data-magicpath-path="BookingModal.tsx">Children</label>
                           <select value={formData.children} onChange={e => setFormData({
                       ...formData,
@@ -169,7 +169,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     </SortableContainer>
 
                     {/* Room List */}
-                    <SortableContainer dndKitId="d12156fd-7880-4e96-9edd-463c26b69965" containerType="collection" prevTag="div" className="space-y-4" data-magicpath-id="37" data-magicpath-path="BookingModal.tsx">
+                    <SortableContainer dndKitId="30eab266-4047-4d1d-890f-755440ccfd6b" containerType="collection" prevTag="div" className="space-y-4" data-magicpath-id="37" data-magicpath-path="BookingModal.tsx">
                       <h3 className="text-lg font-serif text-white" data-magicpath-id="38" data-magicpath-path="BookingModal.tsx">Available Rooms</h3>
                       {rooms.map(room => <div key={room.id} className="bg-zinc-800 rounded-lg overflow-hidden border border-zinc-700 hover:border-amber-500/50 transition-colors" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="39" data-magicpath-path="BookingModal.tsx">
                           <div className="flex flex-col md:flex-row gap-4" data-magicpath-uuid={(room as any)["mpid"] ?? "unsafe"} data-magicpath-id="40" data-magicpath-path="BookingModal.tsx">
