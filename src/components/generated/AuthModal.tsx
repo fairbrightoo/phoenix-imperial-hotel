@@ -57,7 +57,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       }} onClick={onClose} className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50" data-magicpath-id="1" data-magicpath-path="AuthModal.tsx" />
 
           {/* Modal */}
-          <SortableContainer dndKitId="c152c6ab-886e-4744-ba59-4c09c3489d4f" containerType="regular" prevTag="motion.div" initial={{
+          <SortableContainer dndKitId="12fdda33-97b4-4b71-8795-435de1da8a34" containerType="regular" prevTag="motion.div" initial={{
         opacity: 0,
         scale: 0.9,
         y: 20
@@ -71,20 +71,20 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         y: 20
       }} className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-zinc-900 rounded-lg shadow-2xl z-50 border border-zinc-800 mx-4" data-magicpath-id="2" data-magicpath-path="AuthModal.tsx">
             {/* Header */}
-            <SortableContainer dndKitId="f59af74c-5705-4af1-a902-6f4f9b8d67bf" containerType="regular" prevTag="div" className="flex items-center justify-between p-6 border-b border-zinc-800" data-magicpath-id="3" data-magicpath-path="AuthModal.tsx">
+            <SortableContainer dndKitId="4486ae21-d306-4ce2-b768-2b67c2487385" containerType="regular" prevTag="div" className="flex items-center justify-between p-6 border-b border-zinc-800" data-magicpath-id="3" data-magicpath-path="AuthModal.tsx">
               <h2 className="text-2xl font-serif text-white" data-magicpath-id="4" data-magicpath-path="AuthModal.tsx">
                 {mode === 'login' ? 'Welcome Back' : 'Create Account'}
               </h2>
-              <SortableContainer dndKitId="14429aac-e335-49ae-a736-62d79542caac" containerType="regular" prevTag="button" onClick={onClose} className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors flex items-center justify-center text-zinc-400 hover:text-white" data-magicpath-id="5" data-magicpath-path="AuthModal.tsx">
+              <SortableContainer dndKitId="ea38a104-cf81-4f14-abae-30b076df0ac0" containerType="regular" prevTag="button" onClick={onClose} className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors flex items-center justify-center text-zinc-400 hover:text-white" data-magicpath-id="5" data-magicpath-path="AuthModal.tsx">
                 <X size={20} data-magicpath-id="6" data-magicpath-path="AuthModal.tsx" />
               </SortableContainer>
             </SortableContainer>
 
             {/* Form */}
-            <SortableContainer dndKitId="4b4c9e60-539a-4f8e-8771-91471b3daa5d" containerType="regular" prevTag="form" onSubmit={handleSubmit} className="p-6 space-y-4" data-magicpath-id="7" data-magicpath-path="AuthModal.tsx">
-              {mode === 'register' && <SortableContainer dndKitId="1caea416-2f7a-44b1-b176-156e9b7c1f9e" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="8" data-magicpath-path="AuthModal.tsx">
+            <SortableContainer dndKitId="417d4101-1e1e-4049-98a7-f3dd640c03ce" containerType="regular" prevTag="form" onSubmit={handleSubmit} className="p-6 space-y-4" data-magicpath-id="7" data-magicpath-path="AuthModal.tsx">
+              {mode === 'register' && <SortableContainer dndKitId="07646762-808b-4fd4-b2b5-447bbefc7352" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="8" data-magicpath-path="AuthModal.tsx">
                   <label className="text-xs uppercase tracking-wider text-zinc-400" data-magicpath-id="9" data-magicpath-path="AuthModal.tsx">Full Name</label>
-                  <SortableContainer dndKitId="b8aca4ca-f893-4cfc-ad98-b90f71cc1bba" containerType="regular" prevTag="div" className="relative" data-magicpath-id="10" data-magicpath-path="AuthModal.tsx">
+                  <SortableContainer dndKitId="9e2213f2-45a4-4579-8b90-73beb8457148" containerType="regular" prevTag="div" className="relative" data-magicpath-id="10" data-magicpath-path="AuthModal.tsx">
                     <UserIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-amber-500 w-4 h-4" data-magicpath-id="11" data-magicpath-path="AuthModal.tsx" />
                     <input type="text" value={formData.name} onChange={e => setFormData({
                 ...formData,
@@ -93,9 +93,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   </SortableContainer>
                 </SortableContainer>}
 
-              <SortableContainer dndKitId="f1636b21-0d27-4192-bfc7-0985c6277ee1" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="13" data-magicpath-path="AuthModal.tsx">
+              <SortableContainer dndKitId="020b56ce-6edd-4cdc-9202-5010d4338f64" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="13" data-magicpath-path="AuthModal.tsx">
                 <label className="text-xs uppercase tracking-wider text-zinc-400" data-magicpath-id="14" data-magicpath-path="AuthModal.tsx">Email</label>
-                <SortableContainer dndKitId="e01f2c61-7e94-4798-b3e1-a68b8ab4f56e" containerType="regular" prevTag="div" className="relative" data-magicpath-id="15" data-magicpath-path="AuthModal.tsx">
+                <SortableContainer dndKitId="37148330-667b-470a-94b7-124dc17470e7" containerType="regular" prevTag="div" className="relative" data-magicpath-id="15" data-magicpath-path="AuthModal.tsx">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-amber-500 w-4 h-4" data-magicpath-id="16" data-magicpath-path="AuthModal.tsx" />
                   <input type="email" value={formData.email} onChange={e => setFormData({
                 ...formData,
@@ -104,9 +104,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 </SortableContainer>
               </SortableContainer>
 
-              <SortableContainer dndKitId="705d683d-087d-4164-94a1-2ad4611c2ad2" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="18" data-magicpath-path="AuthModal.tsx">
+              <SortableContainer dndKitId="2b0184e8-c6f2-434b-9ebc-9fd2458bb25c" containerType="regular" prevTag="div" className="space-y-2" data-magicpath-id="18" data-magicpath-path="AuthModal.tsx">
                 <label className="text-xs uppercase tracking-wider text-zinc-400" data-magicpath-id="19" data-magicpath-path="AuthModal.tsx">Password</label>
-                <SortableContainer dndKitId="4931f006-18fc-4702-99e0-9c270386794d" containerType="regular" prevTag="div" className="relative" data-magicpath-id="20" data-magicpath-path="AuthModal.tsx">
+                <SortableContainer dndKitId="86ee1612-1046-4944-b3fb-d7f561dca4ba" containerType="regular" prevTag="div" className="relative" data-magicpath-id="20" data-magicpath-path="AuthModal.tsx">
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-amber-500 w-4 h-4" data-magicpath-id="21" data-magicpath-path="AuthModal.tsx" />
                   <input type="password" value={formData.password} onChange={e => setFormData({
                 ...formData,
@@ -123,7 +123,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 {loading ? 'Loading...' : mode === 'login' ? 'Sign In' : 'Create Account'}
               </button>
 
-              <SortableContainer dndKitId="593336fd-40cd-4773-83b8-5c487fdf449d" containerType="regular" prevTag="div" className="text-center pt-4 border-t border-zinc-800" data-magicpath-id="25" data-magicpath-path="AuthModal.tsx">
+              <SortableContainer dndKitId="8a4a36fd-3acd-44a8-b9a6-9ed940d8d424" containerType="regular" prevTag="div" className="text-center pt-4 border-t border-zinc-800" data-magicpath-id="25" data-magicpath-path="AuthModal.tsx">
                 <p className="text-zinc-400 text-sm" data-magicpath-id="26" data-magicpath-path="AuthModal.tsx">
                   {mode === 'login' ? "Don't have an account?" : 'Already have an account?'}
                   {' '}
@@ -134,12 +134,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               </SortableContainer>
 
               {/* Demo Credentials */}
-              <SortableContainer dndKitId="176060ba-ad5a-4bbf-aaf4-cba1498436b2" containerType="regular" prevTag="div" className="bg-zinc-800/50 p-4 rounded text-xs text-zinc-500 space-y-1" data-magicpath-id="28" data-magicpath-path="AuthModal.tsx">
+              <SortableContainer dndKitId="aa65a996-f25b-44ad-a6d6-426e3a6ce219" containerType="regular" prevTag="div" className="bg-zinc-800/50 p-4 rounded text-xs text-zinc-500 space-y-1" data-magicpath-id="28" data-magicpath-path="AuthModal.tsx">
                 <p className="font-medium text-zinc-400 mb-2" data-magicpath-id="29" data-magicpath-path="AuthModal.tsx">Demo Credentials:</p>
                 <p data-magicpath-id="30" data-magicpath-path="AuthModal.tsx">Customer: customer@example.com</p>
-                <p data-magicpath-id="31" data-magicpath-path="AuthModal.tsx">Abuja Admin: admin.abuja@almaris.com</p>
-                <p data-magicpath-id="32" data-magicpath-path="AuthModal.tsx">Lagos Admin: admin.lagos@almaris.com</p>
-                <p data-magicpath-id="33" data-magicpath-path="AuthModal.tsx">Super Admin: superadmin@almaris.com</p>
+                <p data-magicpath-id="31" data-magicpath-path="AuthModal.tsx">Abuja Admin: admin.abuja@phoeniximperial.com</p>
+                <p data-magicpath-id="32" data-magicpath-path="AuthModal.tsx">Lagos Admin: admin.lagos@phoeniximperial.com</p>
+                <p data-magicpath-id="33" data-magicpath-path="AuthModal.tsx">Super Admin: superadmin@phoeniximperial.com</p>
                 <p className="mt-2 italic" data-magicpath-id="34" data-magicpath-path="AuthModal.tsx">Password: any text works (demo mode)</p>
               </SortableContainer>
             </SortableContainer>

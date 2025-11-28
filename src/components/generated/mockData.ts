@@ -5,21 +5,21 @@ import { Branch, Room, Booking, Testimonial, Gallery, User, BranchId } from './t
 export const BRANCHES: Branch[] = [
   {
     id: 'abuja',
-    name: 'Almaris Abuja',
+    name: 'Phoenix Imperial Abuja',
     city: 'Abuja',
     address: '123 Central Business District, Abuja, Nigeria',
     phone: '+234 809 123 4567',
-    email: 'abuja@almaris.com',
+    email: 'abuja@phoeniximperial.com',
     timezone: 'Africa/Lagos',
     currency: 'NGN'
   },
   {
     id: 'lagos',
-    name: 'Almaris Lagos',
+    name: 'Phoenix Imperial Lagos',
     city: 'Lagos',
     address: '456 Victoria Island, Lagos, Nigeria',
     phone: '+234 809 765 4321',
-    email: 'lagos@almaris.com',
+    email: 'lagos@phoeniximperial.com',
     timezone: 'Africa/Lagos',
     currency: 'NGN'
   }
@@ -125,7 +125,7 @@ export const TESTIMONIALS_BY_BRANCH: Record<BranchId, Testimonial[]> = {
       branchId: 'abuja',
       userName: 'Chidi Okonkwo',
       rating: 5,
-      comment: 'Exceptional service and beautiful rooms. The staff at Almaris Abuja made our stay memorable!',
+      comment: 'Exceptional service and beautiful rooms. The staff at Phoenix Imperial Abuja made our stay memorable!',
       createdAt: '2024-01-15',
       verified: true
     },
@@ -229,7 +229,7 @@ export const MOCK_USERS: User[] = [
   },
   {
     id: 'admin-abuja',
-    email: 'admin.abuja@almaris.com',
+    email: 'admin.abuja@phoeniximperial.com',
     name: 'Abuja Admin',
     phone: '+234 809 123 4567',
     createdAt: '2024-01-01',
@@ -238,7 +238,7 @@ export const MOCK_USERS: User[] = [
   },
   {
     id: 'admin-lagos',
-    email: 'admin.lagos@almaris.com',
+    email: 'admin.lagos@phoeniximperial.com',
     name: 'Lagos Admin',
     phone: '+234 809 765 4321',
     createdAt: '2024-01-01',
@@ -247,7 +247,7 @@ export const MOCK_USERS: User[] = [
   },
   {
     id: 'super-admin',
-    email: 'superadmin@almaris.com',
+    email: 'superadmin@phoeniximperial.com',
     name: 'Super Admin',
     phone: '+234 800 999 8888',
     createdAt: '2024-01-01',
