@@ -9,6 +9,9 @@ import { AuthModal } from './AuthModal';
 import { BookingModal } from './BookingModal';
 import { UserDashboard } from './UserDashboard';
 import { RoomsPage } from './RoomsPage';
+import { ReservationPage } from './ReservationPage';
+import { AboutPage } from './AboutPage';
+import { ContactPage } from './ContactPage';
 import { ROOMS_BY_BRANCH, TESTIMONIALS_BY_BRANCH, GALLERY_BY_BRANCH } from './mockData';
 
 // --- Hero Slides Data ---
@@ -17,50 +20,50 @@ const HERO_SLIDES = [{
   image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2070&auto=format&fit=crop",
   title: "Luxury Across Nigeria",
   subtitle: "Experience world-class hospitality in Abuja and Lagos.",
-  mpid: "f085af3b-d322-468f-b591-a103161095d9"
+  mpid: "6f9f1630-019d-4343-88f5-cb4ebc6788a5"
 }, {
   id: 2,
   image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=2070&auto=format&fit=crop",
   title: "Your Home Away From Home",
   subtitle: "Book seamlessly across all our branches with one account.",
-  mpid: "a06cee09-2477-4b29-91dc-c166ca90aa0e"
+  mpid: "a28cda5c-bdcb-4e53-8d39-ee19bb5bee65"
 }, {
   id: 3,
   image: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=2070&auto=format&fit=crop",
   title: "Unmatched Excellence",
   subtitle: "Where comfort meets sophistication in every detail.",
-  mpid: "59d1c70f-f4e1-47c9-acaf-d99a9fa50a05"
+  mpid: "6c88c0f1-01bb-4ed8-bc4d-20a95ba5be52"
 }] as any[];
 const FACILITIES = [{
   icon: Utensils,
   name: "Restaurant",
   desc: "Gourmet dining experiences",
-  mpid: "9af1aeab-35f8-487c-a1b3-a5168bfd0174"
+  mpid: "609bf13c-8814-4bdd-88bc-cd9c749bf3ac"
 }, {
   icon: Waves,
   name: "Swimming Pool",
   desc: "Infinity pool with city views",
-  mpid: "7eea018e-5f05-440d-bc46-20887839b443"
+  mpid: "07cf10bb-f9fe-4a7a-bf36-ac29b28b36c6"
 }, {
   icon: Dumbbell,
   name: "Fitness Center",
   desc: "State-of-the-art equipment",
-  mpid: "2c3f8529-d9d2-40b1-b5aa-29ab4e7b9bb1"
+  mpid: "69a36841-6022-42e4-8e61-1df949c75a4d"
 }, {
   icon: Sparkles,
   name: "Spa & Massage",
   desc: "Rejuvenating treatments",
-  mpid: "0f13b3a6-7cd5-4994-931c-666a13fda781"
+  mpid: "37c02d10-173f-4dab-aef3-830e1084cf90"
 }, {
   icon: Briefcase,
   name: "Meeting Room",
   desc: "Professional business spaces",
-  mpid: "c0680f22-d611-4be7-b877-4c3aa60b91ee"
+  mpid: "669c018b-ab37-407a-a9cc-753439bdcc9f"
 }, {
   icon: Shirt,
   name: "Laundry Service",
   desc: "24/7 dry cleaning & laundry",
-  mpid: "f1616d9e-f8e6-4029-b9b2-ac305e8fe722"
+  mpid: "6930d67b-5f0e-4c97-ad81-3be99cf0d2b8"
 }] as any[];
 
 // --- Components ---
@@ -69,10 +72,16 @@ const NavigationSidebar: React.FC<{
   onOpenAuth: () => void;
   onOpenDashboard: () => void;
   onOpenRooms: () => void;
+  onOpenReservation: () => void;
+  onOpenAbout: () => void;
+  onOpenContact: () => void;
 }> = ({
   onOpenAuth,
   onOpenDashboard,
-  onOpenRooms
+  onOpenRooms,
+  onOpenReservation,
+  onOpenAbout,
+  onOpenContact
 }) => {
   const {
     isAuthenticated,
@@ -86,49 +95,52 @@ const NavigationSidebar: React.FC<{
   const links = [{
     name: "Home",
     href: "#home",
-    mpid: "de2a6df3-bf49-4f14-a955-c09c8e272714"
+    mpid: "4362e633-0e6c-45d7-80d2-261781fa24ec"
   }, {
     name: "Rooms",
     href: "#rooms",
     onClick: onOpenRooms,
-    mpid: "f8e15c69-87da-4566-9f5c-74f7fb77aba4"
+    mpid: "8ea16e9c-c842-40af-a1cb-255d0fc58475"
   }, {
     name: "Reservation",
     href: "#reservation",
-    mpid: "1339f5f6-ee44-4411-801a-6a9779e60c8b"
+    onClick: onOpenReservation,
+    mpid: "73619f9b-d7a0-42c9-a10b-eb27a7541434"
   }, {
     name: "About",
     href: "#about",
-    mpid: "7f53aabc-bff6-406e-9e22-c9fd59192f11"
+    onClick: onOpenAbout,
+    mpid: "20f4f7c9-2875-49d5-824f-c8072f571de9"
   }, {
     name: "Contact",
     href: "#contact",
-    mpid: "53277faa-9265-421e-898b-a011997dfea9"
+    onClick: onOpenContact,
+    mpid: "54203eed-8258-4c99-aca3-deab3c66954e"
   }] as any[];
-  return <SortableContainer dndKitId="57a96cee-e1ad-4d4a-9522-1322b2218c97" containerType="regular" prevTag="aside" className="hidden md:flex fixed left-0 top-0 bottom-0 w-64 bg-zinc-950 text-white flex-col z-50 border-r border-zinc-800" data-magicpath-id="0" data-magicpath-path="MultitenantHotel.tsx">
+  return <SortableContainer dndKitId="ba4e4229-0e12-442d-aed4-452af1bca03f" containerType="regular" prevTag="aside" className="hidden md:flex fixed left-0 top-0 bottom-0 w-64 bg-zinc-950 text-white flex-col z-50 border-r border-zinc-800" data-magicpath-id="0" data-magicpath-path="MultitenantHotel.tsx">
       {/* Logo & User Section Combined */}
-      <SortableContainer dndKitId="aaae651e-78f3-4b38-bd4d-e32c2b6c1a5a" containerType="regular" prevTag="div" className="p-8 pb-4 border-b border-zinc-800" data-magicpath-id="1" data-magicpath-path="MultitenantHotel.tsx">
+      <SortableContainer dndKitId="b46909dd-a9fb-4193-b5d5-b21bf951ef16" containerType="regular" prevTag="div" className="p-8 pb-4 border-b border-zinc-800" data-magicpath-id="1" data-magicpath-path="MultitenantHotel.tsx">
         <h1 className="text-3xl font-serif tracking-widest text-amber-500" data-magicpath-id="2" data-magicpath-path="MultitenantHotel.tsx">PHOENIX IMPERIAL</h1>
         <p className="text-xs text-zinc-500 uppercase tracking-[0.2em] mt-1" data-magicpath-id="3" data-magicpath-path="MultitenantHotel.tsx">Multi-Branch Hotels</p>
         
         {/* User Actions - Prominent Position */}
-        {isAuthenticated && <SortableContainer dndKitId="b546d06c-0ea6-41e1-b278-ea6fbf1ab45f" containerType="regular" prevTag="div" className="mt-6 p-4 bg-zinc-900 rounded-lg border border-zinc-800" data-magicpath-id="4" data-magicpath-path="MultitenantHotel.tsx">
-            <SortableContainer dndKitId="4eb1695e-8a7a-4e10-bebb-9c1b359689ef" containerType="regular" prevTag="div" className="flex items-center gap-3 mb-3" data-magicpath-id="5" data-magicpath-path="MultitenantHotel.tsx">
-              <SortableContainer dndKitId="06a336e9-6daa-4ab7-8a12-aede8d1f72a0" containerType="regular" prevTag="div" className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center shrink-0" data-magicpath-id="6" data-magicpath-path="MultitenantHotel.tsx">
+        {isAuthenticated && <SortableContainer dndKitId="1f74d897-8c73-4426-b4be-199f20224a86" containerType="regular" prevTag="div" className="mt-6 p-4 bg-zinc-900 rounded-lg border border-zinc-800" data-magicpath-id="4" data-magicpath-path="MultitenantHotel.tsx">
+            <SortableContainer dndKitId="2ef8244b-aa88-4ba9-a0de-c292685f76c4" containerType="regular" prevTag="div" className="flex items-center gap-3 mb-3" data-magicpath-id="5" data-magicpath-path="MultitenantHotel.tsx">
+              <SortableContainer dndKitId="e4e3a896-e40e-4edb-8e71-77228e921fa4" containerType="regular" prevTag="div" className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center shrink-0" data-magicpath-id="6" data-magicpath-path="MultitenantHotel.tsx">
                 <UserIcon size={18} className="text-amber-500" data-magicpath-id="7" data-magicpath-path="MultitenantHotel.tsx" />
               </SortableContainer>
-              <SortableContainer dndKitId="04c59a25-454a-468a-a913-7ce6ba0b8017" containerType="regular" prevTag="div" className="min-w-0 flex-1" data-magicpath-id="8" data-magicpath-path="MultitenantHotel.tsx">
+              <SortableContainer dndKitId="9f118537-1ad1-4b75-bee6-5ece115ce542" containerType="regular" prevTag="div" className="min-w-0 flex-1" data-magicpath-id="8" data-magicpath-path="MultitenantHotel.tsx">
                 <p className="text-sm font-medium text-white truncate" data-magicpath-id="9" data-magicpath-path="MultitenantHotel.tsx">{user?.name}</p>
                 <p className="text-xs text-zinc-500 truncate" data-magicpath-id="10" data-magicpath-path="MultitenantHotel.tsx">
                   {user?.role === 'super_admin' ? 'Super Admin' : user?.role === 'branch_admin' ? 'Branch Admin' : 'Customer'}
                 </p>
               </SortableContainer>
             </SortableContainer>
-            <SortableContainer dndKitId="6e94f548-6cf2-43aa-be60-4cb1e8efe600" containerType="regular" prevTag="div" className="flex gap-2" data-magicpath-id="11" data-magicpath-path="MultitenantHotel.tsx">
+            <SortableContainer dndKitId="0e6ece8e-ec17-4120-8224-592fbfe2392d" containerType="regular" prevTag="div" className="flex gap-2" data-magicpath-id="11" data-magicpath-path="MultitenantHotel.tsx">
               <button onClick={onOpenDashboard} className="flex-1 bg-amber-600 hover:bg-amber-700 text-white px-3 py-2 rounded transition-colors text-xs font-medium" data-magicpath-id="12" data-magicpath-path="MultitenantHotel.tsx">
                 Dashboard
               </button>
-              <SortableContainer dndKitId="f84a87e3-c879-4174-9c60-83da8bb191e9" containerType="regular" prevTag="button" onClick={logout} className="px-3 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded transition-colors" title="Logout" data-magicpath-id="13" data-magicpath-path="MultitenantHotel.tsx">
+              <SortableContainer dndKitId="79f1397b-f84f-48ed-bf29-76a78705917f" containerType="regular" prevTag="button" onClick={logout} className="px-3 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded transition-colors" title="Logout" data-magicpath-id="13" data-magicpath-path="MultitenantHotel.tsx">
                 <LogOut size={16} data-magicpath-id="14" data-magicpath-path="MultitenantHotel.tsx" />
               </SortableContainer>
             </SortableContainer>
@@ -136,8 +148,8 @@ const NavigationSidebar: React.FC<{
       </SortableContainer>
 
       {/* Branch Indicator */}
-      {currentBranch && <SortableContainer dndKitId="8aba8d0a-483d-4311-acf9-9c163c8d25a6" containerType="regular" prevTag="div" className="mx-8 mb-4 mt-4 p-3 bg-amber-500/10 border border-amber-500/30 rounded" data-magicpath-id="15" data-magicpath-path="MultitenantHotel.tsx">
-          <SortableContainer dndKitId="1caab7f9-039c-4abe-b51d-291d506d499d" containerType="regular" prevTag="div" className="flex items-center gap-2 text-amber-400 text-xs" data-magicpath-id="16" data-magicpath-path="MultitenantHotel.tsx">
+      {currentBranch && <SortableContainer dndKitId="9af38985-c1b9-46a0-a577-e7c0e593134c" containerType="regular" prevTag="div" className="mx-8 mb-4 mt-4 p-3 bg-amber-500/10 border border-amber-500/30 rounded" data-magicpath-id="15" data-magicpath-path="MultitenantHotel.tsx">
+          <SortableContainer dndKitId="65825562-c5f3-4090-a149-361558c3b381" containerType="regular" prevTag="div" className="flex items-center gap-2 text-amber-400 text-xs" data-magicpath-id="16" data-magicpath-path="MultitenantHotel.tsx">
             <Building2 size={14} data-magicpath-id="17" data-magicpath-path="MultitenantHotel.tsx" />
             <span className="uppercase tracking-wider" data-magicpath-id="18" data-magicpath-path="MultitenantHotel.tsx">
               {branches.find(b => b.id === currentBranch)?.city} Branch
@@ -145,26 +157,26 @@ const NavigationSidebar: React.FC<{
           </SortableContainer>
         </SortableContainer>}
 
-      <SortableContainer dndKitId="63b70307-e10c-478f-a26d-3d724bc8da41" containerType="collection" prevTag="nav" className="flex-1 flex flex-col justify-center px-8 space-y-6" data-magicpath-id="19" data-magicpath-path="MultitenantHotel.tsx">
+      <SortableContainer dndKitId="3b0ee881-7b8d-4153-a6e9-89142177a3a9" containerType="collection" prevTag="nav" className="flex-1 flex flex-col justify-center px-8 space-y-6" data-magicpath-id="19" data-magicpath-path="MultitenantHotel.tsx">
         {links.map(link => <a key={link.name} href={link.href} onClick={e => {
         if (link.onClick) {
           e.preventDefault();
           link.onClick();
         }
-      }} className="text-zinc-400 hover:text-amber-400 transition-colors uppercase text-sm tracking-widest font-light flex items-center group cursor-pointer" data-magicpath-uuid={(link as any)["mpid"] ?? "unsafe"} data-magicpath-field="name:string" data-magicpath-id="20" data-magicpath-path="MultitenantHotel.tsx">
+      }} className="text-zinc-400 hover:text-amber-400 transition-colors uppercase text-sm tracking-widest font-light flex items-center group cursor-pointer" data-magicpath-uuid={(link as any)["mpid"] ?? "unsafe"} data-magicpath-field="name:unknown" data-magicpath-id="20" data-magicpath-path="MultitenantHotel.tsx">
             <span className="w-0 group-hover:w-4 transition-all duration-300 h-[1px] bg-amber-400 mr-0 group-hover:mr-3" data-magicpath-uuid={(link as any)["mpid"] ?? "unsafe"} data-magicpath-id="21" data-magicpath-path="MultitenantHotel.tsx"></span>
             {link.name}
           </a>)}
       </SortableContainer>
 
-      <SortableContainer dndKitId="946545bf-2b50-4d7f-b1a4-770ecaf83393" containerType="regular" prevTag="div" className="p-8 pt-4 border-t border-zinc-900 space-y-4" data-magicpath-id="22" data-magicpath-path="MultitenantHotel.tsx">
+      <SortableContainer dndKitId="876e47a2-826f-4690-805f-9c97ae204fc3" containerType="regular" prevTag="div" className="p-8 pt-4 border-t border-zinc-900 space-y-4" data-magicpath-id="22" data-magicpath-path="MultitenantHotel.tsx">
         {/* Auth Button - Only show if not authenticated */}
-        {!isAuthenticated && <SortableContainer dndKitId="17a17cec-ac0e-446f-b674-96b7166e6647" containerType="regular" prevTag="button" onClick={onOpenAuth} className="w-full bg-amber-600 hover:bg-amber-700 text-white py-3 rounded transition-colors flex items-center justify-center gap-2 text-sm font-medium" data-magicpath-id="23" data-magicpath-path="MultitenantHotel.tsx">
+        {!isAuthenticated && <SortableContainer dndKitId="e1040100-b0c5-4e7e-be4d-331c52280739" containerType="regular" prevTag="button" onClick={onOpenAuth} className="w-full bg-amber-600 hover:bg-amber-700 text-white py-3 rounded transition-colors flex items-center justify-center gap-2 text-sm font-medium" data-magicpath-id="23" data-magicpath-path="MultitenantHotel.tsx">
             <LogIn size={16} data-magicpath-id="24" data-magicpath-path="MultitenantHotel.tsx" />
             Sign In / Sign Up
           </SortableContainer>}
 
-        <SortableContainer dndKitId="9a1de260-6fcf-4fc4-a14e-85250afdd487" containerType="regular" prevTag="div" className="flex items-center gap-3 text-amber-500" data-magicpath-id="25" data-magicpath-path="MultitenantHotel.tsx">
+        <SortableContainer dndKitId="ec1135cb-a870-4062-b661-1a4db6b00df6" containerType="regular" prevTag="div" className="flex items-center gap-3 text-amber-500" data-magicpath-id="25" data-magicpath-path="MultitenantHotel.tsx">
           <Phone size={18} data-magicpath-id="26" data-magicpath-path="MultitenantHotel.tsx" />
           <span className="font-serif italic text-sm" data-magicpath-id="27" data-magicpath-path="MultitenantHotel.tsx">+234 809 000 0000</span>
         </SortableContainer>
@@ -176,10 +188,16 @@ const MobileNav: React.FC<{
   onOpenAuth: () => void;
   onOpenDashboard: () => void;
   onOpenRooms: () => void;
+  onOpenReservation: () => void;
+  onOpenAbout: () => void;
+  onOpenContact: () => void;
 }> = ({
   onOpenAuth,
   onOpenDashboard,
-  onOpenRooms
+  onOpenRooms,
+  onOpenReservation,
+  onOpenAbout,
+  onOpenContact
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const {
@@ -190,7 +208,7 @@ const MobileNav: React.FC<{
   const links = [{
     name: "Home",
     href: "#home",
-    mpid: "1a14b2a8-0a78-404d-8dcd-b1df60370fe4"
+    mpid: "fd0e9fd8-6beb-461f-8e9b-ea51652f69bc"
   }, {
     name: "Rooms",
     href: "#rooms",
@@ -198,53 +216,65 @@ const MobileNav: React.FC<{
       setIsOpen(false);
       onOpenRooms();
     },
-    mpid: "1d8850a0-324e-4320-bb02-98bf4479e311"
+    mpid: "cf2f3043-d07c-41ce-b4f3-7e4a2119d39d"
   }, {
     name: "Reservation",
     href: "#reservation",
-    mpid: "bb03f79d-e725-4bd1-b5f0-f3b956a407e4"
+    onClick: () => {
+      setIsOpen(false);
+      onOpenReservation();
+    },
+    mpid: "936da86f-1237-43ee-bbde-6d67e9134fc0"
   }, {
     name: "About",
     href: "#about",
-    mpid: "14599068-ea08-4c17-b1db-3592f6215105"
+    onClick: () => {
+      setIsOpen(false);
+      onOpenAbout();
+    },
+    mpid: "8d995d22-fc28-4941-8743-887c9c5f932d"
   }, {
     name: "Contact",
     href: "#contact",
-    mpid: "8bd7ab9c-b352-47c9-a99e-d80f4fc1e75b"
+    onClick: () => {
+      setIsOpen(false);
+      onOpenContact();
+    },
+    mpid: "c5b8e680-6c87-4e8f-8c8e-2de6d79bd3ec"
   }] as any[];
-  return <SortableContainer dndKitId="20e68b3f-bd20-46c4-8fbf-d0439031dfd7" containerType="regular" prevTag="div" className="md:hidden fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800 px-6 py-4 flex justify-between items-center" data-magicpath-id="29" data-magicpath-path="MultitenantHotel.tsx">
-      <SortableContainer dndKitId="3ca884c5-1b19-4332-a217-00e47b86af27" containerType="regular" prevTag="div" data-magicpath-id="30" data-magicpath-path="MultitenantHotel.tsx">
+  return <SortableContainer dndKitId="060ca056-6757-4401-8994-71f4143fb410" containerType="regular" prevTag="div" className="md:hidden fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800 px-6 py-4 flex justify-between items-center" data-magicpath-id="29" data-magicpath-path="MultitenantHotel.tsx">
+      <SortableContainer dndKitId="b823f05c-d593-4d9f-957d-bcf6c95ff240" containerType="regular" prevTag="div" data-magicpath-id="30" data-magicpath-path="MultitenantHotel.tsx">
         <h1 className="text-xl font-serif text-amber-500" data-magicpath-id="31" data-magicpath-path="MultitenantHotel.tsx">PHOENIX IMPERIAL</h1>
       </SortableContainer>
-      <SortableContainer dndKitId="6fa39fb7-a79a-4faa-a146-a93267da0d10" containerType="regular" prevTag="div" className="flex items-center gap-3" data-magicpath-id="32" data-magicpath-path="MultitenantHotel.tsx">
+      <SortableContainer dndKitId="966c40d5-cc7f-4e7c-be4a-7b1a832fb1cb" containerType="regular" prevTag="div" className="flex items-center gap-3" data-magicpath-id="32" data-magicpath-path="MultitenantHotel.tsx">
         {isAuthenticated ? <>
-            <SortableContainer dndKitId="cdcc6869-32d3-4933-b4ba-5e3d2b20f4c1" containerType="regular" prevTag="button" onClick={onOpenDashboard} className="w-9 h-9 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500 hover:bg-amber-500/30 transition-colors" data-magicpath-id="33" data-magicpath-path="MultitenantHotel.tsx">
+            <SortableContainer dndKitId="484b8198-fae8-4b5a-9a0d-4edbe45742e2" containerType="regular" prevTag="button" onClick={onOpenDashboard} className="w-9 h-9 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500 hover:bg-amber-500/30 transition-colors" data-magicpath-id="33" data-magicpath-path="MultitenantHotel.tsx">
               <UserIcon size={18} data-magicpath-id="34" data-magicpath-path="MultitenantHotel.tsx" />
             </SortableContainer>
-            <SortableContainer dndKitId="cc436aba-3d93-405c-aba8-aa2b3b281a62" containerType="regular" prevTag="button" onClick={logout} className="w-9 h-9 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 hover:bg-red-500/30 transition-colors" data-magicpath-id="35" data-magicpath-path="MultitenantHotel.tsx">
+            <SortableContainer dndKitId="5283537b-281a-45eb-93c4-a6612bf1fa44" containerType="regular" prevTag="button" onClick={logout} className="w-9 h-9 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 hover:bg-red-500/30 transition-colors" data-magicpath-id="35" data-magicpath-path="MultitenantHotel.tsx">
               <LogOut size={18} data-magicpath-id="36" data-magicpath-path="MultitenantHotel.tsx" />
             </SortableContainer>
-          </> : <SortableContainer dndKitId="9643aec7-50e0-4d13-aa63-f9e9ae2acdfd" containerType="regular" prevTag="button" onClick={onOpenAuth} className="text-amber-500 hover:text-amber-400 transition-colors" data-magicpath-id="37" data-magicpath-path="MultitenantHotel.tsx">
+          </> : <SortableContainer dndKitId="3f792a90-3452-4cd3-a28f-b007027be619" containerType="regular" prevTag="button" onClick={onOpenAuth} className="text-amber-500 hover:text-amber-400 transition-colors" data-magicpath-id="37" data-magicpath-path="MultitenantHotel.tsx">
             <LogIn size={20} data-magicpath-id="38" data-magicpath-path="MultitenantHotel.tsx" />
           </SortableContainer>}
-        <SortableContainer dndKitId="55fc1742-c8ec-4655-a578-4878db4cb186" containerType="regular" prevTag="button" onClick={() => setIsOpen(!isOpen)} className="text-white" data-magicpath-id="39" data-magicpath-path="MultitenantHotel.tsx">
+        <SortableContainer dndKitId="7239c010-1df7-4449-bb9e-64d07f16e5c1" containerType="regular" prevTag="button" onClick={() => setIsOpen(!isOpen)} className="text-white" data-magicpath-id="39" data-magicpath-path="MultitenantHotel.tsx">
           {isOpen ? <X data-magicpath-id="40" data-magicpath-path="MultitenantHotel.tsx" /> : <Menu data-magicpath-id="41" data-magicpath-path="MultitenantHotel.tsx" />}
         </SortableContainer>
       </SortableContainer>
 
-      {isOpen && <SortableContainer dndKitId="13406999-794b-4fb6-b53f-0ca4ce06295e" containerType="collection" prevTag="motion.div" initial={{
+      {isOpen && <SortableContainer dndKitId="603ff3fd-7f4c-4e76-ac25-4c0070deb3a6" containerType="collection" prevTag="motion.div" initial={{
       opacity: 0,
       y: -20
     }} animate={{
       opacity: 1,
       y: 0
     }} className="absolute top-full left-0 right-0 bg-zinc-950 border-b border-zinc-800 p-6 flex flex-col gap-4 shadow-2xl" data-magicpath-id="42" data-magicpath-path="MultitenantHotel.tsx">
-          {isAuthenticated && <SortableContainer dndKitId="340279aa-365e-4564-a776-6539f6ee5da1" containerType="regular" prevTag="div" className="pb-4 border-b border-zinc-800" data-magicpath-id="43" data-magicpath-path="MultitenantHotel.tsx">
-              <SortableContainer dndKitId="ac9656c0-fe8c-4266-820a-844cb80c4f0d" containerType="regular" prevTag="div" className="flex items-center gap-3 mb-3" data-magicpath-id="44" data-magicpath-path="MultitenantHotel.tsx">
-                <SortableContainer dndKitId="62064257-b086-4611-9052-9da09df00b18" containerType="regular" prevTag="div" className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center" data-magicpath-id="45" data-magicpath-path="MultitenantHotel.tsx">
+          {isAuthenticated && <SortableContainer dndKitId="905eca3d-a982-42bc-8cda-26cb016ff375" containerType="regular" prevTag="div" className="pb-4 border-b border-zinc-800" data-magicpath-id="43" data-magicpath-path="MultitenantHotel.tsx">
+              <SortableContainer dndKitId="178afc8e-3218-4c3a-8d3f-db618a759365" containerType="regular" prevTag="div" className="flex items-center gap-3 mb-3" data-magicpath-id="44" data-magicpath-path="MultitenantHotel.tsx">
+                <SortableContainer dndKitId="11d08b95-54aa-4ab2-a030-8da3999c66e2" containerType="regular" prevTag="div" className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center" data-magicpath-id="45" data-magicpath-path="MultitenantHotel.tsx">
                   <UserIcon size={18} className="text-amber-500" data-magicpath-id="46" data-magicpath-path="MultitenantHotel.tsx" />
                 </SortableContainer>
-                <SortableContainer dndKitId="e2c1559c-8625-4d77-85fe-c3de2868d2e8" containerType="regular" prevTag="div" data-magicpath-id="47" data-magicpath-path="MultitenantHotel.tsx">
+                <SortableContainer dndKitId="7de08789-d574-45a0-9ef4-b5ca8e835a69" containerType="regular" prevTag="div" data-magicpath-id="47" data-magicpath-path="MultitenantHotel.tsx">
                   <p className="text-white font-medium text-sm" data-magicpath-id="48" data-magicpath-path="MultitenantHotel.tsx">{user?.name}</p>
                   <p className="text-xs text-zinc-500" data-magicpath-id="49" data-magicpath-path="MultitenantHotel.tsx">
                     {user?.role === 'super_admin' ? 'Super Admin' : user?.role === 'branch_admin' ? 'Branch Admin' : 'Customer'}
@@ -266,7 +296,7 @@ const MobileNav: React.FC<{
         } else {
           setIsOpen(false);
         }
-      }} data-magicpath-uuid={(link as any)["mpid"] ?? "unsafe"} data-magicpath-field="name:string" data-magicpath-id="51" data-magicpath-path="MultitenantHotel.tsx">
+      }} data-magicpath-uuid={(link as any)["mpid"] ?? "unsafe"} data-magicpath-field="name:unknown" data-magicpath-id="51" data-magicpath-path="MultitenantHotel.tsx">
               {link.name}
             </a>)}
         </SortableContainer>}
@@ -284,9 +314,9 @@ const HeroSlider: React.FC<{
     }, 5000);
     return () => clearInterval(timer);
   }, []);
-  return <SortableContainer dndKitId="b533d713-8d82-4a04-9b40-e262b8dfacdc" containerType="regular" prevTag="div" className="relative h-[85vh] w-full overflow-hidden bg-zinc-900" data-magicpath-id="52" data-magicpath-path="MultitenantHotel.tsx">
+  return <SortableContainer dndKitId="c4f0d3f0-b759-4ee6-9f47-3cc33a4ad78f" containerType="regular" prevTag="div" className="relative h-[85vh] w-full overflow-hidden bg-zinc-900" data-magicpath-id="52" data-magicpath-path="MultitenantHotel.tsx">
       <AnimatePresence mode="wait" data-magicpath-id="53" data-magicpath-path="MultitenantHotel.tsx">
-        <SortableContainer dndKitId="9dad2db8-a1cc-4507-8495-beead618fcf4" containerType="regular" prevTag="motion.div" key={current} initial={{
+        <SortableContainer dndKitId="c7af6695-9a8e-41b0-a66f-103bf263e314" containerType="regular" prevTag="motion.div" key={current} initial={{
         opacity: 0,
         scale: 1.1
       }} animate={{
@@ -304,8 +334,8 @@ const HeroSlider: React.FC<{
         </SortableContainer>
       </AnimatePresence>
 
-      <SortableContainer dndKitId="2a252999-6abd-44cc-b6cc-7f2d03dfdf1b" containerType="regular" prevTag="div" className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4" data-magicpath-id="57" data-magicpath-path="MultitenantHotel.tsx">
-        <SortableContainer dndKitId="da917b81-3ed9-4b98-8fca-d185f9f6a0e3" containerType="regular" prevTag="motion.div" key={`text-${current}`} initial={{
+      <SortableContainer dndKitId="a2981be8-d5a5-4db9-a24f-ae79cb5b66e2" containerType="regular" prevTag="div" className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4" data-magicpath-id="57" data-magicpath-path="MultitenantHotel.tsx">
+        <SortableContainer dndKitId="3b770771-da5a-443d-98f5-e3f0c2cf4f36" containerType="regular" prevTag="motion.div" key={`text-${current}`} initial={{
         y: 30,
         opacity: 0
       }} animate={{
@@ -315,7 +345,7 @@ const HeroSlider: React.FC<{
         delay: 0.5,
         duration: 0.8
       }} data-magicpath-id="58" data-magicpath-path="MultitenantHotel.tsx">
-          <SortableContainer dndKitId="5c2a4f0c-105b-40b3-a573-9a19d0250236" containerType="regular" prevTag="div" className="flex items-center justify-center gap-4 mb-4" data-magicpath-id="59" data-magicpath-path="MultitenantHotel.tsx">
+          <SortableContainer dndKitId="f7a04b34-c962-4186-b043-722b20fd8c18" containerType="regular" prevTag="div" className="flex items-center justify-center gap-4 mb-4" data-magicpath-id="59" data-magicpath-path="MultitenantHotel.tsx">
             <div className="h-[1px] w-12 bg-amber-400/60" data-magicpath-id="60" data-magicpath-path="MultitenantHotel.tsx"></div>
             <span className="text-amber-400 uppercase tracking-[0.3em] text-sm" data-magicpath-id="61" data-magicpath-path="MultitenantHotel.tsx">Welcome to Phoenix Imperial</span>
             <div className="h-[1px] w-12 bg-amber-400/60" data-magicpath-id="62" data-magicpath-path="MultitenantHotel.tsx"></div>
@@ -326,14 +356,14 @@ const HeroSlider: React.FC<{
           <p className="text-zinc-200 text-lg md:text-xl font-light mb-10 max-w-xl mx-auto tracking-wide" data-magicpath-id="64" data-magicpath-path="MultitenantHotel.tsx">
             {HERO_SLIDES[current].subtitle}
           </p>
-          <SortableContainer dndKitId="e0cb4e81-80b7-4921-b104-09edceeb8802" containerType="regular" prevTag="button" onClick={onOpenBooking} className="bg-amber-600 text-white px-8 py-4 uppercase tracking-widest text-sm hover:bg-amber-700 transition-all duration-300 flex items-center gap-3 mx-auto group" data-magicpath-id="65" data-magicpath-path="MultitenantHotel.tsx">
+          <SortableContainer dndKitId="b53ec008-98a0-493e-ac75-d1fb3f029812" containerType="regular" prevTag="button" onClick={onOpenBooking} className="bg-amber-600 text-white px-8 py-4 uppercase tracking-widest text-sm hover:bg-amber-700 transition-all duration-300 flex items-center gap-3 mx-auto group" data-magicpath-id="65" data-magicpath-path="MultitenantHotel.tsx">
             Check Availability
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" data-magicpath-id="66" data-magicpath-path="MultitenantHotel.tsx" />
           </SortableContainer>
         </SortableContainer>
       </SortableContainer>
 
-      <SortableContainer dndKitId="5d087cb1-75e6-440e-b909-261cd7abef3b" containerType="regular" prevTag="div" className="absolute bottom-0 left-0 w-full h-32 z-20 pointer-events-none text-zinc-900" data-magicpath-id="67" data-magicpath-path="MultitenantHotel.tsx">
+      <SortableContainer dndKitId="da0da167-29f5-45d5-8d0f-edc3bac1949d" containerType="regular" prevTag="div" className="absolute bottom-0 left-0 w-full h-32 z-20 pointer-events-none text-zinc-900" data-magicpath-id="67" data-magicpath-path="MultitenantHotel.tsx">
         <svg className="w-full h-full" viewBox="0 0 1440 100" preserveAspectRatio="none" data-magicpath-id="68" data-magicpath-path="MultitenantHotel.tsx">
           <path fill="currentColor" d="M0,100 C480,0 960,0 1440,100 L1440,100 L0,100 Z" data-magicpath-id="69" data-magicpath-path="MultitenantHotel.tsx" />
         </svg>
@@ -345,11 +375,11 @@ const ReservationCTA: React.FC<{
 }> = ({
   onOpenBooking
 }) => {
-  return <SortableContainer dndKitId="3353388c-9f44-405b-922c-b6de45633d73" containerType="regular" prevTag="div" className="relative z-30 -mt-20 md:-mt-24 px-4 md:px-12 max-w-6xl mx-auto" data-magicpath-id="70" data-magicpath-path="MultitenantHotel.tsx">
-      <SortableContainer dndKitId="d562dac8-06ef-4829-ba2e-e50be9116abc" containerType="regular" prevTag="div" className="bg-zinc-800 p-8 shadow-2xl border-t-4 border-amber-600 rounded-sm text-center" data-magicpath-id="71" data-magicpath-path="MultitenantHotel.tsx">
+  return <SortableContainer dndKitId="3900a8a9-2349-495d-a4be-b4c6f39303b6" containerType="regular" prevTag="div" className="relative z-30 -mt-20 md:-mt-24 px-4 md:px-12 max-w-6xl mx-auto" data-magicpath-id="70" data-magicpath-path="MultitenantHotel.tsx">
+      <SortableContainer dndKitId="80cdec83-53c1-421a-a7c3-b3d08c8add72" containerType="regular" prevTag="div" className="bg-zinc-800 p-8 shadow-2xl border-t-4 border-amber-600 rounded-sm text-center" data-magicpath-id="71" data-magicpath-path="MultitenantHotel.tsx">
         <h3 className="text-2xl font-serif text-white mb-4" data-magicpath-id="72" data-magicpath-path="MultitenantHotel.tsx">Ready to Book Your Stay?</h3>
         <p className="text-zinc-400 mb-6" data-magicpath-id="73" data-magicpath-path="MultitenantHotel.tsx">Select your preferred branch and check available rooms</p>
-        <SortableContainer dndKitId="29a6114f-9ebb-4456-96ce-970bd11785fa" containerType="regular" prevTag="button" onClick={onOpenBooking} className="bg-amber-600 text-white px-8 py-4 uppercase text-sm font-bold tracking-widest hover:bg-amber-700 transition-colors shadow-lg inline-flex items-center gap-3" data-magicpath-id="74" data-magicpath-path="MultitenantHotel.tsx">
+        <SortableContainer dndKitId="3fbb0c80-6adc-45b8-8eec-52689e79a0f8" containerType="regular" prevTag="button" onClick={onOpenBooking} className="bg-amber-600 text-white px-8 py-4 uppercase text-sm font-bold tracking-widest hover:bg-amber-700 transition-colors shadow-lg inline-flex items-center gap-3" data-magicpath-id="74" data-magicpath-path="MultitenantHotel.tsx">
           <Building2 size={18} data-magicpath-id="75" data-magicpath-path="MultitenantHotel.tsx" />
           Check Availability by Branch
         </SortableContainer>
@@ -363,6 +393,9 @@ const MultitenantHotelContent: React.FC = () => {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [dashboardOpen, setDashboardOpen] = useState(false);
   const [roomsPageOpen, setRoomsPageOpen] = useState(false);
+  const [reservationPageOpen, setReservationPageOpen] = useState(false);
+  const [aboutPageOpen, setAboutPageOpen] = useState(false);
+  const [contactPageOpen, setContactPageOpen] = useState(false);
   const {
     currentBranch
   } = useTenant();
@@ -371,32 +404,32 @@ const MultitenantHotelContent: React.FC = () => {
   const rooms = currentBranch ? ROOMS_BY_BRANCH[currentBranch] : [];
   const testimonials = currentBranch ? TESTIMONIALS_BY_BRANCH[currentBranch] : [];
   const gallery = currentBranch ? GALLERY_BY_BRANCH[currentBranch] : [];
-  return <SortableContainer dndKitId="6d1bcfd9-8c96-4fe2-8420-3e7d41408286" containerType="regular" prevTag="div" className="min-h-screen bg-zinc-900 text-zinc-200 font-sans selection:bg-amber-500 selection:text-white" data-magicpath-id="76" data-magicpath-path="MultitenantHotel.tsx">
-      <NavigationSidebar onOpenAuth={() => setAuthModalOpen(true)} onOpenDashboard={() => setDashboardOpen(true)} onOpenRooms={() => setRoomsPageOpen(true)} data-magicpath-id="77" data-magicpath-path="MultitenantHotel.tsx" />
-      <MobileNav onOpenAuth={() => setAuthModalOpen(true)} onOpenDashboard={() => setDashboardOpen(true)} onOpenRooms={() => setRoomsPageOpen(true)} data-magicpath-id="78" data-magicpath-path="MultitenantHotel.tsx" />
+  return <SortableContainer dndKitId="e45f8396-7335-4fab-b224-7cc1b7cb8e99" containerType="regular" prevTag="div" className="min-h-screen bg-zinc-900 text-zinc-200 font-sans selection:bg-amber-500 selection:text-white" data-magicpath-id="76" data-magicpath-path="MultitenantHotel.tsx">
+      <NavigationSidebar onOpenAuth={() => setAuthModalOpen(true)} onOpenDashboard={() => setDashboardOpen(true)} onOpenRooms={() => setRoomsPageOpen(true)} onOpenReservation={() => setReservationPageOpen(true)} onOpenAbout={() => setAboutPageOpen(true)} onOpenContact={() => setContactPageOpen(true)} data-magicpath-id="77" data-magicpath-path="MultitenantHotel.tsx" />
+      <MobileNav onOpenAuth={() => setAuthModalOpen(true)} onOpenDashboard={() => setDashboardOpen(true)} onOpenRooms={() => setRoomsPageOpen(true)} onOpenReservation={() => setReservationPageOpen(true)} onOpenAbout={() => setAboutPageOpen(true)} onOpenContact={() => setContactPageOpen(true)} data-magicpath-id="78" data-magicpath-path="MultitenantHotel.tsx" />
 
       {/* Main Content Area */}
-      <SortableContainer dndKitId="d96ef5c4-a69a-4877-81de-5577b76ebf2c" containerType="regular" prevTag="main" className="md:ml-64 w-full md:w-[calc(100%-16rem)] min-h-screen relative" data-magicpath-id="79" data-magicpath-path="MultitenantHotel.tsx">
+      <SortableContainer dndKitId="94afd708-9643-4632-a82d-7d0c683f09c2" containerType="regular" prevTag="main" className="md:ml-64 w-full md:w-[calc(100%-16rem)] min-h-screen relative" data-magicpath-id="79" data-magicpath-path="MultitenantHotel.tsx">
         
         {/* Hero Section */}
-        <SortableContainer dndKitId="46f5c377-a4b5-49bb-b890-75485f812aad" containerType="regular" prevTag="section" id="home" data-magicpath-id="80" data-magicpath-path="MultitenantHotel.tsx">
+        <SortableContainer dndKitId="9aacc314-8d05-433c-ad55-8e78895731fd" containerType="regular" prevTag="section" id="home" data-magicpath-id="80" data-magicpath-path="MultitenantHotel.tsx">
           <HeroSlider onOpenBooking={() => setBookingModalOpen(true)} data-magicpath-id="81" data-magicpath-path="MultitenantHotel.tsx" />
         </SortableContainer>
 
         {/* Reservation CTA */}
-        <SortableContainer dndKitId="afbd2f6c-ea33-4b6d-9d6a-1df5c2222fe3" containerType="regular" prevTag="section" className="pb-24" data-magicpath-id="82" data-magicpath-path="MultitenantHotel.tsx">
+        <SortableContainer dndKitId="c019ee86-bf5f-460e-8d2e-07097e79e818" containerType="regular" prevTag="section" className="pb-24" data-magicpath-id="82" data-magicpath-path="MultitenantHotel.tsx">
           <ReservationCTA onOpenBooking={() => setBookingModalOpen(true)} data-magicpath-id="83" data-magicpath-path="MultitenantHotel.tsx" />
         </SortableContainer>
 
         {/* Facilities Section */}
-        <SortableContainer dndKitId="d06543ad-d4a9-45a5-ae6d-4b827681824a" containerType="regular" prevTag="section" className="px-6 md:px-16 py-16 text-center max-w-7xl mx-auto" data-magicpath-id="84" data-magicpath-path="MultitenantHotel.tsx">
+        <SortableContainer dndKitId="a965fa98-9dc5-4ec3-92a8-39169d396119" containerType="regular" prevTag="section" className="px-6 md:px-16 py-16 text-center max-w-7xl mx-auto" data-magicpath-id="84" data-magicpath-path="MultitenantHotel.tsx">
           <span className="text-amber-500 uppercase tracking-[0.2em] text-sm font-medium" data-magicpath-id="85" data-magicpath-path="MultitenantHotel.tsx">Our Services</span>
           <h2 className="text-4xl md:text-5xl font-serif mt-4 mb-8 text-white" data-magicpath-id="86" data-magicpath-path="MultitenantHotel.tsx">Hotel Facilities</h2>
           <p className="text-zinc-400 max-w-2xl mx-auto mb-16 leading-relaxed" data-magicpath-id="87" data-magicpath-path="MultitenantHotel.tsx">
             Immerse yourself in a world of luxury and convenience across all our branches.
           </p>
 
-          <SortableContainer dndKitId="e63e2483-cb70-4926-a9f7-10f57cfa03fc" containerType="collection" prevTag="div" className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12" data-magicpath-id="88" data-magicpath-path="MultitenantHotel.tsx">
+          <SortableContainer dndKitId="95dcc3a0-a21d-4afe-b52a-b49d38feb375" containerType="collection" prevTag="div" className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12" data-magicpath-id="88" data-magicpath-path="MultitenantHotel.tsx">
             {FACILITIES.map((item, idx) => <motion.div data-magicpath-motion-tag="motion.div" key={idx} initial={{
             opacity: 0,
             y: 20
@@ -420,8 +453,8 @@ const MultitenantHotelContent: React.FC = () => {
         </SortableContainer>
 
         {/* Branch-Tagged Content Notice */}
-        {currentBranch && <SortableContainer dndKitId="d76d0aa7-dd4d-4638-ba34-c202face66fe" containerType="regular" prevTag="section" className="px-6 md:px-16 py-8 bg-zinc-950" data-magicpath-id="94" data-magicpath-path="MultitenantHotel.tsx">
-            <SortableContainer dndKitId="0680dcc3-d298-421e-a51a-a3994dc07b66" containerType="regular" prevTag="div" className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-amber-400" data-magicpath-id="95" data-magicpath-path="MultitenantHotel.tsx">
+        {currentBranch && <SortableContainer dndKitId="60e95b84-72b8-4a72-b3ed-c132a740ab91" containerType="regular" prevTag="section" className="px-6 md:px-16 py-8 bg-zinc-950" data-magicpath-id="94" data-magicpath-path="MultitenantHotel.tsx">
+            <SortableContainer dndKitId="ebfecfab-892e-4b45-8728-962aba34ab40" containerType="regular" prevTag="div" className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-amber-400" data-magicpath-id="95" data-magicpath-path="MultitenantHotel.tsx">
               <Building2 size={20} data-magicpath-id="96" data-magicpath-path="MultitenantHotel.tsx" />
               <p className="text-sm" data-magicpath-id="97" data-magicpath-path="MultitenantHotel.tsx">
                 Viewing content from <span className="font-semibold uppercase tracking-wider" data-magicpath-id="98" data-magicpath-path="MultitenantHotel.tsx">
@@ -432,14 +465,14 @@ const MultitenantHotelContent: React.FC = () => {
           </SortableContainer>}
 
         {/* Testimonials Section (Branch-Specific) */}
-        {testimonials.length > 0 && <SortableContainer dndKitId="f7c338c7-1c4d-45fa-b503-a136f774c885" containerType="regular" prevTag="section" className="py-24 bg-zinc-900 px-6 md:px-16" data-magicpath-id="99" data-magicpath-path="MultitenantHotel.tsx">
-            <SortableContainer dndKitId="7b5e9fcd-959e-4733-b5a2-5f30bb6168fd" containerType="regular" prevTag="div" className="max-w-7xl mx-auto text-center" data-magicpath-id="100" data-magicpath-path="MultitenantHotel.tsx">
+        {testimonials.length > 0 && <SortableContainer dndKitId="30dc3512-09fb-402f-9e26-b9c77d4ee004" containerType="regular" prevTag="section" className="py-24 bg-zinc-900 px-6 md:px-16" data-magicpath-id="99" data-magicpath-path="MultitenantHotel.tsx">
+            <SortableContainer dndKitId="2dff72a4-e896-49ab-ac2f-f9bbc408e509" containerType="regular" prevTag="div" className="max-w-7xl mx-auto text-center" data-magicpath-id="100" data-magicpath-path="MultitenantHotel.tsx">
               <span className="text-amber-500 uppercase tracking-[0.2em] text-sm font-medium" data-magicpath-id="101" data-magicpath-path="MultitenantHotel.tsx">
                 What Guests Say
               </span>
               <h2 className="text-4xl md:text-5xl font-serif mt-4 mb-16 text-white" data-magicpath-id="102" data-magicpath-path="MultitenantHotel.tsx">Testimonials</h2>
 
-              <SortableContainer dndKitId="ecbfec3b-cc2b-4ad0-8270-fd26bc5ceb9a" containerType="collection" prevTag="div" className="grid md:grid-cols-2 gap-8" data-magicpath-id="103" data-magicpath-path="MultitenantHotel.tsx">
+              <SortableContainer dndKitId="fd7f195c-2c81-4932-8f78-06c422c00dee" containerType="collection" prevTag="div" className="grid md:grid-cols-2 gap-8" data-magicpath-id="103" data-magicpath-path="MultitenantHotel.tsx">
                 {testimonials.map(testimonial => <div key={testimonial.id} className="bg-zinc-800 p-8 rounded-lg" data-magicpath-uuid={(testimonial as any)["mpid"] ?? "unsafe"} data-magicpath-id="104" data-magicpath-path="MultitenantHotel.tsx">
                     <div className="flex items-center gap-1 text-amber-400 mb-4 justify-center" data-magicpath-uuid={(testimonial as any)["mpid"] ?? "unsafe"} data-magicpath-id="105" data-magicpath-path="MultitenantHotel.tsx">
                       {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" className={i >= testimonial.rating ? "opacity-30" : ""} data-magicpath-uuid={(testimonial as any)["mpid"] ?? "unsafe"} data-magicpath-id="106" data-magicpath-path="MultitenantHotel.tsx" />)}
@@ -462,13 +495,13 @@ const MultitenantHotelContent: React.FC = () => {
           </SortableContainer>}
 
         {/* Gallery Section (Branch-Specific) */}
-        {gallery.length > 0 && <SortableContainer dndKitId="f03e0615-2a77-4599-8853-661f9dfb8390" containerType="regular" prevTag="section" className="py-24 bg-zinc-950" data-magicpath-id="115" data-magicpath-path="MultitenantHotel.tsx">
-            <SortableContainer dndKitId="e63fcdbb-c444-484a-9055-af505711de72" containerType="regular" prevTag="div" className="text-center mb-12" data-magicpath-id="116" data-magicpath-path="MultitenantHotel.tsx">
+        {gallery.length > 0 && <SortableContainer dndKitId="4a6ad205-0edf-4bb4-8096-fb4b17ff8ca7" containerType="regular" prevTag="section" className="py-24 bg-zinc-950" data-magicpath-id="115" data-magicpath-path="MultitenantHotel.tsx">
+            <SortableContainer dndKitId="1e52fdaf-4499-41cd-bda6-e2bffabffa38" containerType="regular" prevTag="div" className="text-center mb-12" data-magicpath-id="116" data-magicpath-path="MultitenantHotel.tsx">
               <span className="text-amber-500 uppercase tracking-[0.2em] text-xs font-medium" data-magicpath-id="117" data-magicpath-path="MultitenantHotel.tsx">Gallery</span>
               <h2 className="text-3xl font-serif mt-3 text-white" data-magicpath-id="118" data-magicpath-path="MultitenantHotel.tsx">Explore Our Spaces</h2>
             </SortableContainer>
             
-            <SortableContainer dndKitId="3e779268-7d2c-4ef7-b62f-8f53b0e6b1cd" containerType="collection" prevTag="div" className="grid grid-cols-2 md:grid-cols-3" data-magicpath-id="119" data-magicpath-path="MultitenantHotel.tsx">
+            <SortableContainer dndKitId="6822a1b0-d901-474e-b019-e3971239d900" containerType="collection" prevTag="div" className="grid grid-cols-2 md:grid-cols-3" data-magicpath-id="119" data-magicpath-path="MultitenantHotel.tsx">
               {gallery.map(item => <div key={item.id} className="relative aspect-square group overflow-hidden cursor-pointer" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-id="120" data-magicpath-path="MultitenantHotel.tsx">
                   <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="imageUrl:unknown" data-magicpath-id="121" data-magicpath-path="MultitenantHotel.tsx" />
                   <div className="absolute inset-0 bg-amber-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-id="122" data-magicpath-path="MultitenantHotel.tsx">
@@ -482,9 +515,9 @@ const MultitenantHotelContent: React.FC = () => {
           </SortableContainer>}
 
         {/* Footer */}
-        <SortableContainer dndKitId="9638c8b4-a410-4e65-b65a-8f6d35696c15" containerType="regular" prevTag="footer" className="bg-zinc-900 border-t border-zinc-800 pt-20 pb-10 px-6 md:px-16" data-magicpath-id="126" data-magicpath-path="MultitenantHotel.tsx">
-          <SortableContainer dndKitId="e4bd1ebf-0be3-4485-99e4-1db22bdbb20b" containerType="regular" prevTag="div" className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16" data-magicpath-id="127" data-magicpath-path="MultitenantHotel.tsx">
-            <SortableContainer dndKitId="91e6d06e-461f-4877-8a48-1513a4ff1d60" containerType="regular" prevTag="div" data-magicpath-id="128" data-magicpath-path="MultitenantHotel.tsx">
+        <SortableContainer dndKitId="754c6610-600a-49cb-b492-5da30cfeefe8" containerType="regular" prevTag="footer" className="bg-zinc-900 border-t border-zinc-800 pt-20 pb-10 px-6 md:px-16" data-magicpath-id="126" data-magicpath-path="MultitenantHotel.tsx">
+          <SortableContainer dndKitId="2715ab88-0ab3-4001-9fbb-5d0b8fa63d15" containerType="regular" prevTag="div" className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16" data-magicpath-id="127" data-magicpath-path="MultitenantHotel.tsx">
+            <SortableContainer dndKitId="270cec45-da62-43d1-8f23-30ca2db2a78b" containerType="regular" prevTag="div" data-magicpath-id="128" data-magicpath-path="MultitenantHotel.tsx">
               <h2 className="text-3xl font-serif text-amber-500 mb-6" data-magicpath-id="129" data-magicpath-path="MultitenantHotel.tsx">PHOENIX IMPERIAL</h2>
               <p className="text-zinc-500 leading-relaxed mb-6" data-magicpath-id="130" data-magicpath-path="MultitenantHotel.tsx">
                 A sanctuary of sophistication across Nigeria. Experience the pinnacle of hospitality.
@@ -496,9 +529,9 @@ const MultitenantHotelContent: React.FC = () => {
               </div>
             </SortableContainer>
 
-            <SortableContainer dndKitId="9ee6e79b-aaab-47bf-874d-587b26e5a5d5" containerType="regular" prevTag="div" data-magicpath-id="134" data-magicpath-path="MultitenantHotel.tsx">
+            <SortableContainer dndKitId="6743dc28-36b8-496a-8668-319c7d413af3" containerType="regular" prevTag="div" data-magicpath-id="134" data-magicpath-path="MultitenantHotel.tsx">
               <h3 className="text-white font-serif text-xl mb-6" data-magicpath-id="135" data-magicpath-path="MultitenantHotel.tsx">Abuja Branch</h3>
-              <SortableContainer dndKitId="4cf34181-5184-4cd7-a9e1-13a3bc1d7561" containerType="regular" prevTag="ul" className="space-y-3 text-sm text-zinc-400" data-magicpath-id="136" data-magicpath-path="MultitenantHotel.tsx">
+              <SortableContainer dndKitId="b23f8b26-f6ce-4cd1-ab73-88511c6e641a" containerType="regular" prevTag="ul" className="space-y-3 text-sm text-zinc-400" data-magicpath-id="136" data-magicpath-path="MultitenantHotel.tsx">
                 <li className="flex items-start gap-2" data-magicpath-id="137" data-magicpath-path="MultitenantHotel.tsx">
                   <MapPin size={16} className="shrink-0 mt-0.5 text-zinc-500" data-magicpath-id="138" data-magicpath-path="MultitenantHotel.tsx" />
                   <span data-magicpath-id="139" data-magicpath-path="MultitenantHotel.tsx">CBD, Abuja, Nigeria</span>
@@ -514,9 +547,9 @@ const MultitenantHotelContent: React.FC = () => {
               </SortableContainer>
             </SortableContainer>
 
-            <SortableContainer dndKitId="9675463e-aba3-4ec0-b62e-30f3538bb479" containerType="regular" prevTag="div" data-magicpath-id="146" data-magicpath-path="MultitenantHotel.tsx">
+            <SortableContainer dndKitId="45ee23e3-3269-4e53-8a19-5dcc08306805" containerType="regular" prevTag="div" data-magicpath-id="146" data-magicpath-path="MultitenantHotel.tsx">
               <h3 className="text-white font-serif text-xl mb-6" data-magicpath-id="147" data-magicpath-path="MultitenantHotel.tsx">Lagos Branch</h3>
-              <SortableContainer dndKitId="cb498392-82fd-4515-8635-d2be0f9d29d1" containerType="regular" prevTag="ul" className="space-y-3 text-sm text-zinc-400" data-magicpath-id="148" data-magicpath-path="MultitenantHotel.tsx">
+              <SortableContainer dndKitId="40d43df2-94e6-48a5-a2a1-c9a9c8c64678" containerType="regular" prevTag="ul" className="space-y-3 text-sm text-zinc-400" data-magicpath-id="148" data-magicpath-path="MultitenantHotel.tsx">
                 <li className="flex items-start gap-2" data-magicpath-id="149" data-magicpath-path="MultitenantHotel.tsx">
                   <MapPin size={16} className="shrink-0 mt-0.5 text-zinc-500" data-magicpath-id="150" data-magicpath-path="MultitenantHotel.tsx" />
                   <span data-magicpath-id="151" data-magicpath-path="MultitenantHotel.tsx">Victoria Island, Lagos</span>
@@ -532,7 +565,7 @@ const MultitenantHotelContent: React.FC = () => {
               </SortableContainer>
             </SortableContainer>
 
-            <SortableContainer dndKitId="40ff6fc0-fb71-4188-899b-d183de106caa" containerType="regular" prevTag="div" data-magicpath-id="158" data-magicpath-path="MultitenantHotel.tsx">
+            <SortableContainer dndKitId="68120abb-77dd-49c6-82d6-aeca8a28fe5b" containerType="regular" prevTag="div" data-magicpath-id="158" data-magicpath-path="MultitenantHotel.tsx">
               <h3 className="text-white font-serif text-xl mb-6" data-magicpath-id="159" data-magicpath-path="MultitenantHotel.tsx">Quick Links</h3>
               <ul className="space-y-3" data-magicpath-id="160" data-magicpath-path="MultitenantHotel.tsx">
                 {["About Us", "Careers", "Privacy Policy", "Terms of Service"].map(link => <li key={link} data-magicpath-id="161" data-magicpath-path="MultitenantHotel.tsx">
@@ -545,7 +578,7 @@ const MultitenantHotelContent: React.FC = () => {
             </SortableContainer>
           </SortableContainer>
           
-          <SortableContainer dndKitId="48f939b4-8902-4ce1-a81f-5e72c4efc8e2" containerType="regular" prevTag="div" className="max-w-7xl mx-auto border-t border-zinc-800 pt-8 text-center text-xs text-zinc-600 uppercase tracking-wider" data-magicpath-id="164" data-magicpath-path="MultitenantHotel.tsx">
+          <SortableContainer dndKitId="70a89fe7-5c83-4d73-b5e5-2b0d9e6e37c3" containerType="regular" prevTag="div" className="max-w-7xl mx-auto border-t border-zinc-800 pt-8 text-center text-xs text-zinc-600 uppercase tracking-wider" data-magicpath-id="164" data-magicpath-path="MultitenantHotel.tsx">
             <p data-magicpath-id="165" data-magicpath-path="MultitenantHotel.tsx">© 2024 Phoenix Imperial Multi-Branch Hotels. All rights reserved.</p>
           </SortableContainer>
         </SortableContainer>
@@ -559,14 +592,17 @@ const MultitenantHotelContent: React.FC = () => {
       setRoomsPageOpen(false);
       setBookingModalOpen(true);
     }} data-magicpath-id="169" data-magicpath-path="MultitenantHotel.tsx" />
+      <ReservationPage isOpen={reservationPageOpen} onClose={() => setReservationPageOpen(false)} data-magicpath-id="170" data-magicpath-path="MultitenantHotel.tsx" />
+      <AboutPage isOpen={aboutPageOpen} onClose={() => setAboutPageOpen(false)} data-magicpath-id="171" data-magicpath-path="MultitenantHotel.tsx" />
+      <ContactPage isOpen={contactPageOpen} onClose={() => setContactPageOpen(false)} data-magicpath-id="172" data-magicpath-path="MultitenantHotel.tsx" />
     </SortableContainer>;
 };
 
 // Main Component with Providers
 export const MultitenantHotel: React.FC = () => {
-  return <AuthProvider data-magicpath-id="170" data-magicpath-path="MultitenantHotel.tsx">
-      <TenantProvider data-magicpath-id="171" data-magicpath-path="MultitenantHotel.tsx">
-        <MultitenantHotelContent data-magicpath-id="172" data-magicpath-path="MultitenantHotel.tsx" />
+  return <AuthProvider data-magicpath-id="173" data-magicpath-path="MultitenantHotel.tsx">
+      <TenantProvider data-magicpath-id="174" data-magicpath-path="MultitenantHotel.tsx">
+        <MultitenantHotelContent data-magicpath-id="175" data-magicpath-path="MultitenantHotel.tsx" />
       </TenantProvider>
     </AuthProvider>;
 };
