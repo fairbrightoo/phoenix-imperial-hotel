@@ -13,7 +13,7 @@ export const AuthProvider: React.FC<{
 
   // Load user from localStorage on mount
   useEffect(() => {
-    const storedUser = localStorage.getItem('almaris_user');
+    const storedUser = localStorage.getItem('phoenix_imperial_user');
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
       setUser(parsedUser);
@@ -23,16 +23,22 @@ export const AuthProvider: React.FC<{
   const login = async (email: string, password: string) => {
     // Mock authentication - in production, this would call your API
     const foundUser = MOCK_USERS.find(u => u.email === email);
-    if (foundUser) {
+    if (foundUser && password === 'password') {
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 500));
       setUser(foundUser);
       setIsAuthenticated(true);
-      localStorage.setItem('almaris_user', JSON.stringify(foundUser));
+      localStorage.setItem('phoenix_imperial_user', JSON.stringify(foundUser));
+
+      // Store login timestamp for session management
+      localStorage.setItem('phoenix_imperial_login_time', Date.now().toString());
     } else {
       throw new Error('Invalid credentials');
     }
   };
   const register = async (email: string, password: string, name: string) => {
     // Mock registration - in production, this would call your API
+    await new Promise(resolve => setTimeout(resolve, 500));
     const newUser: User = {
       id: `user-${Date.now()}`,
       email,
@@ -43,19 +49,40 @@ export const AuthProvider: React.FC<{
     };
     setUser(newUser);
     setIsAuthenticated(true);
-    localStorage.setItem('almaris_user', JSON.stringify(newUser));
+    localStorage.setItem('phoenix_imperial_user', JSON.stringify(newUser));
+    localStorage.setItem('phoenix_imperial_login_time', Date.now().toString());
+  };
+  const loginWithGoogle = async () => {
+    // Mock Google OAuth - in production, this would use Firebase Auth or similar
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    const googleUser: User = {
+      id: `google-user-${Date.now()}`,
+      email: 'google.user@example.com',
+      name: 'Google User',
+      phone: '',
+      createdAt: new Date().toISOString(),
+      role: 'customer'
+    };
+    setUser(googleUser);
+    setIsAuthenticated(true);
+    localStorage.setItem('phoenix_imperial_user', JSON.stringify(googleUser));
+    localStorage.setItem('phoenix_imperial_login_time', Date.now().toString());
   };
   const logout = () => {
     setUser(null);
     setIsAuthenticated(false);
-    localStorage.removeItem('almaris_user');
+    localStorage.removeItem('phoenix_imperial_user');
+    localStorage.removeItem('phoenix_imperial_login_time');
+    // Clear any branch-specific session data
+    localStorage.removeItem('phoenix_imperial_selected_branch');
   };
   return <AuthContext.Provider value={{
     user,
     isAuthenticated,
     login,
     logout,
-    register
+    register,
+    loginWithGoogle
   }} data-magicpath-id="0" data-magicpath-path="AuthContext.tsx">
       {children}
     </AuthContext.Provider>;

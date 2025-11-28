@@ -221,7 +221,7 @@ export const GALLERY_BY_BRANCH: Record<BranchId, Gallery[]> = {
 export const MOCK_USERS: User[] = [
   {
     id: 'user-1',
-    email: 'customer@example.com',
+    email: 'user@phoeniximperial.com',
     name: 'John Doe',
     phone: '+234 800 000 0000',
     createdAt: '2024-01-01',
@@ -229,8 +229,8 @@ export const MOCK_USERS: User[] = [
   },
   {
     id: 'admin-abuja',
-    email: 'admin.abuja@phoeniximperial.com',
-    name: 'Abuja Admin',
+    email: 'abuja.admin@phoeniximperial.com',
+    name: 'Abuja Branch Admin',
     phone: '+234 809 123 4567',
     createdAt: '2024-01-01',
     role: 'branch_admin',
@@ -238,8 +238,8 @@ export const MOCK_USERS: User[] = [
   },
   {
     id: 'admin-lagos',
-    email: 'admin.lagos@phoeniximperial.com',
-    name: 'Lagos Admin',
+    email: 'lagos.admin@phoeniximperial.com',
+    name: 'Lagos Branch Admin',
     phone: '+234 809 765 4321',
     createdAt: '2024-01-01',
     role: 'branch_admin',
@@ -248,7 +248,7 @@ export const MOCK_USERS: User[] = [
   {
     id: 'super-admin',
     email: 'superadmin@phoeniximperial.com',
-    name: 'Super Admin',
+    name: 'Super Administrator',
     phone: '+234 800 999 8888',
     createdAt: '2024-01-01',
     role: 'super_admin'

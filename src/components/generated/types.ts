@@ -118,6 +118,7 @@ export interface AuthContextType {
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
   register: (email: string, password: string, name: string) => Promise<void>;
+  loginWithGoogle: () => Promise<void>;
 }
 
 export interface TenantContextType {
@@ -125,4 +126,6 @@ export interface TenantContextType {
   branches: Branch[];
   selectBranch: (branchId: BranchId) => void;
   getBranchData: (branchId: BranchId) => Branch | undefined;
+  clearBranchSelection: () => void;
+  branchSessionTimestamp: number | null;
 }
