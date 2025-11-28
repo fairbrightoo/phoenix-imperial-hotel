@@ -38,7 +38,7 @@ export const AuthProvider: React.FC<{
       throw new Error('User not found. Please check your email.');
     }
 
-    // Check password - for demo purposes, all test accounts use 'password'
+    // Check password - for mock users, the password is always "password"
     if (password !== 'password') {
       throw new Error('Incorrect password. Please try again.');
     }
