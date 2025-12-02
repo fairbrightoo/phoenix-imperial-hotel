@@ -1,6 +1,6 @@
 // Multitenancy Type Definitions
 
-export type BranchId = 'abuja' | 'lagos';
+export type BranchId = string;
 
 export interface Branch {
   id: BranchId;
@@ -36,6 +36,8 @@ export interface Room {
   images: string[];
   available: boolean;
   rating?: number;
+  totalQuantity?: number;
+  category?: 'room' | 'hall';
 }
 
 export interface Booking {
@@ -51,6 +53,11 @@ export interface Booking {
   };
   totalPrice: number;
   status: 'pending' | 'confirmed' | 'cancelled' | 'completed';
+  paymentStatus: 'pending' | 'paid' | 'failed';
+  paymentReference?: string;
+  guestName?: string;
+  guestEmail?: string;
+  guestPhone?: string;
   createdAt: string;
   specialRequests?: string;
 }
@@ -112,13 +119,44 @@ export interface GlobalContent {
   };
 }
 
+export interface SystemSettings {
+  hotelName: string;
+  defaultCurrency: string;
+}
+
+export interface Permission {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+}
+
+export interface Role {
+  id: string;
+  name: string;
+  description: string;
+  permissions: string[];
+  isSystem?: boolean;
+}
+
 export interface AuthContextType {
   user: User | null;
+  users: User[];
+  roles: Role[];
+  permissions: Permission[];
   isAuthenticated: boolean;
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<User>;
   logout: () => void;
-  register: (email: string, password: string, name: string) => Promise<void>;
-  loginWithGoogle: () => Promise<void>;
+  register: (email: string, password: string, name: string) => Promise<User>;
+  loginWithGoogle: (credential: string) => Promise<User>;
+  addUser: (user: User) => void;
+  updateUser: (userId: string, data: Partial<User>) => void;
+  deleteUser: (userId: string) => void;
+  addRole: (role: Role) => void;
+  updateRole: (roleId: string, data: Partial<Role>) => void;
+  deleteRole: (roleId: string) => void;
+  forgotPassword: (email: string) => Promise<void>;
+  resetPassword: (token: string, email: string, password: string) => Promise<void>;
 }
 
 export interface TenantContextType {
@@ -128,4 +166,14 @@ export interface TenantContextType {
   getBranchData: (branchId: BranchId) => Branch | undefined;
   clearBranchSelection: () => void;
   branchSessionTimestamp: number | null;
+  updateBranch: (branchId: BranchId, data: Partial<Branch>) => void;
+  addBranch: (branch: Branch) => void;
+  getBranchTestimonials: (branchId: BranchId) => Testimonial[];
+  updateBranchTestimonials: (branchId: BranchId, data: Testimonial[]) => void;
+  getBranchGallery: (branchId: BranchId) => Gallery[];
+  updateBranchGallery: (branchId: BranchId, data: Gallery[]) => void;
+  globalContent: GlobalContent;
+  updateGlobalContent: (section: keyof GlobalContent, data: any) => void;
+  systemSettings: SystemSettings;
+  updateSystemSettings: (data: SystemSettings) => void;
 }

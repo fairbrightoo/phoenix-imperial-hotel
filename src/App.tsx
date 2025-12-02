@@ -1,6 +1,14 @@
 import { useMemo } from 'react';
 import { Container, Theme } from './settings/types';
+import { AdminRoute } from './components/generated/AdminRoute';
+import { ResetPasswordPage } from './components/generated/ResetPasswordPage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { MultitenantHotel } from './components/generated/MultitenantHotel';
+import { AuthProvider } from './components/generated/AuthContext';
+import { TenantProvider } from './components/generated/TenantContext';
+import { ThemeProvider } from './components/generated/ThemeContext';
+import { ModalProvider } from './components/generated/ModalContext';
+import { AlertProvider } from './components/ui/AlertContext';
 
 let theme: Theme = 'dark';
 // only use 'centered' container for standalone components, never for full page apps or websites.
@@ -17,19 +25,34 @@ function App() {
 
   setTheme(theme);
 
-  const generatedComponent = useMemo(() => {
-    // THIS IS WHERE THE TOP LEVEL GENRATED COMPONENT WILL BE RETURNED!
-    return <MultitenantHotel />;
-  }, []);
+  const content = (
+    <ThemeProvider>
+      <AlertProvider>
+        <AuthProvider>
+          <TenantProvider>
+            <ModalProvider>
+              <BrowserRouter>
+                <Routes>
+                  <Route path="/" element={<MultitenantHotel />} />
+                  <Route path="/admin/branch" element={<AdminRoute />} />
+                  <Route path="/reset-password" element={<ResetPasswordPage />} />
+                </Routes>
+              </BrowserRouter>
+            </ModalProvider>
+          </TenantProvider>
+        </AuthProvider>
+      </AlertProvider>
+    </ThemeProvider>
+  );
 
   if (container === 'centered') {
     return (
       <div className="h-full w-full flex flex-col items-center justify-center">
-        {generatedComponent}
+        {content}
       </div>
     );
   } else {
-    return generatedComponent;
+    return content;
   }
 }
 

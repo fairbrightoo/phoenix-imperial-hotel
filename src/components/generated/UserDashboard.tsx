@@ -21,14 +21,14 @@ export const UserDashboard: React.FC<UserDashboardProps> = ({
   // Render different dashboards based on user role
   if (user.role === 'super_admin') {
     return <AnimatePresence>
-        <motion.div initial={{
+      <motion.div initial={{
         opacity: 0
       }} animate={{
         opacity: 1
       }} exit={{
         opacity: 0
       }} onClick={onClose} className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50" />
-        <motion.div initial={{
+      <motion.div initial={{
         opacity: 0,
         scale: 0.95
       }} animate={{
@@ -38,20 +38,20 @@ export const UserDashboard: React.FC<UserDashboardProps> = ({
         opacity: 0,
         scale: 0.95
       }} className="fixed inset-4 md:inset-8 bg-zinc-900 rounded-lg shadow-2xl z-50 overflow-hidden border border-zinc-800">
-          <SuperAdminDashboard onClose={onClose} />
-        </motion.div>
-      </AnimatePresence>;
+        <SuperAdminDashboard onClose={onClose} />
+      </motion.div>
+    </AnimatePresence>;
   }
   if (user.role === 'branch_admin') {
     return <AnimatePresence>
-        <motion.div initial={{
+      <motion.div initial={{
         opacity: 0
       }} animate={{
         opacity: 1
       }} exit={{
         opacity: 0
       }} onClick={onClose} className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50" />
-        <motion.div initial={{
+      <motion.div initial={{
         opacity: 0,
         scale: 0.95
       }} animate={{
@@ -61,21 +61,21 @@ export const UserDashboard: React.FC<UserDashboardProps> = ({
         opacity: 0,
         scale: 0.95
       }} className="fixed inset-4 md:inset-8 bg-zinc-900 rounded-lg shadow-2xl z-50 overflow-hidden border border-zinc-800">
-          <BranchAdminDashboard onClose={onClose} />
-        </motion.div>
-      </AnimatePresence>;
+        <BranchAdminDashboard branchId={user.branchId!} onClose={onClose} />
+      </motion.div>
+    </AnimatePresence>;
   }
 
   // Customer dashboard
   return <AnimatePresence>
-      <motion.div initial={{
+    <motion.div initial={{
       opacity: 0
     }} animate={{
       opacity: 1
     }} exit={{
       opacity: 0
     }} onClick={onClose} className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50" />
-      <motion.div initial={{
+    <motion.div initial={{
       opacity: 0,
       scale: 0.9,
       y: 20
@@ -88,7 +88,7 @@ export const UserDashboard: React.FC<UserDashboardProps> = ({
       scale: 0.9,
       y: 20
     }} className="fixed inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-4xl md:max-h-[90vh] bg-zinc-900 rounded-lg shadow-2xl z-50 overflow-hidden border border-zinc-800">
-        <CustomerDashboard onClose={onClose} />
-      </motion.div>
-    </AnimatePresence>;
+      <CustomerDashboard onClose={onClose} />
+    </motion.div>
+  </AnimatePresence>;
 };

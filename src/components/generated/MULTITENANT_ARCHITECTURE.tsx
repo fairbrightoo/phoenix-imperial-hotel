@@ -1,5 +1,5 @@
 /**
- * ALMARIS MULTITENANT HOTEL BOOKING SYSTEM
+ * PHOENIX IMPERIAL MULTITENANT HOTEL BOOKING SYSTEM
  * =========================================
  * 
  * This is a comprehensive multitenant hotel management platform designed to handle
@@ -133,9 +133,9 @@
  * 
  * **Demo Accounts:**
  * - customer@example.com (Customer role)
- * - admin.abuja@almaris.com (Abuja Branch Admin)
- * - admin.lagos@almaris.com (Lagos Branch Admin)
- * - superadmin@almaris.com (Super Admin)
+ * - admin.abuja@phoeniximperial.com (Abuja Branch Admin)
+ * - admin.lagos@phoeniximperial.com (Lagos Branch Admin)
+ * - superadmin@phoeniximperial.com (Super Admin)
  * 
  * 
  * ### 6. SCALABILITY - ADDING NEW BRANCHES
@@ -151,11 +151,11 @@
  * ```typescript
  * BRANCHES.push({
  *   id: 'portharcourt',
- *   name: 'Almaris Port Harcourt',
+ *   name: 'Phoenix Imperial Port Harcourt',
  *   city: 'Port Harcourt',
  *   address: '...',
  *   phone: '...',
- *   email: 'portharcourt@almaris.com',
+ *   email: 'portharcourt@phoeniximperial.com',
  *   timezone: 'Africa/Lagos',
  *   currency: 'NGN'
  * });
@@ -316,4 +316,4 @@
  * data isolation and role-based access control.
  */
 
-export {};
+export { };

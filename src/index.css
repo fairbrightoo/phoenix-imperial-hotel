@@ -59,80 +59,117 @@ body {
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(0.2178 0.0000 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  /* Luxury Dark Theme */
+  --background: oklch(0.20 0.01 300);
+  /* #211F20 - Dark Charcoal */
+  --background-gradient: linear-gradient(135deg, #211F20 0%, #1a191a 100%);
+
+  --foreground: oklch(0.96 0.02 85);
+  /* #FDF4E3 - Cream */
+
+  --card: oklch(0.20 0.01 300);
+  /* #211F20 */
+  --card-foreground: oklch(0.96 0.02 85);
+  /* #FDF4E3 */
+
+  --popover: oklch(0.20 0.01 300);
+  /* #211F20 */
+  --popover-foreground: oklch(0.96 0.02 85);
+  /* #FDF4E3 */
+
+  --primary: oklch(0.68 0.18 45);
+  /* #ED883D - Orange */
+  --primary-foreground: oklch(0.98 0 0);
+  /* White for contrast on primary */
+
+  --secondary: oklch(0.75 0.12 55);
+  /* #E9A670 - Light Orange */
+  --secondary-foreground: oklch(0.20 0.01 300);
+  /* Dark text on secondary */
+
+  --muted: oklch(0.25 0.01 300);
+  /* Slightly lighter charcoal */
+  --muted-foreground: oklch(0.70 0.02 85);
+  /* Dimmed cream */
+
+  --accent: oklch(0.25 0.01 300);
+  --accent-foreground: oklch(0.68 0.18 45);
+  /* Orange accent text */
+
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+
+  --border: oklch(0.68 0.18 45 / 0.2);
+  /* Low opacity orange border */
+  --input: oklch(0.25 0.01 300);
+  --ring: oklch(0.68 0.18 45);
+  /* Orange ring */
+
+  --chart-1: oklch(0.68 0.18 45);
+  --chart-2: oklch(0.75 0.12 55);
+  --chart-3: oklch(0.96 0.02 85);
+  --chart-4: oklch(0.60 0.15 45);
+  --chart-5: oklch(0.50 0.10 45);
+
+  --sidebar: #27272A;
+  /* User requested darker grey */
+  --sidebar-foreground: #FEFCF9;
+  /* User requested white shade */
+  --sidebar-primary: oklch(0.68 0.18 45);
+  /* #ED883D */
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.25 0.01 300);
+  --sidebar-accent-foreground: oklch(0.68 0.18 45);
+  --sidebar-border: oklch(0.68 0.18 45 / 0.1);
+  --sidebar-ring: oklch(0.68 0.18 45);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  /* Inherit from root since we are enforcing dark mode globally */
+  --background: var(--background);
+  --background-gradient: var(--background-gradient);
+  --foreground: var(--foreground);
+  --card: var(--card);
+  --card-foreground: var(--card-foreground);
+  --popover: var(--popover);
+  --popover-foreground: var(--popover-foreground);
+  --primary: var(--primary);
+  --primary-foreground: var(--primary-foreground);
+  --secondary: var(--secondary);
+  --secondary-foreground: var(--secondary-foreground);
+  --muted: var(--muted);
+  --muted-foreground: var(--muted-foreground);
+  --accent: var(--accent);
+  --accent-foreground: var(--accent-foreground);
+  --destructive: var(--destructive);
+  --border: var(--border);
+  --input: var(--input);
+  --ring: var(--ring);
+  --chart-1: var(--chart-1);
+  --chart-2: var(--chart-2);
+  --chart-3: var(--chart-3);
+  --chart-4: var(--chart-4);
+  --chart-5: var(--chart-5);
+  --sidebar-foreground: var(--sidebar-foreground);
+  --sidebar-primary: var(--sidebar-primary);
+  --sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --sidebar-accent: var(--sidebar-accent);
+  --sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --sidebar-border: var(--sidebar-border);
+  --sidebar-ring: var(--sidebar-ring);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+    background-image: var(--background-gradient);
+    background-attachment: fixed;
+    /* Ensures gradient covers full scroll */
   }
+
   html,
   body,
   #root {
@@ -164,7 +201,75 @@ img.broken-image-fallback {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
+  }
+}
+
+@media print {
+
+  /* Hide the main app container */
+  #root {
+    display: none !important;
+  }
+
+  /* Reset body and html for printing */
+  html,
+  body {
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+  }
+
+  /* Hide the modal backdrop */
+  .modal-backdrop {
+    display: none !important;
+  }
+
+  /* Make the receipt visible and static */
+  .dedicated-print-view {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+    background: white !important;
+    color: black !important;
+    overflow: visible !important;
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  /* Ensure inner content flows naturally */
+  .receipt-content {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* Adjust colors for print readability */
+  .printable-receipt .text-white,
+  .printable-receipt .text-zinc-200,
+  .printable-receipt .text-zinc-300,
+  .printable-receipt .text-zinc-400,
+  .printable-receipt .text-zinc-500 {
+    color: black !important;
+  }
+
+  .printable-receipt .bg-zinc-900,
+  .printable-receipt .bg-zinc-950,
+  .printable-receipt .bg-zinc-800,
+  .printable-receipt .bg-zinc-800\/50,
+  .printable-receipt .bg-zinc-800\/30 {
+    background: white !important;
+    border: 1px solid #ddd !important;
+  }
+
+  .no-print {
+    display: none !important;
   }
 }

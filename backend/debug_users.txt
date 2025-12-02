@@ -1,0 +1,9 @@
+Database connected.
+Found 7 users.
+ID: 5e62db43-6bef-4a76-a47c-369d4d99aa9d, Name: null, Email: lagos@phoeniximperial.com, Role: customer, BranchID: null
+ID: 5f8d52fe-08a7-40b1-bdbb-2e2651e7c511, Name: Linus Okeke, Email: linus@gmail.com, Role: customer, BranchID: null
+ID: 93b040cc-fcf7-4233-be2b-4f7aa89a5664, Name: Test User, Email: testuser_1764421663580@example.com, Role: customer, BranchID: null
+ID: admin-abuja, Name: null, Email: abuja.admin@phoeniximperial.com, Role: branch_admin, BranchID: abuja
+ID: admin-lagos, Name: Lagos Manager, Email: lagos.admin@phoeniximperial.com, Role: branch_admin, BranchID: lagos
+ID: super-admin, Name: null, Email: superadmin@phoeniximperial.com, Role: super_admin, BranchID: null
+ID: user-1, Name: null, Email: user@phoeniximperial.com, Role: customer, BranchID: null
