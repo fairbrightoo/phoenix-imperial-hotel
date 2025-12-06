@@ -44,7 +44,7 @@ export const RoomFormModal: React.FC<RoomFormModalProps> = ({
         setValue,
         formState: { errors, isSubmitting },
     } = useForm<RoomFormData>({
-        resolver: zodResolver(roomSchema),
+        resolver: zodResolver(roomSchema) as any,
         defaultValues: {
             name: '',
             type: '',

@@ -267,6 +267,7 @@ export const MOCK_BOOKINGS: Booking[] = [
     guests: { adults: 2, children: 0 },
     totalPrice: 135000,
     status: 'confirmed',
+    paymentStatus: 'paid',
     createdAt: '2024-01-20'
   },
   {
@@ -279,6 +280,7 @@ export const MOCK_BOOKINGS: Booking[] = [
     guests: { adults: 2, children: 1 },
     totalPrice: 110000,
     status: 'confirmed',
+    paymentStatus: 'paid',
     createdAt: '2024-01-25'
   }
 ];
