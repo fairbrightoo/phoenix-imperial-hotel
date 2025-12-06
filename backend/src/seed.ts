@@ -8,9 +8,21 @@ import bcrypt from 'bcryptjs';
 export const seedDatabase = async () => {
     try {
         // Disable foreign key checks to allow dropping tables
-        await sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+        const isPostgres = sequelize.getDialect() === 'postgres';
+        if (isPostgres) {
+            await sequelize.query("SET session_replication_role = 'replica';");
+        } else {
+            await sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+        }
+
         await sequelize.sync({ force: true }); // Reset database
-        await sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
+
+        if (isPostgres) {
+            await sequelize.query("SET session_replication_role = 'origin';");
+        } else {
+            await sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
+        }
+
         console.log('Database synced');
 
         // Seed Branches
