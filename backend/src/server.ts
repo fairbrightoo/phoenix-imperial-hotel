@@ -15,11 +15,16 @@ import bookingRoutes from './routes/bookingRoutes';
 import userRoutes from './routes/userRoutes';
 
 // Middleware
-app.use(helmet());
+app.use(helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" }
+}));
 app.use(cors());
 app.use(express.json());
+app.use('/uploads', express.static('uploads'));
 
 
+
+import uploadRoutes from './routes/uploadRoutes';
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -27,6 +32,7 @@ app.use('/api/branches', branchRoutes);
 app.use('/api/rooms', roomRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/upload', uploadRoutes);
 
 // Start Server
 import sequelize from './config/database';

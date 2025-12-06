@@ -8,7 +8,7 @@ import { useAuth } from '../generated/AuthContext';
 import { useAlert } from '../ui/AlertContext';
 import { useModal } from './ModalContext';
 import { BranchId } from './types';
-import { BRANCHES } from './mockData';
+
 import { usePaystackPayment } from 'react-paystack';
 
 interface BookingModalProps {
@@ -92,7 +92,9 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           type: r.type,
           price: Number(r.price),
           description: r.description,
-          images: parseJSON(r.images),
+          images: parseJSON(r.images).map((img: string) =>
+            img.startsWith('/') ? `http://${window.location.hostname}:5000${img}` : img
+          ),
           amenities: parseJSON(r.amenities),
           available: r.available_quantity > 0,
           availableQuantity: r.available_quantity,
@@ -373,12 +375,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                         value={formData.checkIn}
                         min={new Date().toISOString().split('T')[0]}
                         style={{ colorScheme: 'dark' }}
-                        onChange={e => setFormData({
-                          ...formData,
-                          checkIn: e.target.value,
-                          // Reset check-out if it becomes invalid (before new check-in)
-                          checkOut: formData.checkOut && e.target.value > formData.checkOut ? '' : formData.checkOut
-                        })}
+                        onChange={e => {
+                          const newCheckIn = e.target.value;
+                          let newCheckOut = formData.checkOut;
+
+                          // If check-out is selected and is not after new check-in, reset it
+                          if (newCheckOut && newCheckOut <= newCheckIn) {
+                            newCheckOut = '';
+                          }
+
+                          setFormData({
+                            ...formData,
+                            checkIn: newCheckIn,
+                            checkOut: newCheckOut
+                          });
+                        }}
                         className="w-full bg-zinc-900 border border-zinc-700 text-zinc-200 pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:border-amber-500 transition-colors rounded"
                       />
                     </div>
@@ -391,7 +402,11 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       <input
                         type="date"
                         value={formData.checkOut}
-                        min={formData.checkIn || new Date().toISOString().split('T')[0]}
+                        min={formData.checkIn ? (() => {
+                          const date = new Date(formData.checkIn);
+                          date.setDate(date.getDate() + 1);
+                          return date.toISOString().split('T')[0];
+                        })() : new Date().toISOString().split('T')[0]}
                         style={{ colorScheme: 'dark' }}
                         onChange={e => setFormData({
                           ...formData,

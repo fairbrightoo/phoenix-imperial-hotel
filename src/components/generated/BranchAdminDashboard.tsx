@@ -5,7 +5,7 @@ import { useAlert } from '../ui/AlertContext';
 import { Home, Hotel, Calendar, Users, MessageSquare, Image, BarChart3, Settings, Star, DollarSign, TrendingUp, Clock, CheckCircle, XCircle, AlertCircle, Plus, Edit, Trash2 } from 'lucide-react';
 import { useAuth } from './AuthContext';
 import { useTenant } from './TenantContext';
-import { ROOMS_BY_BRANCH, MOCK_BOOKINGS, TESTIMONIALS_BY_BRANCH, GALLERY_BY_BRANCH } from './mockData';
+
 import { BranchId } from './types';
 import { RoomFormModal, RoomFormData } from './RoomFormModal';
 import { BookingDetailsModal } from './BookingDetailsModal';
@@ -539,40 +539,46 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {localRooms.filter(r => r.category === activeCategory).map(room => <div key={room.id} className="bg-zinc-800 rounded-lg border border-zinc-700 overflow-hidden">
-              <img src={room.images[0]} alt={room.name} className="w-full h-48 object-cover" />
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="text-xl font-serif text-white mb-1">{room.name}</h3>
-                    <p className="text-sm text-zinc-400 capitalize">{room.type} • {room.totalQuantity} Units</p>
+            {localRooms.filter(r => r.category === activeCategory).map(room => {
+              const imageUrl = room.images[0]?.startsWith('/')
+                ? `http://${window.location.hostname}:5000${room.images[0]}`
+                : room.images[0];
+
+              return <div key={room.id} className="bg-zinc-800 rounded-lg border border-zinc-700 overflow-hidden">
+                <img src={imageUrl} alt={room.name} className="w-full h-48 object-cover" />
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="text-xl font-serif text-white mb-1">{room.name}</h3>
+                      <p className="text-sm text-zinc-400 capitalize">{room.type} • {room.totalQuantity} Units</p>
+                    </div>
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${room.available ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
+                      {room.available ? 'Available' : 'Booked'}
+                    </span>
                   </div>
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${room.available ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
-                    {room.available ? 'Available' : 'Booked'}
-                  </span>
-                </div>
-                <p className="text-zinc-400 text-sm mb-4 line-clamp-2">{room.description}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-serif text-amber-500">₦{room.price.toLocaleString()}</span>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => handleEditRoom(room)}
-                      className="p-2 bg-zinc-700 hover:bg-zinc-600 rounded transition-colors text-zinc-300 hover:text-white"
-                      title="Edit"
-                    >
-                      <Edit size={16} />
-                    </button>
-                    <button
-                      onClick={() => handleDeleteRoom(room.id)}
-                      className="p-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded transition-colors"
-                      title="Delete"
-                    >
-                      <Trash2 size={16} />
-                    </button>
+                  <p className="text-zinc-400 text-sm mb-4 line-clamp-2">{room.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-2xl font-serif text-amber-500">₦{room.price.toLocaleString()}</span>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => handleEditRoom(room)}
+                        className="p-2 bg-zinc-700 hover:bg-zinc-600 rounded transition-colors text-zinc-300 hover:text-white"
+                        title="Edit"
+                      >
+                        <Edit size={16} />
+                      </button>
+                      <button
+                        onClick={() => handleDeleteRoom(room.id)}
+                        className="p-2 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded transition-colors"
+                        title="Delete"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>)}
+              </div>;
+            })}
           </div>
 
           <RoomFormModal
@@ -763,27 +769,33 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {gallery.map(item => <div key={item.id} className="relative group aspect-square rounded-lg overflow-hidden">
-              <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
-                <button
-                  onClick={() => handleEditImage(item)}
-                  className="p-2 bg-white/20 hover:bg-white/30 rounded transition-colors"
-                >
-                  <Edit size={18} />
-                </button>
-                <button
-                  onClick={() => handleDeleteImage(item.id)}
-                  className="p-2 bg-red-500/50 hover:bg-red-500/70 rounded transition-colors"
-                >
-                  <Trash2 size={18} />
-                </button>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                <p className="text-white font-medium text-sm truncate">{item.title}</p>
-                <p className="text-zinc-400 text-xs">{item.category}</p>
-              </div>
-            </div>)}
+            {gallery.map(item => {
+              const imageUrl = item.imageUrl?.startsWith('/')
+                ? `http://${window.location.hostname}:5000${item.imageUrl}`
+                : item.imageUrl;
+
+              return <div key={item.id} className="relative group aspect-square rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800">
+                <img src={imageUrl} alt={item.title} className="w-full h-full object-contain p-1" />
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                  <button
+                    onClick={() => handleEditImage(item)}
+                    className="p-2 bg-white/20 hover:bg-white/30 rounded transition-colors"
+                  >
+                    <Edit size={18} />
+                  </button>
+                  <button
+                    onClick={() => handleDeleteImage(item.id)}
+                    className="p-2 bg-red-500/50 hover:bg-red-500/70 rounded transition-colors"
+                  >
+                    <Trash2 size={18} />
+                  </button>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                  <p className="text-white font-medium text-sm truncate">{item.title}</p>
+                  <p className="text-zinc-400 text-xs">{item.category}</p>
+                </div>
+              </div>;
+            })}
           </div>
 
           <GalleryFormModal

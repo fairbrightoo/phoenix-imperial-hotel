@@ -11,6 +11,9 @@ const userSchema = z.object({
     email: z.string().email('Invalid email address'),
     role: z.enum(['super_admin', 'branch_admin', 'customer']),
     branchId: z.string().optional(),
+    password: z.string().min(6, 'Password must be at least 6 characters').optional(),
+    confirmPassword: z.string().optional(),
+    status: z.enum(['active', 'inactive']).optional(),
 }).refine((data) => {
     if (data.role === 'branch_admin' && !data.branchId) {
         return false;
@@ -19,6 +22,14 @@ const userSchema = z.object({
 }, {
     message: "Branch is required for Branch Admins",
     path: ["branchId"],
+}).refine((data) => {
+    if (data.password && data.password !== data.confirmPassword) {
+        return false;
+    }
+    return true;
+}, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
 });
 
 export type UserFormData = z.infer<typeof userSchema>;
@@ -46,12 +57,18 @@ export const UserFormModal: React.FC<UserFormModalProps> = ({
             name: initialData.name,
             email: initialData.email,
             role: initialData.role,
-            branchId: initialData.branchId || ''
+            branchId: initialData.branchId || '',
+            status: initialData.status || 'active',
+            password: '',
+            confirmPassword: ''
         } : {
             name: '',
             email: '',
             role: 'branch_admin',
-            branchId: ''
+            branchId: '',
+            status: 'active',
+            password: '',
+            confirmPassword: ''
         }
     });
 
@@ -64,14 +81,20 @@ export const UserFormModal: React.FC<UserFormModalProps> = ({
                     name: initialData.name,
                     email: initialData.email,
                     role: initialData.role,
-                    branchId: initialData.branchId || ''
+                    branchId: initialData.branchId || '',
+                    status: initialData.status || 'active',
+                    password: '',
+                    confirmPassword: ''
                 });
             } else {
                 reset({
                     name: '',
                     email: '',
                     role: 'branch_admin',
-                    branchId: ''
+                    branchId: '',
+                    status: 'active',
+                    password: '',
+                    confirmPassword: ''
                 });
             }
         }
@@ -159,6 +182,51 @@ export const UserFormModal: React.FC<UserFormModalProps> = ({
                                     ))}
                                 </select>
                                 {errors.branchId && <p className="text-red-400 text-xs">{errors.branchId.message}</p>}
+                            </div>
+                        )}
+
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                                <label className="text-xs uppercase tracking-wider text-zinc-400 font-medium flex items-center gap-2">
+                                    <Shield size={14} />
+                                    Password {initialData && '(Leave blank to keep)'}
+                                </label>
+                                <input
+                                    type="password"
+                                    {...register('password')}
+                                    className="w-full bg-zinc-800 border border-zinc-700 rounded px-4 py-2 text-white focus:outline-none focus:border-amber-500 transition-colors"
+                                    placeholder={initialData ? "********" : "Enter password"}
+                                />
+                                {errors.password && <p className="text-red-400 text-xs">{errors.password.message}</p>}
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-xs uppercase tracking-wider text-zinc-400 font-medium flex items-center gap-2">
+                                    <Shield size={14} />
+                                    Confirm Password
+                                </label>
+                                <input
+                                    type="password"
+                                    {...register('confirmPassword')}
+                                    className="w-full bg-zinc-800 border border-zinc-700 rounded px-4 py-2 text-white focus:outline-none focus:border-amber-500 transition-colors"
+                                    placeholder={initialData ? "********" : "Confirm password"}
+                                />
+                                {errors.confirmPassword && <p className="text-red-400 text-xs">{errors.confirmPassword.message}</p>}
+                            </div>
+                        </div>
+
+                        {initialData && (
+                            <div className="space-y-2">
+                                <label className="text-xs uppercase tracking-wider text-zinc-400 font-medium flex items-center gap-2">
+                                    <Shield size={14} />
+                                    Status
+                                </label>
+                                <select
+                                    {...register('status')}
+                                    className="w-full bg-zinc-800 border border-zinc-700 rounded px-4 py-2 text-white focus:outline-none focus:border-amber-500 transition-colors"
+                                >
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
                             </div>
                         )}
 

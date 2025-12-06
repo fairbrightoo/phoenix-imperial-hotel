@@ -13,7 +13,7 @@ import { RoomsPage } from './RoomsPage';
 import { ReservationPage } from './ReservationPage';
 import { AboutPage } from './AboutPage';
 import { ContactPage } from './ContactPage';
-import { ROOMS_BY_BRANCH, TESTIMONIALS_BY_BRANCH, GALLERY_BY_BRANCH } from './mockData';
+import { TESTIMONIALS_BY_BRANCH, GALLERY_BY_BRANCH } from './mockData';
 
 // --- Hero Slides Data ---
 const HERO_SLIDES = [{
@@ -382,7 +382,7 @@ const MultitenantHotelContent: React.FC = () => {
   }, [isAuthenticated]);
 
   // Get content (branch-specific or aggregated)
-  const rooms = currentBranch ? ROOMS_BY_BRANCH[currentBranch] : [];
+
 
   // Aggregate testimonials if no branch selected, otherwise get branch specific
   const testimonials = currentBranch
@@ -504,15 +504,21 @@ const MultitenantHotelContent: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {gallery.map(item => <motion.div key={item.id} whileHover={{
-              y: -10
-            }} className="group relative aspect-[4/3] overflow-hidden rounded-lg shadow-md">
-              <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-6 text-center">
-                <h3 className="text-xl font-serif mb-2">{item.title}</h3>
-                <p className="text-sm text-amber-400 uppercase tracking-wider">{item.category}</p>
-              </div>
-            </motion.div>)}
+            {gallery.map(item => {
+              const imageUrl = item.imageUrl?.startsWith('/')
+                ? `http://${window.location.hostname}:5000${item.imageUrl}`
+                : item.imageUrl;
+
+              return <motion.div key={item.id} whileHover={{
+                y: -10
+              }} className="group relative aspect-[4/3] overflow-hidden rounded-lg shadow-md">
+                <img src={imageUrl} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-6 text-center">
+                  <h3 className="text-xl font-serif mb-2">{item.title}</h3>
+                  <p className="text-sm text-amber-400 uppercase tracking-wider">{item.category}</p>
+                </div>
+              </motion.div>
+            })}
           </div>
         </div>
       </section>}

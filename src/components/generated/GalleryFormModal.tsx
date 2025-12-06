@@ -5,6 +5,9 @@ import { z } from 'zod';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Image, Type, Tag } from 'lucide-react';
 import { Gallery } from './types';
+import { ImageUpload } from '../ui/ImageUpload';
+import api from '../../services/api';
+import { useState } from 'react';
 
 const gallerySchema = z.object({
     imageUrl: z.string().url('Must be a valid URL'),
@@ -33,6 +36,7 @@ export const GalleryFormModal: React.FC<GalleryFormModalProps> = ({
         register,
         handleSubmit,
         reset,
+        setValue, // Add setValue
         formState: { errors, isSubmitting },
     } = useForm<GalleryFormData>({
         resolver: zodResolver(gallerySchema) as any,
@@ -42,6 +46,34 @@ export const GalleryFormModal: React.FC<GalleryFormModalProps> = ({
             category: 'Rooms',
         },
     });
+
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+    const handleFormSubmit = async (data: GalleryFormData) => {
+        try {
+            let finalImageUrl = data.imageUrl;
+
+            if (selectedFile) {
+                const formData = new FormData();
+                formData.append('image', selectedFile);
+
+                const uploadResponse = await api.post('/upload', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+
+                finalImageUrl = uploadResponse.data.url;
+            }
+
+            onSubmit({
+                ...data,
+                imageUrl: finalImageUrl
+            });
+        } catch (error) {
+            console.error('Upload failed:', error);
+        }
+    };
 
     useEffect(() => {
         if (isOpen) {
@@ -87,17 +119,24 @@ export const GalleryFormModal: React.FC<GalleryFormModalProps> = ({
                         </button>
                     </div>
 
-                    <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-6">
+                    <form onSubmit={handleSubmit(handleFormSubmit)} className="p-6 space-y-6">
                         {/* Image URL */}
                         <div>
-                            <label className="block text-sm text-zinc-400 mb-1 flex items-center gap-2">
-                                <Image size={16} /> Image URL
-                            </label>
-                            <input
-                                {...register('imageUrl')}
-                                className="w-full bg-zinc-800 border border-zinc-700 text-white rounded px-3 py-2 focus:outline-none focus:border-amber-500"
-                                placeholder="https://example.com/image.jpg"
+                            <ImageUpload
+                                label="Gallery Image"
+                                defaultUrl={initialData?.imageUrl}
+                                onFileSelect={(file) => {
+                                    setSelectedFile(file);
+                                    if (file) {
+                                        // Set a valid URL placeholder to satisfy Zod validation
+                                        setValue('imageUrl', 'http://pending-upload.com', { shouldValidate: true });
+                                    }
+                                }}
+                                onUrlChange={(url) => {
+                                    setValue('imageUrl', url, { shouldValidate: true });
+                                }}
                             />
+                            <input type="hidden" {...register('imageUrl')} />
                             {errors.imageUrl && <p className="text-red-400 text-xs mt-1">{errors.imageUrl.message}</p>}
                         </div>
 

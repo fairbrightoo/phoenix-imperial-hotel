@@ -11,6 +11,8 @@ export interface Branch {
   email: string;
   timezone: string;
   currency: string;
+  status?: 'active' | 'inactive';
+  images?: string[];
 }
 
 export interface User {
@@ -21,6 +23,7 @@ export interface User {
   createdAt: string;
   role: 'customer' | 'branch_admin' | 'super_admin';
   branchId?: BranchId; // Only for branch_admin
+  status?: 'active' | 'inactive';
 }
 
 export interface Room {
@@ -161,7 +164,8 @@ export interface AuthContextType {
 
 export interface TenantContextType {
   currentBranch: BranchId | null;
-  branches: Branch[];
+  branches: Branch[]; // Filtered (Active only)
+  allBranches: Branch[]; // All branches (including inactive)
   selectBranch: (branchId: BranchId) => void;
   getBranchData: (branchId: BranchId) => Branch | undefined;
   clearBranchSelection: () => void;

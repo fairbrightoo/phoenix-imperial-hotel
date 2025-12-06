@@ -4,13 +4,17 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { X, Upload, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ImageUpload } from '../ui/ImageUpload';
+import api from '../../services/api';
+import { useState } from 'react';
+import { useAlert } from '../ui/AlertContext';
 
 const roomSchema = z.object({
     name: z.string().min(1, 'Room name is required'),
     type: z.string().min(1, 'Room type is required'),
     description: z.string().min(1, 'Description is required'),
     price: z.coerce.number().min(0, 'Price must be positive'),
-    imageUrl: z.string().url('Must be a valid URL'),
+    imageUrl: z.string().min(1, 'Image is required'),
     status: z.enum(['Available', 'Booked', 'Maintenance']),
     totalQuantity: z.coerce.number().min(1, 'Quantity must be at least 1'),
 });
@@ -37,9 +41,10 @@ export const RoomFormModal: React.FC<RoomFormModalProps> = ({
         register,
         handleSubmit,
         reset,
+        setValue,
         formState: { errors, isSubmitting },
     } = useForm<RoomFormData>({
-        resolver: zodResolver(roomSchema) as any,
+        resolver: zodResolver(roomSchema),
         defaultValues: {
             name: '',
             type: '',
@@ -50,6 +55,37 @@ export const RoomFormModal: React.FC<RoomFormModalProps> = ({
             totalQuantity: 1,
         },
     });
+
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const { showAlert } = useAlert();
+
+    const handleFormSubmit = async (data: RoomFormData) => {
+        try {
+            let finalImageUrl = data.imageUrl;
+
+            if (selectedFile) {
+                const formData = new FormData();
+                formData.append('image', selectedFile);
+
+                const uploadResponse = await api.post('/upload', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+
+                finalImageUrl = uploadResponse.data.url;
+            }
+
+            onSubmit({
+                ...data,
+                imageUrl: finalImageUrl
+            });
+        } catch (error: any) {
+            console.error('Upload failed:', error);
+            const errorMessage = error.response?.data?.message || error.message || 'Failed to upload image. Please try again.';
+            showAlert(errorMessage, 'error');
+        }
+    };
 
     useEffect(() => {
         if (isOpen && initialData) {
@@ -96,7 +132,7 @@ export const RoomFormModal: React.FC<RoomFormModalProps> = ({
                             </button>
                         </div>
 
-                        <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4">
+                        <form onSubmit={handleSubmit(handleFormSubmit)} className="p-6 space-y-4">
                             <div className="space-y-2">
                                 <label className="text-sm font-medium text-zinc-300">Room Name</label>
                                 <input
@@ -166,18 +202,27 @@ export const RoomFormModal: React.FC<RoomFormModalProps> = ({
                                 {errors.description && (
                                     <p className="text-red-400 text-xs">{errors.description.message}</p>
                                 )}
+                                {errors.imageUrl && (
+                                    <p className="text-red-400 text-xs">{errors.imageUrl.message}</p>
+                                )}
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-zinc-300">Image URL</label>
-                                <div className="relative">
-                                    <input
-                                        {...register('imageUrl')}
-                                        className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-amber-500 transition-colors pl-10"
-                                        placeholder="https://..."
-                                    />
-                                    <Upload size={16} className="absolute left-3 top-3 text-zinc-500" />
-                                </div>
+                                <ImageUpload
+                                    label="Room Image"
+                                    defaultUrl={initialData?.imageUrl}
+                                    onFileSelect={(file) => {
+                                        setSelectedFile(file);
+                                        if (file) {
+                                            setValue('imageUrl', 'pending-upload', { shouldValidate: true });
+                                        }
+                                        // Don't reset to initialData here, as it conflicts with URL input
+                                    }}
+                                    onUrlChange={(url) => {
+                                        setValue('imageUrl', url, { shouldValidate: true });
+                                    }}
+                                />
+                                <input type="hidden" {...register('imageUrl')} />
                                 {errors.imageUrl && (
                                     <p className="text-red-400 text-xs">{errors.imageUrl.message}</p>
                                 )}

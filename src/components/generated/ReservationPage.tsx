@@ -7,7 +7,7 @@ import { useTenant } from './TenantContext';
 import { useAuth } from './AuthContext';
 import { useModal } from './ModalContext';
 import { useAlert } from '../ui/AlertContext';
-import { BRANCHES } from './mockData';
+
 import { Room } from './types';
 
 interface ReservationPageProps {
@@ -469,7 +469,7 @@ export const ReservationPage: React.FC<ReservationPageProps> = ({
                 <div className="space-y-4">
                   <div>
                     <p className="text-xs text-zinc-500 uppercase">Branch</p>
-                    <p className="text-white">{BRANCHES.find(b => b.id === selectedBranch)?.name}</p>
+                    <p className="text-white">{branches.find(b => b.id === selectedBranch)?.name}</p>
                   </div>
                   <div>
                     <p className="text-xs text-zinc-500 uppercase">Room</p>

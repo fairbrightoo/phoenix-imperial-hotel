@@ -9,6 +9,7 @@ export class User extends Model {
     public password_hash!: string;
     public role!: 'customer' | 'branch_admin' | 'super_admin';
     public branch_id?: string;
+    public status!: 'active' | 'inactive';
     public readonly created_at!: Date;
     public readonly updated_at!: Date;
 }
@@ -47,6 +48,10 @@ User.init(
         branch_id: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        status: {
+            type: DataTypes.ENUM('active', 'inactive'),
+            defaultValue: 'active'
         }
     },
     {

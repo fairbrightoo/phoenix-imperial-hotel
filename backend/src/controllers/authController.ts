@@ -77,6 +77,12 @@ export const login = async (req: Request, res: Response): Promise<void> => {
         }
         console.log('User found:', user.email, 'Hash:', user.password_hash);
 
+        // Check if user is active
+        if (user.status === 'inactive') {
+            res.status(403).json({ message: 'Account is inactive. Please contact support.' });
+            return;
+        }
+
         // Check password
         const isMatch = await bcrypt.compare(password, user.password_hash);
         console.log('Password match:', isMatch);

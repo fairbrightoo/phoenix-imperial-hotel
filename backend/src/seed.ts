@@ -23,7 +23,8 @@ const seedDatabase = async () => {
                 phone: '+234 809 123 4567',
                 email: 'abuja@phoeniximperial.com',
                 timezone: 'Africa/Lagos',
-                currency: 'NGN'
+                currency: 'NGN',
+                status: 'active'
             },
             {
                 id: 'lagos',
@@ -33,7 +34,8 @@ const seedDatabase = async () => {
                 phone: '+234(0)9055551103',
                 email: 'lagos@phoeniximperial.com',
                 timezone: 'Africa/Lagos',
-                currency: 'NGN'
+                currency: 'NGN',
+                status: 'active'
             }
         ]);
         console.log('Branches seeded');

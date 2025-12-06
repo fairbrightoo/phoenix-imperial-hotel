@@ -10,6 +10,11 @@ export class Branch extends Model {
     public email!: string;
     public timezone!: string;
     public currency!: string;
+    public status!: 'active' | 'inactive';
+    public description!: string;
+    public amenities!: string[];
+    public images!: any[]; // Using any[] for now to support both string/json during transition
+    public policies!: any;
     public readonly created_at!: Date;
     public readonly updated_at!: Date;
 }
@@ -51,6 +56,26 @@ Branch.init(
         currency: {
             type: DataTypes.STRING,
             defaultValue: 'NGN'
+        },
+        status: {
+            type: DataTypes.ENUM('active', 'inactive'),
+            defaultValue: 'active'
+        },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: true
+        },
+        amenities: {
+            type: DataTypes.JSON,
+            allowNull: true
+        },
+        images: {
+            type: DataTypes.JSON,
+            allowNull: true
+        },
+        policies: {
+            type: DataTypes.JSON,
+            allowNull: true
         }
     },
     {

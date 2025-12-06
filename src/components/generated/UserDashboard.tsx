@@ -16,27 +16,27 @@ export const UserDashboard: React.FC<UserDashboardProps> = ({
   const {
     user
   } = useAuth();
+  console.log('UserDashboard Render:', user);
   if (!isOpen || !user) return null;
 
   // Render different dashboards based on user role
+  console.log('User Role:', user.role);
   if (user.role === 'super_admin') {
     return <AnimatePresence>
-      <motion.div initial={{
+      <motion.div key="super-admin-overlay" initial={{
         opacity: 0
       }} animate={{
         opacity: 1
       }} exit={{
         opacity: 0
       }} onClick={onClose} className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50" />
-      <motion.div initial={{
+      <motion.div key="super-admin-modal" initial={{
         opacity: 0,
         scale: 0.95
       }} animate={{
         opacity: 1,
         scale: 1
       }} exit={{
-        opacity: 0,
-        scale: 0.95
       }} className="fixed inset-4 md:inset-8 bg-zinc-900 rounded-lg shadow-2xl z-50 overflow-hidden border border-zinc-800">
         <SuperAdminDashboard onClose={onClose} />
       </motion.div>
@@ -44,14 +44,14 @@ export const UserDashboard: React.FC<UserDashboardProps> = ({
   }
   if (user.role === 'branch_admin') {
     return <AnimatePresence>
-      <motion.div initial={{
+      <motion.div key="branch-admin-overlay" initial={{
         opacity: 0
       }} animate={{
         opacity: 1
       }} exit={{
         opacity: 0
       }} onClick={onClose} className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50" />
-      <motion.div initial={{
+      <motion.div key="branch-admin-modal" initial={{
         opacity: 0,
         scale: 0.95
       }} animate={{
@@ -68,14 +68,14 @@ export const UserDashboard: React.FC<UserDashboardProps> = ({
 
   // Customer dashboard
   return <AnimatePresence>
-    <motion.div initial={{
+    <motion.div key="customer-overlay" initial={{
       opacity: 0
     }} animate={{
       opacity: 1
     }} exit={{
       opacity: 0
     }} onClick={onClose} className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50" />
-    <motion.div initial={{
+    <motion.div key="customer-modal" initial={{
       opacity: 0,
       scale: 0.9,
       y: 20

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { BranchId, Branch, TenantContextType, Testimonial, Gallery, GlobalContent, SystemSettings } from './types';
-import { BRANCHES, TESTIMONIALS_BY_BRANCH, GALLERY_BY_BRANCH } from './mockData';
+import { TESTIMONIALS_BY_BRANCH, GALLERY_BY_BRANCH } from './mockData';
 import api from '../../services/api';
 
 
@@ -66,23 +66,59 @@ export const TenantProvider: React.FC<{
 }) => {
     const [currentBranch, setCurrentBranch] = useState<BranchId | null>(null);
     const [branchSessionTimestamp, setBranchSessionTimestamp] = useState<number | null>(null);
-    const [branches, setBranches] = useState<Branch[]>(BRANCHES);
+    const [allBranches, setAllBranches] = useState<Branch[]>([]);
     const [testimonials, setTestimonials] = useState<Record<BranchId, Testimonial[]>>(TESTIMONIALS_BY_BRANCH);
     const [gallery, setGallery] = useState<Record<BranchId, Gallery[]>>(GALLERY_BY_BRANCH);
     const [globalContent, setGlobalContent] = useState<GlobalContent>(DEFAULT_GLOBAL_CONTENT);
     const [systemSettings, setSystemSettings] = useState<SystemSettings>(DEFAULT_SYSTEM_SETTINGS);
 
+    // Derived state for active branches
+    const branches = allBranches.filter(b => b.status !== 'inactive');
+
+    // Load branches from API
     // Load branches from API
     useEffect(() => {
       const fetchBranches = async () => {
         try {
           const response = await api.get('/branches');
-          // Only update if we got data, otherwise keep mock data for safety during dev
-          if (response.data && response.data.length > 0) {
-            setBranches(response.data);
+          console.log('Fetch Branches Response:', response);
+          if (response.data && Array.isArray(response.data)) {
+            if (response.data.length === 0) {
+              console.warn('API returned 0 branches');
+              // Mock data fallback if needed?
+            }
+            setAllBranches(response.data);
+
+            // Extract gallery data from branches and update gallery state
+            const galleryData: Record<BranchId, Gallery[]> = {};
+            response.data.forEach((branch: any) => {
+              if (branch.images && Array.isArray(branch.images)) {
+                // Check if images are strings (old format) or Gallery objects
+                const images = branch.images.map((img: any, index: number) => {
+                  if (typeof img === 'string') {
+                    return {
+                      id: `legacy-${index}`,
+                      branchId: branch.id,
+                      imageUrl: img,
+                      title: 'Gallery Image',
+                      category: 'Rooms',
+                      uploadedAt: new Date().toISOString()
+                    } as Gallery;
+                  }
+                  return img as Gallery;
+                });
+                galleryData[branch.id] = images;
+              }
+            });
+
+            // Merge with existing gallery state
+            setGallery(prev => ({ ...prev, ...galleryData }));
+          } else {
+            console.error('Invalid branches response format:', response.data);
           }
         } catch (error) {
           console.error('Failed to fetch branches:', error);
+          alert('System Error: Failed to load branches. Check console for details.');
         }
       };
       fetchBranches();
@@ -112,16 +148,17 @@ export const TenantProvider: React.FC<{
       // Log branch switch for debugging (can be removed in production)
       console.log(`[Multi-tenant Session] Switched to ${branchId} branch at ${new Date(timestamp).toLocaleTimeString()}`);
     };
+
     const getBranchData = (branchId: BranchId): Branch | undefined => {
-      return branches.find(b => b.id === branchId);
+      return allBranches.find(b => b.id === branchId);
     };
 
     const updateBranch = (branchId: BranchId, data: Partial<Branch>) => {
-      setBranches(prev => prev.map(b => b.id === branchId ? { ...b, ...data } : b));
+      setAllBranches(prev => prev.map(b => b.id === branchId ? { ...b, ...data } : b));
     };
 
     const addBranch = (branch: Branch) => {
-      setBranches(prev => [...prev, branch]);
+      setAllBranches(prev => [...prev, branch]);
     };
 
     const getBranchTestimonials = (branchId: BranchId) => {
@@ -136,8 +173,22 @@ export const TenantProvider: React.FC<{
       return gallery[branchId] || [];
     };
 
-    const updateBranchGallery = (branchId: BranchId, data: Gallery[]) => {
-      setGallery(prev => ({ ...prev, [branchId]: data }));
+    const updateBranchGallery = async (branchId: BranchId, data: Gallery[]) => {
+      try {
+        // Optimistic update
+        setGallery(prev => ({ ...prev, [branchId]: data }));
+
+        // Persist to backend
+        // We utilize the 'images' field on Branch model to store the gallery JSON
+        await api.put(`/branches/${branchId}`, { images: data });
+
+        // Also update local branch data to reflect the change
+        setAllBranches(prev => prev.map(b =>
+          b.id === branchId ? { ...b, images: data as any } : b
+        ));
+      } catch (error) {
+        console.error('Failed to update branch gallery:', error);
+      }
     };
 
     const updateGlobalContent = (section: keyof GlobalContent, data: any) => {
@@ -157,9 +208,11 @@ export const TenantProvider: React.FC<{
       sessionStorage.removeItem('phoenix_imperial_selected_branch');
       sessionStorage.removeItem('phoenix_imperial_branch_session_timestamp');
     };
+
     return <TenantContext.Provider value={{
       currentBranch,
       branches,
+      allBranches,
       selectBranch,
       getBranchData,
       clearBranchSelection,

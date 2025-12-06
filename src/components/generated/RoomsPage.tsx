@@ -53,22 +53,29 @@ export const RoomsPage: React.FC<RoomsPageProps> = ({
       setLoading(true);
       try {
         const response = await api.get(`/rooms?branchId=${currentBranch}`);
-        const mappedRooms = response.data.map((r: any) => ({
-          id: r.id,
-          name: r.name,
-          type: r.type,
-          price: Number(r.price),
-          description: r.description,
-          images: parseJSON(r.images),
-          amenities: parseJSON(r.amenities),
-          maxGuests: 2, // Default or fetch if available
-          size: '35m²', // Default or fetch if available
-          rating: r.rating || 4.5,
-          available: r.available_quantity > 0,
-          totalQuantity: r.total_quantity,
-          availableQuantity: r.available_quantity,
-          category: r.category || 'room'
-        }));
+        const mappedRooms = response.data.map((r: any) => {
+          const images = parseJSON(r.images);
+          const processedImages = images.map((img: string) =>
+            img.startsWith('/') ? `http://${window.location.hostname}:5000${img}` : img
+          );
+
+          return {
+            id: r.id,
+            name: r.name,
+            type: r.type,
+            price: Number(r.price),
+            description: r.description,
+            images: processedImages,
+            amenities: parseJSON(r.amenities),
+            maxGuests: 2, // Default or fetch if available
+            size: '35m²', // Default or fetch if available
+            rating: r.rating || 4.5,
+            available: r.available_quantity > 0,
+            totalQuantity: r.total_quantity,
+            availableQuantity: r.available_quantity,
+            category: r.category || 'room'
+          };
+        });
         setRooms(mappedRooms);
       } catch (error) {
         console.error('Failed to fetch rooms:', error);
@@ -153,15 +160,18 @@ export const RoomsPage: React.FC<RoomsPageProps> = ({
               </p>
               <BranchSelector onSelect={selectBranch} showSelected={false} />
             </div> : <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 rounded-lg px-4 py-2">
-                <Building2 size={16} className="text-amber-400" />
-                <span className="text-amber-400 text-sm font-medium uppercase tracking-wider">
-                  {branches.find(b => b.id === currentBranch)?.city} Branch
-                </span>
-              </div>
-              <button onClick={() => selectBranch(currentBranch === 'abuja' ? 'lagos' : 'abuja')} className="text-xs text-zinc-400 hover:text-amber-400 transition-colors underline">
-                Switch to {currentBranch === 'abuja' ? 'Lagos' : 'Abuja'}
-              </button>
+              {branches.map(branch => (
+                <button
+                  key={branch.id}
+                  onClick={() => selectBranch(branch.id)}
+                  className={`text-sm font-medium transition-colors ${currentBranch === branch.id
+                    ? 'text-amber-500 border-b-2 border-amber-500 pb-1'
+                    : 'text-zinc-400 hover:text-amber-400'
+                    }`}
+                >
+                  {branch.city} Branch
+                </button>
+              ))}
             </div>}
           </div>
 

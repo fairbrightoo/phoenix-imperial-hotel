@@ -13,6 +13,18 @@ export const getRooms = async (req: Request, res: Response): Promise<void> => {
 
         let rooms = await Room.findAll({ where: whereClause });
 
+        // Parse images if needed (workaround for Sequelize/DB type issue)
+        rooms.forEach(room => {
+            if (typeof room.images === 'string') {
+                try {
+                    room.images = JSON.parse(room.images);
+                } catch (e) {
+                    console.error(`Failed to parse images for room ${room.id}:`, e);
+                    room.images = [];
+                }
+            }
+        });
+
         // Calculate availability (default to today->tomorrow if dates not provided)
         const queryCheckIn = checkIn || new Date().toISOString().split('T')[0];
         const queryCheckOut = checkOut || new Date(new Date().setDate(new Date().getDate() + 1)).toISOString().split('T')[0];
@@ -103,13 +115,35 @@ export const createRoom = async (req: Request, res: Response): Promise<void> => 
 export const updateRoom = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;
-        const [updated] = await Room.update(req.body, { where: { id } });
-        if (updated) {
-            const updatedRoom = await Room.findByPk(id);
-            res.json(updatedRoom);
-        } else {
+        const room = await Room.findByPk(id);
+
+        if (!room) {
             res.status(404).json({ message: 'Room not found' });
+            return;
         }
+
+        await room.update(req.body);
+
+        // Reload to ensure we get the latest data (especially for JSON fields)
+        await room.reload();
+
+        // Manual parse check
+        if (typeof room.images === 'string') {
+            try {
+                room.images = JSON.parse(room.images);
+            } catch (e) {
+                room.images = [];
+            }
+        } else if (Array.isArray(room.images) && room.images.length > 0 && typeof room.images[0] === 'string' && room.images[0].startsWith('[')) {
+            // Handle double serialization inside array
+            try {
+                room.images = JSON.parse(room.images[0]);
+            } catch (e) {
+                // keep as is
+            }
+        }
+
+        res.json(room);
     } catch (error) {
         console.error('Update room error:', error);
         res.status(500).json({ message: 'Server error' });

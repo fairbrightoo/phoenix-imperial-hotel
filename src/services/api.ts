@@ -1,6 +1,15 @@
 import axios from 'axios';
 
-const API_URL = 'http://192.168.0.101:5000/api';
+const getBaseUrl = () => {
+    if (import.meta.env.VITE_API_URL) {
+        return import.meta.env.VITE_API_URL;
+    }
+    // Dynamic local IP handling
+    const hostname = window.location.hostname;
+    return `http://${hostname}:5000/api`;
+};
+
+const API_URL = getBaseUrl();
 
 const api = axios.create({
     baseURL: API_URL,

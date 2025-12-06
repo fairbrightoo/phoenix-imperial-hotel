@@ -11,10 +11,17 @@ export const getBookings = async (req: Request, res: Response): Promise<void> =>
 
         const bookings = await Booking.findAll({
             where: whereClause,
-            include: [{
-                model: (await import('../models/User')).User,
-                attributes: ['name', 'email', 'phone']
-            }]
+            include: [
+                {
+                    model: (await import('../models/User')).User,
+                    attributes: ['name', 'email', 'phone']
+                },
+                {
+                    model: (await import('../models/Room')).Room,
+                    attributes: ['name', 'images']
+                }
+            ],
+            order: [['created_at', 'DESC']]
         });
         res.json(bookings);
     } catch (error) {

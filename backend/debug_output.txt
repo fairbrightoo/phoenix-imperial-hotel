@@ -1,5 +1,10 @@
-Database connected.
-Found 3 bookings.
-ID: 513972d0-e96f-4dbc-9005-495475c11442, Branch: abuja, User: 5f8d52fe-08a7-40b1-bdbb-2e2651e7c511, Status: pending, Created: Sat Nov 29 2025 15:26:29 GMT+0100 (West Africa Standard Time)
-ID: 567ccb18-1198-4cf5-9106-719a0958a9a5, Branch: abuja, User: 5f8d52fe-08a7-40b1-bdbb-2e2651e7c511, Status: pending, Created: Sat Nov 29 2025 15:41:28 GMT+0100 (West Africa Standard Time)
-ID: a6ae81ad-921e-4f89-9c0f-dde72bacfb62, Branch: abuja, User: 5e62db43-6bef-4a76-a47c-369d4d99aa9d, Status: pending, Created: Sat Nov 29 2025 13:28:14 GMT+0100 (West Africa Standard Time)
+DB Connected
+Room Images Type: string
+Room Images Value (Raw): "[\"/uploads/1764953523125-505224844.jpg\"]"
+Parsed result: ["/uploads/1764953523125-505224844.jpg"]
+First Image (Initial): /uploads/1764953523125-505224844.jpg
+Clean URI: /uploads/1764953523125-505224844.jpg
+Testing HTTP GET: http://localhost:5000/uploads/1764953523125-505224844.jpg
+HTTP Response Status: 200
+HTTP Content-Type: image/jpeg
+SUCCESS: Image is serving via HTTP

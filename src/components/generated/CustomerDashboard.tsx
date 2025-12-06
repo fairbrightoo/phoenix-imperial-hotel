@@ -4,7 +4,6 @@ import { X, Calendar, MapPin, User as UserIcon, LogOut, Check, Star, Building2 }
 import api from '../../services/api';
 import { useAuth } from './AuthContext';
 import { useTenant } from './TenantContext';
-import { ROOMS_BY_BRANCH, BRANCHES } from './mockData';
 import { Booking } from './types';
 
 import { useAlert } from '../ui/AlertContext';
@@ -23,11 +22,12 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
     logout
   } = useAuth();
   const {
-    currentBranch
+    currentBranch,
+    branches
   } = useTenant();
   const { showAlert } = useAlert();
   const [activeTab, setActiveTab] = useState<'bookings' | 'profile'>('bookings');
-  const [activeBookingTab, setActiveBookingTab] = useState<'all' | 'abuja' | 'lagos'>('all');
+  const [activeBookingTab, setActiveBookingTab] = useState<string>('all');
   const [userBookings, setUserBookings] = useState<Booking[]>([]);
   const [loading, setLoading] = useState(false);
   const [viewingBooking, setViewingBooking] = useState<Booking | null>(null);
@@ -39,7 +39,36 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
       setLoading(true);
       try {
         const response = await api.get(`/bookings?userId=${user.id}`);
-        setUserBookings(response.data);
+        const safeParseJSON = (data: any) => {
+          if (typeof data === 'string') {
+            try {
+              const parsed = JSON.parse(data);
+              if (typeof parsed === 'string') return JSON.parse(parsed);
+              return parsed;
+            } catch (e) {
+              return [];
+            }
+          }
+          return data;
+        };
+
+        const normalizedBookings = response.data.map((b: any) => ({
+          ...b,
+          totalPrice: Number(b.total_price || b.totalPrice || 0),
+          checkIn: b.check_in || b.checkIn,
+          checkOut: b.check_out || b.checkOut,
+          branchId: b.branch_id || b.branchId,
+          roomId: b.room_id || b.roomId,
+          userId: b.user_id || b.userId,
+          specialRequests: b.special_requests || b.specialRequests,
+          createdAt: b.created_at || b.createdAt,
+          Room: b.Room ? {
+            ...b.Room,
+            images: safeParseJSON(b.Room.images),
+            amenities: safeParseJSON(b.Room.amenities)
+          } : null
+        }));
+        setUserBookings(normalizedBookings);
       } catch (error) {
         console.error('Failed to fetch bookings:', error);
       } finally {
@@ -69,24 +98,14 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
   };
 
   const getBookingDetails = (booking: any) => {
-    // In a real app, we would fetch branch and room details from API or have them included in the booking response.
-    // For now, we'll try to match with mock data or just show basic info if not found.
-    const branch = BRANCHES.find(b => b.id === booking.branch_id);
-    // We might need to fetch all rooms or just rely on what we have. 
-    // Since we seeded the DB with mock data, the IDs should match.
-    // Note: DB uses snake_case keys (branch_id, room_id), mock data uses camelCase.
-    // The API response will likely be snake_case if we didn't transform it.
-    // Let's assume the API returns what Sequelize gives (snake_case usually, unless defined otherwise).
-    // Actually, our models are defined with camelCase fields but map to snake_case columns? 
-    // Let's check the Booking model. It uses `underscored: true` so API returns snake_case.
-    const roomId = booking.room_id || booking.roomId;
-    const branchId = booking.branch_id || booking.branchId;
+    // Use the Room data from the API response if available
+    const room = booking.Room;
+    const branch = branches.find(b => b.id === booking.branch_id);
 
-    const room = ROOMS_BY_BRANCH[branchId as keyof typeof ROOMS_BY_BRANCH]?.find(r => r.id === roomId);
     return {
       branch,
       room,
-      branchId
+      branchId: booking.branch_id
     };
   };
   return <>
@@ -134,18 +153,15 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
             >
               All Bookings
             </button>
-            <button
-              onClick={() => setActiveBookingTab('abuja')}
-              className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${activeBookingTab === 'abuja' ? 'bg-amber-500 text-black' : 'bg-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-700'}`}
-            >
-              Abuja Branch
-            </button>
-            <button
-              onClick={() => setActiveBookingTab('lagos')}
-              className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${activeBookingTab === 'lagos' ? 'bg-amber-500 text-black' : 'bg-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-700'}`}
-            >
-              Lagos Branch
-            </button>
+            {branches.map(branch => (
+              <button
+                key={branch.id}
+                onClick={() => setActiveBookingTab(branch.id)}
+                className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${activeBookingTab === branch.id ? 'bg-amber-500 text-black' : 'bg-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-700'}`}
+              >
+                {branch.name}
+              </button>
+            ))}
           </div>
 
           {loading ? (
@@ -197,7 +213,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
 
               return <div key={booking.id} className="bg-zinc-800 rounded-lg border border-zinc-700 overflow-hidden">
                 <div className="flex flex-col md:flex-row gap-4">
-                  {room && <img src={room.images[0]} alt={room.name} className="w-full md:w-48 h-48 object-cover" />}
+                  {room && room.images?.length > 0 && <img src={room.images[0].startsWith('/') ? `http://${window.location.hostname}:5000${room.images[0]}` : room.images[0]} alt={room.name} className="w-full md:w-48 h-48 object-cover" />}
                   <div className="flex-1 p-4">
                     <div className="flex items-start justify-between mb-3">
                       <div>
@@ -228,8 +244,14 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
                         </p>
                       </div>
                       <div>
-                        <p className="text-zinc-500 mb-1">Total</p>
-                        <p className="text-amber-500 font-serif text-lg">
+                        <p className="text-zinc-500 mb-1">Date of Booking</p>
+                        <p className="text-white">
+                          {new Date(booking.createdAt).toLocaleDateString()}
+                        </p>
+                      </div>
+                      <div className="col-span-2 border-t border-zinc-700 pt-3 mt-1 flex justify-between items-center">
+                        <p className="text-zinc-500">Total Amount</p>
+                        <p className="text-amber-500 font-serif text-xl">
                           ₦{Number(totalPrice).toLocaleString()}
                         </p>
                       </div>
@@ -334,7 +356,7 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
             </div>
             <div className="bg-zinc-800 p-6 rounded-lg text-center border border-zinc-700">
               <div className="text-3xl font-serif text-amber-500 mb-2">
-                ₦{(userBookings.reduce((sum, b) => sum + b.totalPrice, 0) / 1000).toFixed(0)}K
+                ₦{(userBookings.reduce((sum, b) => sum + (b.totalPrice || 0), 0) / 1000).toFixed(0)}K
               </div>
               <div className="text-sm text-zinc-400 uppercase tracking-wider">Total Spent</div>
             </div>
