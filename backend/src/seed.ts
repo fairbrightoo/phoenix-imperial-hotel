@@ -5,7 +5,7 @@ import { User } from './models/User';
 import { Booking } from './models/Booking';
 import bcrypt from 'bcryptjs';
 
-const seedDatabase = async () => {
+export const seedDatabase = async () => {
     try {
         // Disable foreign key checks to allow dropping tables
         await sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
@@ -257,11 +257,15 @@ const seedDatabase = async () => {
         console.log('Users seeded');
 
         console.log('Database seeding completed successfully!');
-        process.exit(0);
+        // process.exit(0); // REMOVED: Don't kill the server when running as a route
     } catch (error) {
         console.error('Seeding failed:', error);
-        process.exit(1);
+        // process.exit(1); // REMOVED
+        throw error; // Re-throw so controller catches it
     }
 };
 
-seedDatabase();
+// Only run if called directly (CLI)
+if (require.main === module) {
+    seedDatabase().then(() => process.exit(0)).catch(() => process.exit(1));
+}

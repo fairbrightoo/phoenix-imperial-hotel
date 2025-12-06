@@ -255,3 +255,20 @@ export const resetPassword = async (req: Request, res: Response): Promise<void> 
         res.status(500).json({ message: 'Server error' });
     }
 };
+
+export const seedData = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { secret } = req.query;
+        if (secret !== process.env.JWT_SECRET) {
+            res.status(403).json({ message: 'Forbidden' });
+            return;
+        }
+
+        const { seedDatabase } = await import('../seed');
+        await seedDatabase();
+        res.json({ message: 'Database seeded successfully' });
+    } catch (error) {
+        console.error('Seeding error:', error);
+        res.status(500).json({ message: 'Seeding failed', error: (error as Error).message });
+    }
+};
