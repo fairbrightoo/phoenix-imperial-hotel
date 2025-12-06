@@ -48,7 +48,7 @@ export const seedDatabase = async () => {
         const roomsData = [
             // Lagos Rooms
             {
-                id: 'lagos-superior',
+                // id removed - auto-generated
                 branch_id: 'lagos',
                 name: 'Superior Room',
                 description: 'Comfortable superior room with modern amenities.',
@@ -64,7 +64,6 @@ export const seedDatabase = async () => {
                 category: 'room'
             },
             {
-                id: 'lagos-executive',
                 branch_id: 'lagos',
                 name: 'Executive Room',
                 description: 'Spacious executive room for business travelers.',
@@ -80,7 +79,6 @@ export const seedDatabase = async () => {
                 category: 'room'
             },
             {
-                id: 'lagos-deluxe',
                 branch_id: 'lagos',
                 name: 'Phoenix Deluxe',
                 description: 'Luxury deluxe room with premium furnishings.',
@@ -96,7 +94,6 @@ export const seedDatabase = async () => {
                 category: 'room'
             },
             {
-                id: 'lagos-suite',
                 branch_id: 'lagos',
                 name: 'Phoenix Imperial Suite',
                 description: 'Our finest suite for the ultimate experience.',
@@ -113,7 +110,6 @@ export const seedDatabase = async () => {
             },
             // Lagos Halls
             {
-                id: 'lagos-toby-hall',
                 branch_id: 'lagos',
                 name: 'Toby Hall',
                 description: 'Large event hall suitable for weddings and conferences.',
@@ -129,7 +125,6 @@ export const seedDatabase = async () => {
                 category: 'hall'
             },
             {
-                id: 'lagos-ikedi-hall',
                 branch_id: 'lagos',
                 name: 'Ikedi Hall',
                 description: 'Medium-sized hall perfect for seminars and parties.',
@@ -146,7 +141,6 @@ export const seedDatabase = async () => {
             },
             // Abuja Rooms (Replicating same structure for Abuja for consistency, though user didn't specify)
             {
-                id: 'abuja-superior',
                 branch_id: 'abuja',
                 name: 'Superior Room',
                 description: 'Comfortable superior room with modern amenities.',
@@ -162,7 +156,6 @@ export const seedDatabase = async () => {
                 category: 'room'
             },
             {
-                id: 'abuja-executive',
                 branch_id: 'abuja',
                 name: 'Executive Room',
                 description: 'Spacious executive room for business travelers.',
@@ -178,7 +171,6 @@ export const seedDatabase = async () => {
                 category: 'room'
             },
             {
-                id: 'abuja-deluxe',
                 branch_id: 'abuja',
                 name: 'Phoenix Deluxe',
                 description: 'Luxury deluxe room with premium furnishings.',
@@ -194,7 +186,6 @@ export const seedDatabase = async () => {
                 category: 'room'
             },
             {
-                id: 'abuja-suite',
                 branch_id: 'abuja',
                 name: 'Phoenix Imperial Suite',
                 description: 'Our finest suite for the ultimate experience.',
@@ -220,7 +211,7 @@ export const seedDatabase = async () => {
 
         await User.bulkCreate([
             {
-                id: 'user-1',
+                // id removed - auto-generated
                 name: 'John Doe',
                 email: 'user@phoeniximperial.com',
                 phone: '+234 800 000 0000',
@@ -228,7 +219,6 @@ export const seedDatabase = async () => {
                 role: 'customer'
             },
             {
-                id: 'admin-abuja',
                 name: 'Abuja Manager',
                 email: 'abuja.admin@phoeniximperial.com',
                 phone: '+234 809 123 4567',
@@ -237,7 +227,6 @@ export const seedDatabase = async () => {
                 branch_id: 'abuja'
             },
             {
-                id: 'admin-lagos',
                 name: 'Lagos Manager',
                 email: 'lagos.admin@phoeniximperial.com',
                 phone: '+234 809 765 4321',
@@ -246,7 +235,6 @@ export const seedDatabase = async () => {
                 branch_id: 'lagos'
             },
             {
-                id: 'super-admin',
                 name: 'System Administrator',
                 email: 'superadmin@phoeniximperial.com',
                 phone: '+234 800 999 8888',
