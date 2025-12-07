@@ -315,7 +315,7 @@ export const BookingDetailsModal: React.FC<BookingDetailsModalProps> = ({
                             <div>
                                 <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">Guest Details</h3>
                                 <div className="space-y-2">
-                                    <p><span className="font-medium">Name:</span> User #{booking.userId.slice(-4)}</p>
+                                    <p><span className="font-medium">Name:</span> {booking.guestName || `User #${booking.userId.slice(-4)}`}</p>
                                     <p><span className="font-medium">Guests:</span> {booking.guests.adults} Adults, {booking.guests.children} Children</p>
                                     <p><span className="font-medium">Status:</span> <span className="capitalize">{booking.status}</span></p>
                                 </div>
