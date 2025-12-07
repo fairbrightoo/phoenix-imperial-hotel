@@ -242,4 +242,5 @@ class EmailService {
     }
   }
 
-  export const emailService = new EmailService();
+}
+export const emailService = new EmailService();
