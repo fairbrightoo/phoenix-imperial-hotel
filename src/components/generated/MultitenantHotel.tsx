@@ -80,25 +80,42 @@ const NavigationSidebar: React.FC = () => {
     openContact
   } = useModal();
 
+  const navigate = useNavigate();
+
   const links = [{
     name: "Home",
-    href: "#home"
+    href: "/",
+    onClick: () => {
+      navigate('/');
+    }
   }, {
     name: "Rooms",
-    href: "#rooms",
-    onClick: openRooms
+    href: "/rooms",
+    onClick: (e: any) => {
+      e.preventDefault();
+      navigate('/rooms');
+    }
   }, {
     name: "Reservation",
-    href: "#reservation",
-    onClick: openReservation
+    href: "/reservation",
+    onClick: (e: any) => {
+      e.preventDefault();
+      navigate('/reservation');
+    }
   }, {
     name: "About",
-    href: "#about",
-    onClick: openAbout
+    href: "/about",
+    onClick: (e: any) => {
+      e.preventDefault();
+      navigate('/about');
+    }
   }, {
     name: "Contact",
-    href: "#contact",
-    onClick: openContact
+    href: "/contact",
+    onClick: (e: any) => {
+      e.preventDefault();
+      navigate('/contact');
+    }
   }] as any[];
   return <div className="hidden md:flex h-full flex-col bg-sidebar border-r border-sidebar-border w-64 fixed left-0 top-0 z-40">
     <div className="p-6 border-b border-sidebar-border">
@@ -158,36 +175,46 @@ const MobileNav: React.FC = () => {
     openContact
   } = useModal();
 
+  const navigate = useNavigate();
+
   const links = [{
     name: "Home",
-    href: "#home"
-  }, {
-    name: "Rooms",
-    href: "#rooms",
+    href: "/",
     onClick: () => {
       setIsOpen(false);
-      openRooms();
+      navigate('/');
+    }
+  }, {
+    name: "Rooms",
+    href: "/rooms",
+    onClick: (e: any) => {
+      e.preventDefault();
+      setIsOpen(false);
+      navigate('/rooms');
     }
   }, {
     name: "Reservation",
-    href: "#reservation",
-    onClick: () => {
+    href: "/reservation",
+    onClick: (e: any) => {
+      e.preventDefault();
       setIsOpen(false);
-      openReservation();
+      navigate('/reservation');
     }
   }, {
     name: "About",
-    href: "#about",
-    onClick: () => {
+    href: "/about",
+    onClick: (e: any) => {
+      e.preventDefault();
       setIsOpen(false);
-      openAbout();
+      navigate('/about');
     }
   }, {
     name: "Contact",
-    href: "#contact",
-    onClick: () => {
+    href: "/contact",
+    onClick: (e: any) => {
+      e.preventDefault();
       setIsOpen(false);
-      openContact();
+      navigate('/contact');
     }
   }] as any[];
   return <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800 px-6 py-4 flex justify-between items-center">
@@ -352,13 +379,15 @@ const MultitenantHotelContent: React.FC = () => {
     authModalOpen, closeAuth,
     bookingModalOpen, closeBooking, openBooking,
     dashboardOpen, closeDashboard,
-    roomsPageOpen, closeRooms,
+    roomsPageOpen, closeRooms, openRooms,
     reservationPageOpen, closeReservation, openReservation,
-    aboutPageOpen, closeAbout,
-    contactPageOpen, closeContact
+    aboutPageOpen, closeAbout, openAbout,
+    contactPageOpen, closeContact, openContact
   } = useModal();
 
   const { isAuthenticated } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const {
     currentBranch,
@@ -366,6 +395,17 @@ const MultitenantHotelContent: React.FC = () => {
     getBranchGallery,
     branches // Access branches to iterate if needed
   } = useTenant();
+
+  // Sync URL with Modals
+  useEffect(() => {
+    const path = location.pathname;
+    if (path === '/rooms' && !roomsPageOpen) openRooms();
+    if (path === '/reservation' && !reservationPageOpen) openReservation();
+    if (path === '/about' && !aboutPageOpen) openAbout();
+    if (path === '/contact' && !contactPageOpen) openContact();
+    // If path is '/', we might want to ensure all modals are closed? 
+    // Maybe not strictly necessary if we handle onClose.
+  }, [location.pathname]);
 
   // Check for pending bookings on login
   useEffect(() => {
@@ -380,9 +420,6 @@ const MultitenantHotelContent: React.FC = () => {
       }
     }
   }, [isAuthenticated]);
-
-  // Get content (branch-specific or aggregated)
-
 
   // Aggregate testimonials if no branch selected, otherwise get branch specific
   const testimonials = currentBranch
@@ -585,20 +622,21 @@ const MultitenantHotelContent: React.FC = () => {
     <UserDashboard isOpen={dashboardOpen} onClose={closeDashboard} />
     <RoomsPage
       isOpen={roomsPageOpen}
-      onClose={closeRooms}
+      onClose={() => { closeRooms(); navigate('/'); }}
       onBook={(room) => {
         closeRooms();
         openBooking(room);
       }}
     />
-    <ReservationPage isOpen={reservationPageOpen} onClose={closeReservation} />
-    <AboutPage isOpen={aboutPageOpen} onClose={closeAbout} />
-    <ContactPage isOpen={contactPageOpen} onClose={closeContact} />
+    <ReservationPage isOpen={reservationPageOpen} onClose={() => { closeReservation(); navigate('/'); }} />
+    <AboutPage isOpen={aboutPageOpen} onClose={() => { closeAbout(); navigate('/'); }} />
+    <ContactPage isOpen={contactPageOpen} onClose={() => { closeContact(); navigate('/'); }} />
   </div>;
 };
 
 // Main Component with Providers
 import { AlertProvider } from '../ui/AlertContext';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const MultitenantHotel = () => {
   return <MultitenantHotelContent />;
