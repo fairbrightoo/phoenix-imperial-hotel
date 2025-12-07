@@ -208,7 +208,11 @@ export const CustomerDashboard: React.FC<CustomerDashboardProps> = ({
                 totalPrice,
                 guests,
                 userId: (booking as any).user_id || booking.userId,
-                specialRequests: (booking as any).special_requests || booking.specialRequests
+                specialRequests: (booking as any).special_requests || booking.specialRequests,
+                // Normalize guest info
+                guestName: (booking as any).guest_name || booking.guestName,
+                guestEmail: (booking as any).guest_email || booking.guestEmail,
+                guestPhone: (booking as any).guest_phone || booking.guestPhone
               };
 
               return <div key={booking.id} className="bg-zinc-800 rounded-lg border border-zinc-700 overflow-hidden">
