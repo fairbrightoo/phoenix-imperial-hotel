@@ -85,8 +85,8 @@ export const createBooking = async (req: Request, res: Response): Promise<void> 
                     status: {
                         [Op.or]: ['confirmed'] // Standard check
                     },
-                    check_in: { [Op.lt]: bookingData.check_out },
-                    check_out: { [Op.gt]: bookingData.check_in }
+                    check_in: { [Op.lt]: new Date(bookingData.check_out as string) },
+                    check_out: { [Op.gt]: new Date(bookingData.check_in as string) }
                 }
             });
 

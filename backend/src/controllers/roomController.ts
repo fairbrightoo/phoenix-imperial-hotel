@@ -36,8 +36,8 @@ export const getRooms = async (req: Request, res: Response): Promise<void> => {
                     status: {
                         [Op.or]: ['confirmed', 'pending']
                     },
-                    check_in: { [Op.lt]: queryCheckOut },
-                    check_out: { [Op.gt]: queryCheckIn }
+                    check_in: { [Op.lt]: new Date(queryCheckOut as string) },
+                    check_out: { [Op.gt]: new Date(queryCheckIn as string) }
                 }
             });
 
@@ -55,8 +55,8 @@ export const getRooms = async (req: Request, res: Response): Promise<void> => {
                         status: {
                             [Op.or]: ['confirmed', 'pending']
                         },
-                        check_in: { [Op.lt]: queryCheckOut },
-                        check_out: { [Op.gt]: queryCheckIn }
+                        check_in: { [Op.lt]: new Date(queryCheckOut as string) },
+                        check_out: { [Op.gt]: new Date(queryCheckIn as string) }
                     },
                     order: [['check_out', 'ASC']],
                     attributes: ['check_out']
