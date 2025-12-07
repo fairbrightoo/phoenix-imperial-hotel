@@ -127,14 +127,25 @@ export const createBooking = async (req: Request, res: Response): Promise<void> 
         // Let's fetch the user to be safe and consistent.
 
         // Wait, the frontend sends `user_id`.
-        const user = await import('../models/User').then(m => m.User.findByPk(booking.user_id));
+        // Check for guest email first, then user email
+        // Logic: booking.guest_email should be the primary contact if provided
+        let recipientEmail = booking.guest_email;
 
-        if (user && user.email) {
-            if (initialStatus === 'confirmed') {
-                await emailService.sendBookingConfirmationEmail(user.email, bookingDetails);
-            } else {
-                await emailService.sendBookingReceivedEmail(user.email, bookingDetails);
+        if (!recipientEmail) {
+            const user = await import('../models/User').then(m => m.User.findByPk(booking.user_id));
+            if (user && user.email) {
+                recipientEmail = user.email;
             }
+        }
+
+        if (recipientEmail) {
+            if (initialStatus === 'confirmed') {
+                await emailService.sendBookingConfirmationEmail(recipientEmail, bookingDetails);
+            } else {
+                await emailService.sendBookingReceivedEmail(recipientEmail, bookingDetails);
+            }
+        } else {
+            console.warn(`No email address found for booking ${booking.id}. Email not sent.`);
         }
 
         res.status(201).json(booking);
