@@ -34,17 +34,40 @@ class EmailService {
     }
   }
 
-  async sendPasswordResetEmail(to: string, resetLink: string) {
-    if (!this.transporter) await this.init();
-    if (!this.transporter) return;
+  private async sendViaRelay(to: string, subject: string, html: string) {
+    if (!process.env.EMAIL_RELAY_URL) return false;
 
     try {
-      const info = await this.transporter.sendMail({
-        from: `"Phoenix Imperial" <${process.env.SMTP_USER}>`, // Ensure From matches Auth User
-        to: to, // list of receivers
-        subject: "Password Reset Request", // Subject line
-        text: `You requested a password reset. Click here to reset your password: ${resetLink}`, // plain text body
-        html: `
+      console.log(`Attempting to send email via relay to ${to}...`);
+      const response = await fetch(process.env.EMAIL_RELAY_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to,
+          subject,
+          html
+        })
+      });
+
+      if (response.ok) {
+        console.log(`Email successfully sent via relay to ${to}`);
+        return true;
+      } else {
+        const text = await response.text();
+        console.error(`Relay server responded with error: ${response.status} ${text}`);
+        return false;
+      }
+    } catch (error) {
+      console.error('Failed to send via relay:', error);
+      return false;
+    }
+  }
+
+  async sendPasswordResetEmail(to: string, resetLink: string) {
+    const subject = "Password Reset Request";
+    const html = `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px;">
               <h2 style="color: #d97706;">Password Reset Request</h2>
               <p>You requested a password reset for your Phoenix Imperial account.</p>
@@ -55,16 +78,10 @@ class EmailService {
               <p style="color: #6b7280; font-size: 14px;">If you didn't request this, please ignore this email.</p>
               <p style="color: #6b7280; font-size: 14px;">This link will expire in 1 hour.</p>
             </div>
-          `, // html body
-      });
+          `;
 
-      console.log("Message sent: %s", info.messageId);
-    } catch (error) {
-      console.error('Error sending email:', error);
-    }
-  }
+    if (await this.sendViaRelay(to, subject, html)) return;
 
-  async sendBookingConfirmationEmail(to: string, bookingDetails: any) {
     if (!this.transporter) await this.init();
     if (!this.transporter) return;
 
@@ -72,8 +89,19 @@ class EmailService {
       await this.transporter.sendMail({
         from: `"Phoenix Imperial" <${process.env.SMTP_USER}>`,
         to: to,
-        subject: "Booking Confirmed - Phoenix Imperial",
-        html: `
+        subject: subject,
+        html: html,
+      });
+
+      console.log("Message sent to %s", to);
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
+  }
+
+  async sendBookingConfirmationEmail(to: string, bookingDetails: any) {
+    const subject = "Booking Confirmed - Phoenix Imperial";
+    const html = `
             <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden;">
               <div style="background-color: #18181b; padding: 30px; text-align: center;">
                 <h1 style="color: #d97706; margin: 0; font-family: 'Georgia', serif; font-size: 28px;">Phoenix Imperial</h1>
@@ -123,7 +151,19 @@ class EmailService {
                 <p>&copy; ${new Date().getFullYear()} Phoenix Imperial Hotels. All rights reserved.</p>
               </div>
             </div>
-          `,
+          `;
+
+    if (await this.sendViaRelay(to, subject, html)) return;
+
+    if (!this.transporter) await this.init();
+    if (!this.transporter) return;
+
+    try {
+      await this.transporter.sendMail({
+        from: `"Phoenix Imperial" <${process.env.SMTP_USER}>`,
+        to: to,
+        subject: subject,
+        html: html,
       });
       console.log(`Confirmation email sent to ${to}`);
     } catch (error) {
@@ -132,15 +172,8 @@ class EmailService {
   }
 
   async sendBookingReceivedEmail(to: string, bookingDetails: any) {
-    if (!this.transporter) await this.init();
-    if (!this.transporter) return;
-
-    try {
-      await this.transporter.sendMail({
-        from: `"Phoenix Imperial" <${process.env.SMTP_USER}>`,
-        to: to,
-        subject: "Booking Request Received - Phoenix Imperial",
-        html: `
+    const subject = "Booking Request Received - Phoenix Imperial";
+    const html = `
             <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden;">
               <div style="background-color: #18181b; padding: 30px; text-align: center;">
                 <h1 style="color: #d97706; margin: 0; font-family: 'Georgia', serif; font-size: 28px;">Phoenix Imperial</h1>
@@ -189,13 +222,24 @@ class EmailService {
                 <p>&copy; ${new Date().getFullYear()} Phoenix Imperial Hotels. All rights reserved.</p>
               </div>
             </div>
-          `,
+          `;
+
+    if (await this.sendViaRelay(to, subject, html)) return;
+
+    if (!this.transporter) await this.init();
+    if (!this.transporter) return;
+
+    try {
+      await this.transporter.sendMail({
+        from: `"Phoenix Imperial" <${process.env.SMTP_USER}>`,
+        to: to,
+        subject: subject,
+        html: html,
       });
       console.log(`Request received email sent to ${to}`);
     } catch (error) {
       console.error('Error sending request received email:', error);
     }
   }
-}
 
-export const emailService = new EmailService();
+  export const emailService = new EmailService();
