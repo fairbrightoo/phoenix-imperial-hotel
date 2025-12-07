@@ -34,23 +34,18 @@ export const getRooms = async (req: Request, res: Response): Promise<void> => {
                 where: {
                     room_id: room.id,
                     status: {
-                        [Op.or]: ['confirmed', 'pending']
+                        [Op.or]: ['confirmed', 'Confirmed', 'pending', 'Pending']
                     },
-                    [Op.or]: [
-                        {
-                            check_in: {
-                                [Op.lt]: queryCheckOut
-                            },
-                            check_out: {
-                                [Op.gt]: queryCheckIn
-                            }
-                        }
+                    [Op.and]: [
+                        { check_in: { [Op.lt]: queryCheckOut } },
+                        { check_out: { [Op.gt]: queryCheckIn } }
                     ]
                 }
             });
 
             // Always return the room with calculated availability
             const roomData = room.toJSON();
+            // Ensure no negative numbers
             const availableQty = Math.max(0, room.total_quantity - confirmedBookingsCount);
             (roomData as any).available_quantity = availableQty;
 
@@ -60,13 +55,11 @@ export const getRooms = async (req: Request, res: Response): Promise<void> => {
                     where: {
                         room_id: room.id,
                         status: {
-                            [Op.or]: ['confirmed', 'pending']
+                            [Op.or]: ['confirmed', 'Confirmed', 'pending', 'Pending']
                         },
-                        [Op.or]: [
-                            {
-                                check_in: { [Op.lt]: queryCheckOut },
-                                check_out: { [Op.gt]: queryCheckIn }
-                            }
+                        [Op.and]: [
+                            { check_in: { [Op.lt]: queryCheckOut } },
+                            { check_out: { [Op.gt]: queryCheckIn } }
                         ]
                     },
                     order: [['check_out', 'ASC']],

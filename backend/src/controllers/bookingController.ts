@@ -82,16 +82,12 @@ export const createBooking = async (req: Request, res: Response): Promise<void> 
             const confirmedBookingsCount = await Booking.count({
                 where: {
                     room_id: bookingData.room_id,
-                    status: 'confirmed',
-                    [Op.or]: [
-                        {
-                            check_in: {
-                                [Op.lt]: bookingData.check_out
-                            },
-                            check_out: {
-                                [Op.gt]: bookingData.check_in
-                            }
-                        }
+                    status: {
+                        [Op.or]: ['confirmed', 'Confirmed']
+                    },
+                    [Op.and]: [
+                        { check_in: { [Op.lt]: bookingData.check_out } },
+                        { check_out: { [Op.gt]: bookingData.check_in } }
                     ]
                 }
             });
