@@ -184,16 +184,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     return selectedRoom.price * diffDays;
   };
 
-  const config = {
+  /* New State for processing */
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  // useMemo for config to prevent re-initialization loops
+  const config = React.useMemo(() => ({
     reference: (new Date()).getTime().toString(),
     email: formData.email,
-    amount: calculateTotal() * 100, // Paystack expects amount in kobo
+    amount: calculateTotal() * 100,
     publicKey: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY || '',
-  };
+  }), [formData.email, selectedRoom, formData.checkIn, formData.checkOut]);
 
   const initializePayment = usePaystackPayment(config);
 
   const onSuccess = async (reference: any) => {
+    setIsProcessing(true); // Start loading
     try {
       const start = new Date(formData.checkIn);
       const end = new Date(formData.checkOut);
@@ -221,16 +226,19 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
       if (!user?.id) {
         showAlert('Error: User ID is missing. Please logout and login again.', 'error');
+        setIsProcessing(false);
         return;
       }
 
       await api.post('/bookings', bookingData);
 
       showAlert('Booking confirmed successfully!', 'success');
-      onClose();
+      onClose(); // Close modal
     } catch (error) {
       console.error('Booking failed:', error);
       showAlert('Failed to create booking. Please contact support.', 'error');
+    } finally {
+      setIsProcessing(false);
     }
   };
 
@@ -718,6 +726,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       </div>
 
                       <button
+                        disabled={isProcessing}
                         onClick={() => {
                           if (!config.publicKey) {
                             showAlert('Paystack Public Key is missing!', 'error');
@@ -725,10 +734,22 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                           }
                           initializePayment({ onSuccess, onClose: onClosePayment });
                         }}
-                        className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded font-medium transition-colors flex items-center justify-center gap-2"
+                        className={`w-full py-4 rounded font-medium transition-colors flex items-center justify-center gap-2 ${isProcessing
+                            ? 'bg-zinc-700 text-zinc-400 cursor-not-allowed'
+                            : 'bg-green-600 hover:bg-green-700 text-white'
+                          }`}
                       >
-                        <CreditCard size={20} />
-                        Pay Now with Paystack
+                        {isProcessing ? (
+                          <>
+                            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                            Confirming Payment...
+                          </>
+                        ) : (
+                          <>
+                            <CreditCard size={20} />
+                            Pay Now with Paystack
+                          </>
+                        )}
                       </button>
                     </>
                   ) : (
