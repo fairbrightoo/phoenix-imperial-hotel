@@ -23,6 +23,9 @@ class EmailService {
           user: process.env.SMTP_USER,
           pass: process.env.SMTP_PASS,
         },
+        tls: {
+          rejectUnauthorized: false // Fix for some shared hosting SMTPs
+        }
       });
 
       console.log('Email Service Initialized with Real SMTP');
@@ -32,18 +35,12 @@ class EmailService {
   }
 
   async sendPasswordResetEmail(to: string, resetLink: string) {
-    if (!this.transporter) {
-      await this.init();
-    }
-
-    if (!this.transporter) {
-      console.error('Email Transporter not initialized. Cannot send email.');
-      return;
-    }
+    if (!this.transporter) await this.init();
+    if (!this.transporter) return;
 
     try {
       const info = await this.transporter.sendMail({
-        from: '"Phoenix Imperial" <no-reply@phoeniximperial.com>', // sender address
+        from: `"Phoenix Imperial" <${process.env.SMTP_USER}>`, // Ensure From matches Auth User
         to: to, // list of receivers
         subject: "Password Reset Request", // Subject line
         text: `You requested a password reset. Click here to reset your password: ${resetLink}`, // plain text body
@@ -62,8 +59,6 @@ class EmailService {
       });
 
       console.log("Message sent: %s", info.messageId);
-      // Preview only available when sending through an Ethereal account
-      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
     } catch (error) {
       console.error('Error sending email:', error);
     }
@@ -75,7 +70,7 @@ class EmailService {
 
     try {
       await this.transporter.sendMail({
-        from: '"Phoenix Imperial" <no-reply@phoeniximperial.com>',
+        from: `"Phoenix Imperial" <${process.env.SMTP_USER}>`,
         to: to,
         subject: "Booking Confirmed - Phoenix Imperial",
         html: `
@@ -142,7 +137,7 @@ class EmailService {
 
     try {
       await this.transporter.sendMail({
-        from: '"Phoenix Imperial" <no-reply@phoeniximperial.com>',
+        from: `"Phoenix Imperial" <${process.env.SMTP_USER}>`,
         to: to,
         subject: "Booking Request Received - Phoenix Imperial",
         html: `
