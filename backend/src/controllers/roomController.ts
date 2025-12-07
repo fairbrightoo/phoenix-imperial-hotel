@@ -34,12 +34,10 @@ export const getRooms = async (req: Request, res: Response): Promise<void> => {
                 where: {
                     room_id: room.id,
                     status: {
-                        [Op.or]: ['confirmed', 'Confirmed', 'pending', 'Pending']
+                        [Op.or]: ['confirmed', 'pending']
                     },
-                    [Op.and]: [
-                        { check_in: { [Op.lt]: queryCheckOut } },
-                        { check_out: { [Op.gt]: queryCheckIn } }
-                    ]
+                    check_in: { [Op.lt]: queryCheckOut },
+                    check_out: { [Op.gt]: queryCheckIn }
                 }
             });
 
@@ -55,12 +53,10 @@ export const getRooms = async (req: Request, res: Response): Promise<void> => {
                     where: {
                         room_id: room.id,
                         status: {
-                            [Op.or]: ['confirmed', 'Confirmed', 'pending', 'Pending']
+                            [Op.or]: ['confirmed', 'pending']
                         },
-                        [Op.and]: [
-                            { check_in: { [Op.lt]: queryCheckOut } },
-                            { check_out: { [Op.gt]: queryCheckIn } }
-                        ]
+                        check_in: { [Op.lt]: queryCheckOut },
+                        check_out: { [Op.gt]: queryCheckIn }
                     },
                     order: [['check_out', 'ASC']],
                     attributes: ['check_out']

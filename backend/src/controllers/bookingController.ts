@@ -83,12 +83,10 @@ export const createBooking = async (req: Request, res: Response): Promise<void> 
                 where: {
                     room_id: bookingData.room_id,
                     status: {
-                        [Op.or]: ['confirmed', 'Confirmed']
+                        [Op.or]: ['confirmed'] // Standard check
                     },
-                    [Op.and]: [
-                        { check_in: { [Op.lt]: bookingData.check_out } },
-                        { check_out: { [Op.gt]: bookingData.check_in } }
-                    ]
+                    check_in: { [Op.lt]: bookingData.check_out },
+                    check_out: { [Op.gt]: bookingData.check_in }
                 }
             });
 
