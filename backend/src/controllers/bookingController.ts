@@ -129,21 +129,27 @@ export const createBooking = async (req: Request, res: Response): Promise<void> 
         // Wait, the frontend sends `user_id`.
         // Check for guest email first, then user email
         // Logic: booking.guest_email should be the primary contact if provided
-        let recipientEmail = booking.guest_email;
+        // Determine recipients
+        const recipients = new Set<string>();
+        if (booking.guest_email) recipients.add(booking.guest_email);
 
-        if (!recipientEmail) {
-            const user = await import('../models/User').then(m => m.User.findByPk(booking.user_id));
-            if (user && user.email) {
-                recipientEmail = user.email;
-            }
+        // Fetch user email if not same as guest email
+        const user = await import('../models/User').then(m => m.User.findByPk(booking.user_id));
+        if (user && user.email) {
+            recipients.add(user.email);
         }
 
-        if (recipientEmail) {
-            if (initialStatus === 'confirmed') {
-                await emailService.sendBookingConfirmationEmail(recipientEmail, bookingDetails);
-            } else {
-                await emailService.sendBookingReceivedEmail(recipientEmail, bookingDetails);
-            }
+        if (recipients.size > 0) {
+            const emailPromises = Array.from(recipients).map(email => {
+                if (initialStatus === 'confirmed') {
+                    return emailService.sendBookingConfirmationEmail(email, bookingDetails);
+                } else {
+                    return emailService.sendBookingReceivedEmail(email, bookingDetails);
+                }
+            });
+
+            // Fire and forget (don't await) for faster response
+            Promise.all(emailPromises).catch(err => console.error('Background email sending failed:', err));
         } else {
             console.warn(`No email address found for booking ${booking.id}. Email not sent.`);
         }
