@@ -111,8 +111,18 @@ export const TenantProvider: React.FC<{
               }
             });
 
+            // Extract testimonial data
+            const testimonialData: Record<BranchId, Testimonial[]> = {};
+            response.data.forEach((branch: any) => {
+              if (branch.testimonials && Array.isArray(branch.testimonials)) {
+                testimonialData[branch.id] = branch.testimonials;
+              }
+            });
+
             // Merge with existing gallery state
             setGallery(prev => ({ ...prev, ...galleryData }));
+            // Merge with existing testimonials state
+            setTestimonials(prev => ({ ...prev, ...testimonialData }));
           } else {
             console.error('Invalid branches response format:', response.data);
           }
@@ -165,8 +175,18 @@ export const TenantProvider: React.FC<{
       return testimonials[branchId] || [];
     };
 
-    const updateBranchTestimonials = (branchId: BranchId, data: Testimonial[]) => {
-      setTestimonials(prev => ({ ...prev, [branchId]: data }));
+    /* Update updateBranchTestimonials function inside TenantContext.tsx */
+    const updateBranchTestimonials = async (branchId: BranchId, data: Testimonial[]) => {
+      setTestimonials(prev => ({
+        ...prev,
+        [branchId]: data
+      }));
+      try {
+        // Persist to backend
+        await api.put(`/branches/${branchId}`, { testimonials: data });
+      } catch (error) {
+        console.error('Failed to persist testimonials', error);
+      }
     };
 
     const getBranchGallery = (branchId: BranchId) => {

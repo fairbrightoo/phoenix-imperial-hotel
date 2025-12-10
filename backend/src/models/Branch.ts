@@ -14,6 +14,7 @@ export class Branch extends Model {
     public description!: string;
     public amenities!: string[];
     public images!: any[]; // Using any[] for now to support both string/json during transition
+    public testimonials!: any[];
     public policies!: any;
     public readonly created_at!: Date;
     public readonly updated_at!: Date;
@@ -70,6 +71,10 @@ Branch.init(
             allowNull: true
         },
         images: {
+            type: DataTypes.JSON,
+            allowNull: true
+        },
+        testimonials: {
             type: DataTypes.JSON,
             allowNull: true
         },

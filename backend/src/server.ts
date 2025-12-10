@@ -52,8 +52,28 @@ import sequelize from './config/database';
 import './models/associations'; // Import associations
 
 
-sequelize.sync().then(() => {
-    console.log('Database connected and synced');
+// Custom migration function to avoid sync({ alter: true }) hanging
+const ensureDatabaseSchema = async () => {
+    try {
+        const queryInterface = sequelize.getQueryInterface();
+        const table = await queryInterface.describeTable('branches');
+
+        if (!table.testimonials) {
+            console.log('Adding missing testimonials column to branches table...');
+            await queryInterface.addColumn('branches', 'testimonials', {
+                type: (sequelize.Sequelize || require('sequelize')).DataTypes.JSON,
+                allowNull: true
+            });
+            console.log('Successfully added testimonials column.');
+        }
+    } catch (error) {
+        console.warn('Manual schema update failed (non-critical if already exists):', error);
+    }
+};
+
+sequelize.sync().then(async () => {
+    console.log('Database connected and synced (base)');
+    await ensureDatabaseSchema();
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);
     });
