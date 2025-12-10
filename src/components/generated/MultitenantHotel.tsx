@@ -403,10 +403,14 @@ const MultitenantHotelContent: React.FC = () => {
     if (path === '/reservation' && !reservationPageOpen) openReservation();
     if (path === '/about' && !aboutPageOpen) openAbout();
     if (path === '/contact' && !contactPageOpen) openContact();
-    if (path === '/dashboard' && !dashboardOpen) openDashboard();
-    // If path is '/', we might want to ensure all modals are closed? 
-    // Maybe not strictly necessary if we handle onClose.
-  }, [location.pathname]);
+    if (path === '/dashboard') {
+      if (isAuthenticated) {
+        if (!dashboardOpen) openDashboard();
+      } else {
+        if (!authModalOpen) openAuth();
+      }
+    }
+  }, [location.pathname, isAuthenticated]);
 
   // Check for pending bookings on login
   useEffect(() => {
