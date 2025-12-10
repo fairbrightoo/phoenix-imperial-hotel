@@ -1,4 +1,5 @@
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
+import { LoadingScreen } from './components/ui/LoadingScreen';
 import { Container, Theme } from './settings/types';
 import { AdminRoute } from './components/generated/AdminRoute';
 import { ResetPasswordPage } from './components/generated/ResetPasswordPage';
@@ -15,6 +16,13 @@ let theme: Theme = 'dark';
 let container: Container = 'none';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 2500);
+    return () => clearTimeout(timer);
+  }, []);
+
   function setTheme(theme: Theme) {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
@@ -26,28 +34,36 @@ function App() {
   setTheme(theme);
 
   const content = (
-    <ThemeProvider>
-      <AlertProvider>
-        <AuthProvider>
-          <TenantProvider>
-            <ModalProvider>
-              <BrowserRouter>
-                <Routes>
-                  <Route path="/" element={<MultitenantHotel />} />
-                  <Route path="/rooms" element={<MultitenantHotel />} />
-                  <Route path="/reservation" element={<MultitenantHotel />} />
-                  <Route path="/about" element={<MultitenantHotel />} />
-                  <Route path="/contact" element={<MultitenantHotel />} />
-                  <Route path="/admin/branch" element={<AdminRoute />} />
-                  <Route path="/dashboard" element={<MultitenantHotel />} />
-                  <Route path="/reset-password" element={<ResetPasswordPage />} />
-                </Routes>
-              </BrowserRouter>
-            </ModalProvider>
-          </TenantProvider>
-        </AuthProvider>
-      </AlertProvider>
-    </ThemeProvider>
+    <>
+      <div className={`fixed inset-0 z-[100] transition-opacity duration-700 pointer-events-none ${isLoading ? 'opacity-100' : 'opacity-0'}`}>
+        {isLoading && <LoadingScreen />}
+      </div>
+
+      <div className={`transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+        <ThemeProvider>
+          <AlertProvider>
+            <AuthProvider>
+              <TenantProvider>
+                <ModalProvider>
+                  <BrowserRouter>
+                    <Routes>
+                      <Route path="/" element={<MultitenantHotel />} />
+                      <Route path="/rooms" element={<MultitenantHotel />} />
+                      <Route path="/reservation" element={<MultitenantHotel />} />
+                      <Route path="/about" element={<MultitenantHotel />} />
+                      <Route path="/contact" element={<MultitenantHotel />} />
+                      <Route path="/admin/branch" element={<AdminRoute />} />
+                      <Route path="/dashboard" element={<MultitenantHotel />} />
+                      <Route path="/reset-password" element={<ResetPasswordPage />} />
+                    </Routes>
+                  </BrowserRouter>
+                </ModalProvider>
+              </TenantProvider>
+            </AuthProvider>
+          </AlertProvider>
+        </ThemeProvider>
+      </div>
+    </>
   );
 
   if (container === 'centered') {
