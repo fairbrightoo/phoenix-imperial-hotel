@@ -28,8 +28,8 @@ jobs:
 
       - name: Build Frontend
         run: npm run build
-        env:
-          VITE_API_URL: ${{ secrets.VITE_API_URL || 'https://api.yourdomain.com/api' }}
+        # env:
+        #   VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
       - name: Deploy Frontend to cPanel
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4

@@ -6,7 +6,10 @@ const getBaseUrl = () => {
     }
     // Dynamic local IP handling
     const hostname = window.location.hostname;
-    return `http://${hostname}:5000/api`;
+    if (hostname === 'localhost' || hostname === '127.0.0.1') {
+        return `http://${hostname}:5000/api`;
+    }
+    return '/api';
 };
 
 const API_URL = getBaseUrl();
@@ -36,16 +39,16 @@ const api = axios.create({
 api.interceptors.request.use(
     (config) => {
         const user = localStorage.getItem('phoenix_imperial_user');
-        if (user) {
-            const parsedUser = JSON.parse(user);
-            // Note: In a real app, you'd store the token separately. 
-            // For now, we'll assume the backend might return a token in the future login response
-            // and we'd store it. If using the mock user object, we don't have a token yet.
-            // But since we just implemented the backend login, we SHOULD store the token.
-
-            const token = localStorage.getItem('phoenix_imperial_token');
-            if (token) {
-                config.headers.Authorization = `Bearer ${token}`;
+        if (user && user !== 'undefined') {
+            try {
+                const parsedUser = JSON.parse(user);
+                const token = localStorage.getItem('phoenix_imperial_token');
+                if (token) {
+                    config.headers.Authorization = `Bearer ${token}`;
+                }
+            } catch (e) {
+                console.warn('Corrupt user data in localStorage, clearing...');
+                localStorage.removeItem('phoenix_imperial_user');
             }
         }
 
