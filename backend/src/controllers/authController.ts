@@ -195,7 +195,8 @@ export const forgotPassword = async (req: Request, res: Response): Promise<void>
             expires_at: expiresAt
         });
 
-        const resetLink = `http://localhost:5173/reset-password?token=${token}&email=${email}`;
+        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+        const resetLink = `${frontendUrl}/reset-password?token=${token}&email=${email}`;
 
         // Send email via EmailService
         try {
