@@ -378,7 +378,7 @@ const MultitenantHotelContent: React.FC = () => {
   const {
     authModalOpen, closeAuth,
     bookingModalOpen, closeBooking, openBooking,
-    dashboardOpen, closeDashboard,
+    dashboardOpen, closeDashboard, openDashboard,
     roomsPageOpen, closeRooms, openRooms,
     reservationPageOpen, closeReservation, openReservation,
     aboutPageOpen, closeAbout, openAbout,
@@ -403,6 +403,7 @@ const MultitenantHotelContent: React.FC = () => {
     if (path === '/reservation' && !reservationPageOpen) openReservation();
     if (path === '/about' && !aboutPageOpen) openAbout();
     if (path === '/contact' && !contactPageOpen) openContact();
+    if (path === '/dashboard' && !dashboardOpen) openDashboard();
     // If path is '/', we might want to ensure all modals are closed? 
     // Maybe not strictly necessary if we handle onClose.
   }, [location.pathname]);
@@ -619,7 +620,7 @@ const MultitenantHotelContent: React.FC = () => {
     {/* Modals */}
     <AuthModal isOpen={authModalOpen} onClose={closeAuth} />
     <BookingModal isOpen={bookingModalOpen} onClose={closeBooking} />
-    <UserDashboard isOpen={dashboardOpen} onClose={closeDashboard} />
+    <UserDashboard isOpen={dashboardOpen} onClose={() => { closeDashboard(); navigate('/'); }} />
     <RoomsPage
       isOpen={roomsPageOpen}
       onClose={() => { closeRooms(); navigate('/'); }}

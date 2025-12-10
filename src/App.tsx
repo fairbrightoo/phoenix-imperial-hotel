@@ -39,6 +39,7 @@ function App() {
                   <Route path="/about" element={<MultitenantHotel />} />
                   <Route path="/contact" element={<MultitenantHotel />} />
                   <Route path="/admin/branch" element={<AdminRoute />} />
+                  <Route path="/dashboard" element={<MultitenantHotel />} />
                   <Route path="/reset-password" element={<ResetPasswordPage />} />
                 </Routes>
               </BrowserRouter>
