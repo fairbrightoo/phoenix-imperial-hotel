@@ -9,7 +9,8 @@ const getBaseUrl = () => {
     if (hostname === 'localhost' || hostname === '127.0.0.1') {
         return `http://${hostname}:5000/api`;
     }
-    return '/api';
+    // Production Backend URL (Render)
+    return 'https://phoenix-backend-4kyu.onrender.com/api';
 };
 
 const API_URL = getBaseUrl();
