@@ -27,6 +27,7 @@ jobs:
         run: npm ci --legacy-peer-deps
 
       - name: Build Frontend
+        run: npm run build
         env:
           # VITE_API_URL: ${{ secrets.VITE_API_URL }} # Let runtime determine this
           VITE_PAYSTACK_PUBLIC_KEY: ${{ secrets.VITE_PAYSTACK_PUBLIC_KEY }}
