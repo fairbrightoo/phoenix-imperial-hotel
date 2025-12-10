@@ -376,7 +376,7 @@ const ReservationCTA: React.FC = () => {
 // Main Component Content
 const MultitenantHotelContent: React.FC = () => {
   const {
-    authModalOpen, closeAuth,
+    authModalOpen, closeAuth, openAuth,
     bookingModalOpen, closeBooking, openBooking,
     dashboardOpen, closeDashboard, openDashboard,
     roomsPageOpen, closeRooms, openRooms,
