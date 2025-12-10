@@ -114,6 +114,11 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   // Reset state when modal opens
   React.useEffect(() => {
     if (isOpen) {
+      // If resuming a pending booking, do NOT reset state
+      if (localStorage.getItem('pending_booking')) {
+        return;
+      }
+
       // If we have an initial room, skip branch selection and go to rooms
       if (bookingInitialRoom) {
         setStep('rooms');
