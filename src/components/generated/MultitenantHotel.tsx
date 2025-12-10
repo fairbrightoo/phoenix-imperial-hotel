@@ -420,12 +420,18 @@ const MultitenantHotelContent: React.FC = () => {
       const pendingReservation = localStorage.getItem('pending_reservation');
 
       if (pendingBooking) {
+        // Ensure other modals are closed to prevent overlap (especially RoomsPage)
+        if (roomsPageOpen) closeRooms();
+        if (aboutPageOpen) closeAbout();
+        if (contactPageOpen) closeContact();
+        if (reservationPageOpen) closeReservation();
+
         openBooking();
       } else if (pendingReservation) {
         openReservation();
       }
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, roomsPageOpen]); // Added dependency to retry closing if needed
 
   // Aggregate testimonials if no branch selected, otherwise get branch specific
   const testimonials = currentBranch
