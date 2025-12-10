@@ -45,10 +45,17 @@ export const AuthProvider: React.FC<{
     // Load user from localStorage on mount
     useEffect(() => {
       const storedUser = localStorage.getItem('phoenix_imperial_user');
-      if (storedUser) {
-        const parsedUser = JSON.parse(storedUser);
-        setUser(parsedUser);
-        setIsAuthenticated(true);
+      if (storedUser && storedUser !== 'undefined') {
+        try {
+          const parsedUser = JSON.parse(storedUser);
+          setUser(parsedUser);
+          setIsAuthenticated(true);
+        } catch (e) {
+          console.warn('Corrupt user data found in AuthContext', e);
+          localStorage.removeItem('phoenix_imperial_user');
+        }
+      } else if (storedUser === 'undefined') {
+        localStorage.removeItem('phoenix_imperial_user');
       }
     }, []);
 
