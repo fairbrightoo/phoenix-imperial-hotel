@@ -11,6 +11,20 @@ const getBaseUrl = () => {
 
 const API_URL = getBaseUrl();
 
+export const getImageUrl = (path: string | undefined | null) => {
+    if (!path) return '';
+    if (path.startsWith('http')) return path;
+
+    // Remove /api suffix to get base domain
+    const baseUrl = API_URL.endsWith('/api')
+        ? API_URL.slice(0, -4)
+        : API_URL;
+
+    // Ensure path starts with /
+    const cleanPath = path.startsWith('/') ? path : `/${path}`;
+    return `${baseUrl}${cleanPath}`;
+};
+
 const api = axios.create({
     baseURL: API_URL,
     headers: {

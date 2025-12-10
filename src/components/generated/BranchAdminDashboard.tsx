@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import api from '../../services/api';
+import api, { getImageUrl } from '../../services/api';
 import { useAlert } from '../ui/AlertContext';
 import { Home, Hotel, Calendar, Users, MessageSquare, Image, BarChart3, Settings, Star, DollarSign, TrendingUp, Clock, CheckCircle, XCircle, AlertCircle, Plus, Edit, Trash2 } from 'lucide-react';
 import { useAuth } from './AuthContext';
@@ -540,9 +540,7 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
 
           <div className="grid md:grid-cols-2 gap-6">
             {localRooms.filter(r => r.category === activeCategory).map(room => {
-              const imageUrl = room.images[0]?.startsWith('/')
-                ? `http://${window.location.hostname}:5000${room.images[0]}`
-                : room.images[0];
+              const imageUrl = getImageUrl(room.images[0]);
 
               return <div key={room.id} className="bg-zinc-800 rounded-lg border border-zinc-700 overflow-hidden">
                 <img src={imageUrl} alt={room.name} className="w-full h-48 object-cover" />
@@ -770,9 +768,7 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {gallery.map(item => {
-              const imageUrl = item.imageUrl?.startsWith('/')
-                ? `http://${window.location.hostname}:5000${item.imageUrl}`
-                : item.imageUrl;
+              const imageUrl = getImageUrl(item.imageUrl);
 
               return <div key={item.id} className="relative group aspect-square rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800">
                 <img src={imageUrl} alt={item.title} className="w-full h-full object-contain p-1" />

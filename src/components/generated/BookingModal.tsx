@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import api from '../../services/api';
+import api, { getImageUrl } from '../../services/api';
 import { X, Calendar, Users, CreditCard, ChevronRight, Hotel } from 'lucide-react';
 import { BranchSelector } from './BranchSelector';
 import { useTenant } from './TenantContext';
@@ -92,9 +92,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           type: r.type,
           price: Number(r.price),
           description: r.description,
-          images: parseJSON(r.images).map((img: string) =>
-            img.startsWith('/') ? `http://${window.location.hostname}:5000${img}` : img
-          ),
+          images: parseJSON(r.images).map((img: string) => getImageUrl(img)),
           amenities: parseJSON(r.amenities),
           available: r.available_quantity > 0,
           availableQuantity: r.available_quantity,
@@ -735,8 +733,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                           initializePayment({ onSuccess, onClose: onClosePayment });
                         }}
                         className={`w-full py-4 rounded font-medium transition-colors flex items-center justify-center gap-2 ${isProcessing
-                            ? 'bg-zinc-700 text-zinc-400 cursor-not-allowed'
-                            : 'bg-green-600 hover:bg-green-700 text-white'
+                          ? 'bg-zinc-700 text-zinc-400 cursor-not-allowed'
+                          : 'bg-green-600 hover:bg-green-700 text-white'
                           }`}
                       >
                         {isProcessing ? (

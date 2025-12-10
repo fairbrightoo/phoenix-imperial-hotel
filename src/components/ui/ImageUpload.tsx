@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Upload, X, Image as ImageIcon, Link } from 'lucide-react';
+import { getImageUrl } from '../../services/api';
 
 interface ImageUploadProps {
     defaultUrl?: string;
@@ -25,14 +26,8 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
     // Update preview when defaultUrl changes (e.g. when editing)
     useEffect(() => {
         if (defaultUrl && !selectedFile) {
-            let finalUrl = defaultUrl;
-            if (defaultUrl.startsWith('/')) {
-                // Prepend backend URL for relative paths
-                const hostname = window.location.hostname;
-                finalUrl = `http://${hostname}:5000${defaultUrl}`;
-            }
-            setPreviewUrl(finalUrl);
-            setUrlInput(defaultUrl); // Keep original relative path in input
+            setPreviewUrl(getImageUrl(defaultUrl));
+            setUrlInput(defaultUrl);
         }
     }, [defaultUrl]);
 

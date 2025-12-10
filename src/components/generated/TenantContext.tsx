@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { BranchId, Branch, TenantContextType, Testimonial, Gallery, GlobalContent, SystemSettings } from './types';
 import { TESTIMONIALS_BY_BRANCH, GALLERY_BY_BRANCH } from './mockData';
-import api from '../../services/api';
+import api, { getImageUrl } from '../../services/api';
 
 
 
@@ -99,7 +99,7 @@ export const TenantProvider: React.FC<{
                     return {
                       id: `legacy-${index}`,
                       branchId: branch.id,
-                      imageUrl: img,
+                      imageUrl: getImageUrl(img),
                       title: 'Gallery Image',
                       category: 'Rooms',
                       uploadedAt: new Date().toISOString()

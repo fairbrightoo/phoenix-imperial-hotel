@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Menu, X, Calendar, Users, Utensils, Waves, Dumbbell, Sparkles, Briefcase, Shirt, Instagram, Facebook, Twitter, MapPin, Mail, ArrowRight, Star, Check, User as UserIcon, LogIn, Building2, LogOut } from 'lucide-react';
+import api, { getImageUrl } from '../../services/api';
 import { cn } from '../../lib/utils';
 import { AuthProvider, useAuth } from './AuthContext';
 import { TenantProvider, useTenant } from './TenantContext';
@@ -547,9 +548,7 @@ const MultitenantHotelContent: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {gallery.map(item => {
-              const imageUrl = item.imageUrl?.startsWith('/')
-                ? `http://${window.location.hostname}:5000${item.imageUrl}`
-                : item.imageUrl;
+              const imageUrl = getImageUrl(item.imageUrl);
 
               return <motion.div key={item.id} whileHover={{
                 y: -10
