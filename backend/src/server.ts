@@ -3,6 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
+import { DataTypes } from 'sequelize';
 
 dotenv.config();
 
@@ -61,7 +62,7 @@ const ensureDatabaseSchema = async () => {
         if (!table.testimonials) {
             console.log('Adding missing testimonials column to branches table...');
             await queryInterface.addColumn('branches', 'testimonials', {
-                type: (sequelize.Sequelize || require('sequelize')).DataTypes.JSON,
+                type: DataTypes.JSON,
                 allowNull: true
             });
             console.log('Successfully added testimonials column.');
