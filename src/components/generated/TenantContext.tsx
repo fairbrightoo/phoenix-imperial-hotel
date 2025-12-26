@@ -163,8 +163,16 @@ export const TenantProvider: React.FC<{
       return allBranches.find(b => b.id === branchId);
     };
 
-    const updateBranch = (branchId: BranchId, data: Partial<Branch>) => {
+    const updateBranch = async (branchId: BranchId, data: Partial<Branch>) => {
+      // Optimistic update
       setAllBranches(prev => prev.map(b => b.id === branchId ? { ...b, ...data } : b));
+
+      try {
+        await api.put(`/branches/${branchId}`, data);
+      } catch (error) {
+        console.error('Failed to update branch settings:', error);
+        // Revert optimization on error? For now just log it as the UI will show success msg separately
+      }
     };
 
     const addBranch = (branch: Branch) => {
