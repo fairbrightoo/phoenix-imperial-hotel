@@ -1,28 +1,26 @@
-import express from 'express';
-import multer from 'multer';
-import path from 'path';
-import fs from 'fs';
+import { v2 as cloudinary } from 'cloudinary';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
 
 const router = express.Router();
 
-// Configure storage
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        const uploadDir = 'uploads/';
-        // Ensure directory exists
-        if (!fs.existsSync(uploadDir)) {
-            fs.mkdirSync(uploadDir);
-        }
-        cb(null, uploadDir);
-    },
-    filename: (req, file, cb) => {
-        // Generate unique filename: timestamp-random-originalName
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-        cb(null, uniqueSuffix + path.extname(file.originalname));
-    }
+// Configure Cloudinary
+cloudinary.config({
+    cloud_name: 'chsbffdru',
+    api_key: '167489521629744',
+    api_secret: 'tNPaaJCXvVdrxUssIAj-LnpX-gA'
 });
 
-// File filter
+// Configure storage
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'phoenix-hotel',
+        allowed_formats: ['jpg', 'png', 'jpeg', 'webp'],
+        transformation: [{ width: 1000, height: 1000, crop: 'limit' }] // Optimize images on upload
+    } as any
+});
+
+// File filter (still good to have, though allowed_formats handles most)
 const fileFilter = (req: any, file: any, cb: any) => {
     if (file.mimetype.startsWith('image/')) {
         cb(null, true);
@@ -43,24 +41,22 @@ const upload = multer({
 router.post('/', (req, res) => {
     upload.single('image')(req, res, (err) => {
         if (err instanceof multer.MulterError) {
-            // A Multer error occurred when uploading.
             console.error('Multer error:', err);
             return res.status(400).json({ message: `Upload error: ${err.message}` });
         } else if (err) {
-            // An unknown error occurred when uploading.
             console.error('Unknown upload error:', err);
             return res.status(500).json({ message: 'An unknown error occurred during upload.' });
         }
 
-        // Everything went fine.
         try {
             if (!req.file) {
                 res.status(400).json({ message: 'No file uploaded' });
                 return;
             }
 
-            // Return relative path with forward slashes
-            const fileUrl = `/uploads/${req.file.filename}`;
+            // Cloudinary storage puts the URL in `path` or `secure_url`
+            // multer-storage-cloudinary usually populates req.file.path with the secure URL
+            const fileUrl = req.file.path;
 
             res.status(200).json({
                 message: 'File uploaded successfully',
@@ -71,6 +67,22 @@ router.post('/', (req, res) => {
             console.error('Post-upload processing error:', error);
             res.status(500).json({ message: 'File upload processing failed' });
         }
+    });
+});
+
+
+// Return relative path with forward slashes
+const fileUrl = `/uploads/${req.file.filename}`;
+
+res.status(200).json({
+    message: 'File uploaded successfully',
+    url: fileUrl,
+    filename: req.file.filename
+});
+        } catch (error) {
+    console.error('Post-upload processing error:', error);
+    res.status(500).json({ message: 'File upload processing failed' });
+}
     });
 });
 
