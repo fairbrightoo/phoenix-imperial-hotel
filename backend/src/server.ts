@@ -26,13 +26,13 @@ app.use(express.json());
 // Rate Limiting
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // Limit each IP to 100 requests per windows
+    max: 300, // Limit each IP to 300 requests per window
     standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
     message: 'Too many requests from this IP, please try again after 15 minutes'
 });
-// Apply to all requests
-app.use(limiter);
+// Apply to /api requests only (so static files/images don't count)
+app.use('/api', limiter);
 
 app.use('/uploads', express.static('uploads'));
 
