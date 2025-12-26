@@ -850,41 +850,41 @@ export const BranchAdminDashboard: React.FC<BranchAdminDashboardProps> = ({
                   className="w-full bg-zinc-900 border border-zinc-700 text-zinc-200 px-4 py-2.5 rounded focus:outline-none focus:border-amber-500"
                 />
               </div>
-          </div>
-          <div>
-            <label className="text-xs uppercase tracking-wider text-zinc-400 block mb-2">
-              Contact Phone
-            </label>
-            <input
-              name="branchPhone"
-              type="text"
-              defaultValue={branchData?.phone}
-              className="w-full bg-zinc-900 border border-zinc-700 text-zinc-200 px-4 py-2.5 rounded focus:outline-none focus:border-amber-500"
-            />
-          </div>
-          <button
-            type="submit"
-            className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded transition-colors font-medium"
-          >
-            Save Changes
-          </button>
-        </form>
+
+              <div>
+                <label className="text-xs uppercase tracking-wider text-zinc-400 block mb-2">
+                  Contact Phone
+                </label>
+                <input
+                  name="branchPhone"
+                  type="text"
+                  defaultValue={branchData?.phone}
+                  className="w-full bg-zinc-900 border border-zinc-700 text-zinc-200 px-4 py-2.5 rounded focus:outline-none focus:border-amber-500"
+                />
+              </div>
+              <button
+                type="submit"
+                className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded transition-colors font-medium"
+              >
+                Save Changes
+              </button>
+            </form>
           </div>
 
-      <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-6">
-        <div className="flex items-start gap-3">
-          <AlertCircle className="text-amber-400 shrink-0 mt-0.5" size={20} />
-          <div>
-            <h4 className="text-amber-400 font-medium mb-1">Limited Access</h4>
-            <p className="text-sm text-zinc-400">
-              As a branch admin, you can only manage content and bookings for the {branchName} branch.
-              Global settings and permissions are controlled by the Super Admin.
-            </p>
+          <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-6">
+            <div className="flex items-start gap-3">
+              <AlertCircle className="text-amber-400 shrink-0 mt-0.5" size={20} />
+              <div>
+                <h4 className="text-amber-400 font-medium mb-1">Limited Access</h4>
+                <p className="text-sm text-zinc-400">
+                  As a branch admin, you can only manage content and bookings for the {branchName} branch.
+                  Global settings and permissions are controlled by the Super Admin.
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
+        </motion.div>}
       </div>
-    </motion.div>}
-  </div>
     </main >
   </div >;
 };
