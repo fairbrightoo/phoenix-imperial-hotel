@@ -7,9 +7,9 @@ const router = express.Router();
 
 // Configure Cloudinary
 cloudinary.config({
-    cloud_name: 'dhsbffdru',
-    api_key: '167489521629744',
-    api_secret: 'tNPaajCXvVdrxUssIAj-LnpX-gA'
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
 // Configure storage
