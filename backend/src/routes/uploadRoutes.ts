@@ -71,19 +71,6 @@ router.post('/', (req, res) => {
 });
 
 
-// Return relative path with forward slashes
-const fileUrl = `/uploads/${req.file.filename}`;
 
-res.status(200).json({
-    message: 'File uploaded successfully',
-    url: fileUrl,
-    filename: req.file.filename
-});
-        } catch (error) {
-    console.error('Post-upload processing error:', error);
-    res.status(500).json({ message: 'File upload processing failed' });
-}
-    });
-});
 
 export default router;
